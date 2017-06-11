@@ -1,0 +1,214 @@
+/* 
+
+PureParadise - CSS File
+
+CHANGE COLOR STYLE
+
+*/
+
+body {color:#777; background:#e8e8e8}
+
+/*=================================================== Container ===================================================*/
+#bodychild{
+	background-color:#fff;
+	-webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, .1);
+	-moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, .1);
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, .1);
+}
+#top{background:url(double_dotted_line.png)/*tpa=http://demohtml.templatesquare.com/pureparadise/images/double_dotted_line.png*/ repeat-x left bottom}
+#afterheader{background:url(double_dotted_line.png)/*tpa=http://demohtml.templatesquare.com/pureparadise/images/double_dotted_line.png*/ repeat-x left bottom}
+
+
+/*=================================================== General ===================================================*/
+
+/* Link */
+a, a:visited, .colortext{color:#ed6451}
+a:hover{color:#f97260}
+
+/* heading */
+h1, h2, h3, h4, h5, h6{color:#454545;}
+.pagetitle{color:#c5c5c5; border-left:solid 1px #e7e7e7}
+.pagedesc{color:#454545;}
+.titleBorder{background:url(double_dotted_line.png)/*tpa=http://demohtml.templatesquare.com/pureparadise/images/double_dotted_line.png*/ repeat-x left bottom;}
+
+
+#logo a, #logo a:visited{color:#393939;}
+
+/* hr */
+hr {
+	color:#5b5b5b;
+	background-color:#5b5b5b;
+}
+
+/* tables */
+th{border-bottom: 1px solid #f2f2f2;}
+table {
+	border: 1px solid #f2f2f2;
+	border-bottom:0;
+}
+tr td {
+	border-bottom: 1px solid #f2f2f2;
+}
+tr.odd td {}
+
+
+/*=================================================== Top Menu ===================================================*/
+.sf-menu a, .sf-menu a:visited{color:#9a9a9a;}/* 1st level */
+#topnav li a:hover,
+#topnav .current > a, #topnav  .current > a:hover{color:#393939;}
+
+.sf-menu li ul {border:1px solid #f0f0f0;}
+
+.sf-menu li:hover ul,
+.sf-menu li.sfHover ul {
+	background:#fff;
+	color:#9a9a9a;
+}
+
+.sf-menu li li { border-bottom:1px dotted #e2e2e2;}
+
+.sf-menu ul li a{ color:#9a9a9a;}
+.sf-menu ul li a:hover, #topnav li li a.current{color:#ed6451;}
+
+#topnav li li a, .sf-menu li li a, .sf-menu li li a:visited {color:#9a9a9a;}
+#topnav li li a:hover, #topnav  .current li a:hover{color:#ed6451;}
+
+/*=================================================== Slider Section ===================================================*/
+.nivo-caption{color: #ccc;  background:rgba(0, 0, 0, 0.7);}
+.nivo-caption h1{color:#fff;}
+.nivo-caption a, .nivo-caption a:visited{color:#ddd;}
+
+.slidetext{border-top:solid 1px #ccc;}
+
+/*=================================================== Content Section ===================================================*/
+
+.box{ background:#f6f6f6; border-bottom:solid 1px #e6e6e6}
+
+
+.testi-name{color:#444;}
+code{border-left:solid 4px #5b5b5b;}
+pre{border-left:solid 4px #5b5b5b;}
+abbr,acronym {border-bottom: 1px dotted #5b5b5b;}
+
+/* Form & Button */
+input[type="text"],
+textarea, input[type="password"], select{
+	border:solid 1px #f2f2f2;
+	color:#777;
+}
+
+.button, .button:visited, input[type="submit"], .more-link, .more-link:visited{	color:#fff; background:#ed6451;}
+.button:hover, input[type="submit"]:hover, .more-link:hover{color:#fff; background:#454545}
+
+
+/* line */
+.separator.line {border-bottom:1px solid #efefef;}
+
+
+/*=================================================== Sidebar Section ===================================================*/
+#sidebar li li{border-bottom:1px solid #f2f2f2; background:url(square.gif)/*tpa=http://demohtml.templatesquare.com/pureparadise/images/square.gif*/ no-repeat 0 14px}
+#sidebar li li a{ color:#ed6451; }
+#sidebar li li a:hover, #sidebar li li a.active, #sidebar li li:hover{color:#454545;}
+#sidebar ul.sub-menu li, #sidebar ul.children li, #sidebar ul ul ul li{border:0;}
+.widget-title{color:#454545; background:url(double_dotted_line.png)/*tpa=http://demohtml.templatesquare.com/pureparadise/images/double_dotted_line.png*/ repeat-x left bottom}
+
+
+
+/*=================================================== Blog Section ===================================================*/
+.post{background:url(double_dotted_line.png)/*tpa=http://demohtml.templatesquare.com/pureparadise/images/double_dotted_line.png*/ repeat-x left bottom}
+.main article.post:last-child{background:transparent !important; border-bottom:solid 5px;}
+.posttitle, .posttitle a, .posttitle a:visited{color:#454545;}
+.posttitle a:hover{color:#ed6451}
+.entry-utility{color:#919191; background:url(dotted.png)/*tpa=http://demohtml.templatesquare.com/pureparadise/images/dotted.png*/ repeat-x left bottom;}
+
+.wp-caption img {
+	border-color: #5b5b5b;
+}
+
+.comment-body{ border-bottom:1px solid #f2f2f2;}
+.comment-body .time a, .comment-body .time a:visited{color:#bababa;}
+.fn, .fn a{ color:#454545; font-weight:bold;}
+.fn a:hover{ color:#ed6451;}
+
+.wp-pagenavi a, .wp-pagenavi a:visited, .wp-pagenavi .extend{color:#777; border-bottom:solid 1px #e6e6e6 !important; background:#f6f6f6 !important}
+.wp-pagenavi span.current, .wp-pagenavi a:hover{color:#ed6451; border-bottom:solid 1px #e6e6e6 !important; background:#f6f6f6 !important}
+
+/*=================================================== Portfolio Section ===================================================*/
+.ts-display-pf-img{}
+.ts-display-pf-text h2 a{ color:#454545; font-weight:700;}
+.ts-display-pf-text h2 a:hover{color:#ed6451}
+.ts-display-portfolio li{border-bottom:1px solid #e6e6e6; background:#f6f6f6}
+.ts-display-portfolio li.no-pf-text{border:0;}
+
+/*=================================================== Property Section ===================================================*/
+/*.ts-display-properties{ border-bottom:solid 1px #efefef;}*/
+.property-items > li{background:#f6f6f6; border-bottom:solid 1px #e6e6e6}
+.property-items .box_text li{border-bottom:solid 1px #e8e8e8;}
+.property-items li .left{color:#454545;}
+.property-items .price{color:#363636;}
+.property-items h5 a, .property-items h5 a:visited{color:#363636;}
+.property-items h5 a:hover{color:#ed6451;}
+
+.list-property-detail li{border-bottom:solid 1px #e8e8e8;}
+.list-property-detail li .txtbold{color:#454545;}
+
+.titleprice{color:#777;}
+
+/*=================================================== Shortcode ===================================================*/
+/* Highlight */
+.highlight1{background-color:#ed6451; color:#fff}	
+.highlight2{background-color:#777; color:#fff}
+.highlight3{ border-bottom:dashed 1px #777}
+
+
+/* Dropcaps */	
+.dropcap1{text-shadow:1px 1px 0 #5b5b5b;	color:#ed6451}
+.dropcap2{background:#ed6451; color:#fff;}		
+.dropcap3{background:#ed6451; color:#fff;}
+
+		
+/* Tabs */
+ul.tabs li {
+	background:#f9f9f9;
+	border:1px solid #e8e8e8;
+	border-width:1px 1px 1px 0px;
+}
+ul.tabs li:first-child{border-left:solid 1px #e8e8e8;}
+ul.tabs li a {color:#777;}
+ul.tabs li.active{background:#fff; border-bottom:solid 1px #fff}
+html ul.tabs li.active a{ color:#ed6451; }
+#tab-body{border:solid 1px #e8e8e8;}
+
+/* jQuery Toggles */
+h2.trigger{background:#fff; border:dotted 1px #dcdcdc; border-width:1px 0 0 0;}
+h2.active{background:#f9f9f9; border-bottom:dotted 1px #dcdcdc;}
+h2.trigger span { color:#777;}
+h2.active span{ color:#ed6451}
+h2.trigger a:hover {color: #777;}
+#toggle{border-bottom:dotted 1px #dcdcdc;}
+h2.trigger span {background: url(arrow-left.png)/*tpa=http://demohtml.templatesquare.com/pureparadise/images/arrow-left.png*/ no-repeat 17px 0px;}
+h2.active span{ background:url(arrow-down.png)/*tpa=http://demohtml.templatesquare.com/pureparadise/images/arrow-down.png*/ no-repeat 17px 0px;}
+
+/* jQuery Accordion */
+ul.ts-accordion h2{color:#777; background:#fff; border:dotted 1px #dcdcdc; border-width:1px 0 0 0;}
+ul.ts-accordion h2.active{background:#f9f9f9; border-bottom:dotted 1px #dcdcdc;}
+ul.ts-accordion{border-bottom:dotted 1px #dcdcdc;}
+h2.accordion-title span.accordion-icon{background: url(arrow-left.png)/*tpa=http://demohtml.templatesquare.com/pureparadise/images/arrow-left.png*/ no-repeat 0px 0px;}
+h2.accordion-title.active span.accordion-icon{background:url(arrow-down.png)/*tpa=http://demohtml.templatesquare.com/pureparadise/images/arrow-down.png*/ no-repeat 0px 0px;}
+
+
+
+/*=================================================== Footer Section ===================================================*/
+#outerfootersidebar{}
+#footersidebar{border-top:double 4px #e7e7e7;}
+#footersidebar .widget-title{color:#454545; background:url(double_dotted_line.png)/*tpa=http://demohtml.templatesquare.com/pureparadise/images/double_dotted_line.png*/ repeat-x left bottom}
+#footersidebar li a{color:#777}
+#footersidebar li a:hover{color:#ed6451}
+#footersidebar li a.colortext{color:#ed6451}
+#footersidebar li a.colortext:hover{color:#f97260}
+
+#outerfooter{}
+#footer, #footer a, #footer a:visited{color:#454545;}
+#footer a:hover{color:#454545;}
+#footer a.colortext{color:#ed6451}
+#footer a.colortext:hover{color:#f97260}

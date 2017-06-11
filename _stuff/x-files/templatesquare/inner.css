@@ -1,0 +1,237 @@
+/* 
+
+PureParadise - CSS File
+
+USE THIS STYLE SHEET FOR INNER PAGE
+
+*/
+
+
+
+/* Page Navi*/
+.wp-pagenavi {padding:10px 0 0 0; font-size:12px; margin:10px 0 0 0; clear:both}
+.wp-pagenavi .pages{padding-right:10px;}
+.wp-pagenavi a, .wp-pagenavi a:visited{padding:4px 8px; margin:0 4px; font-size:12px;}
+.wp-pagenavi .current{padding:4px 8px; margin:0 4px; font-size:12px;}
+
+
+
+/* BLOG */
+.post{margin-bottom:40px; padding-bottom:26px; clear:both;}
+.posttitle, .posttitle a, .posttitle a:visited{font-size:18px; line-height:20px; font-family: 'Oswald', Arial; font-weight:700; text-transform:uppercase}
+.posttitle{margin:10px 0 5px 0;}
+.posttitle a:hover{text-decoration:none;}
+.more-link{margin:20px 0 0 0}
+.type-post .entry-content {margin:0; padding:16px 0 0 0}
+
+.postimg{margin-bottom:15px;}
+
+.entry-content {margin:0; padding:12px 0 5px 0;}
+
+.entry-utility{padding:0 0 15px 0}
+
+
+#comment h2{font-family: 'Oswald', Arial; font-weight:700; font-size:14px;}
+.commentlist{
+	list-style-type:none;
+	padding:0;
+	margin:0;
+}
+.commentlist ol{
+	list-style-type:none;
+	padding:30px 0 0 90px;
+	margin:0;
+}
+
+.commentlist li{
+	position:relative;
+	padding:0 0 30px 0;
+}
+.commentlist li li{
+	position:relative;
+	padding:0;
+}
+
+.avatar-img{
+	position:absolute;
+	top:0;
+	left:0;
+	background:url(shadow-mini.gif)/*tpa=http://demohtml.templatesquare.com/pureparadise/images/shadow-mini.gif*/ no-repeat center bottom;
+	padding-bottom:6px;
+}
+.avatar{display:block}
+.fn{font-size:12px;}
+.tdate{padding-left:20px;}
+.right{ float:right;}
+.tdate, .reply{ font-size:12px;}
+.reply a, .reply a:visited{}
+.reply a:hover{text-decoration:underline;}
+.fn a, .fn a:visited{}
+
+.comment-body{margin:0 0 0 100px; padding:0px 0px 18px;}
+.comment-body p{ margin-bottom:5px; margin-top:10px;}
+.comment-body .more{ padding:0px 0px;}
+#commentform {margin-bottom:20px}
+#commentform label{display:block}
+#commentform .text-input{
+	margin-bottom:8px;
+	padding:8px 5px;
+	vertical-align:middle;
+}
+#commentform .textarea{
+	margin-bottom:20px;
+	padding:8px 5px;
+	vertical-align:top;
+}
+
+.addthis_toolbox{padding:20px 0 0 0;}
+
+
+/* PORTFOLIO
+-------------------------------------------------------------- */
+.ts-display-portfolio{ margin-bottom:20px}
+.ts-display-portfolio li{position:relative;}
+.ts-display-pf-img{position:relative;}
+.ts-display-pf-img img{display:block;}
+.ts-display-clear{clear:both; height:1px !important; line-height:1px !important; float:none!important}
+.ts-display-pf-text{padding:16px 20px 16px}
+.ts-display-pf-text h2{margin-bottom:0px; font-size:12px; line-height:20px; font-family: 'Oswald', Arial; font-weight:700; text-transform:uppercase; word-spacing:2px}
+.ts-display-pf-text p{ margin-bottom:0px;}
+.pf-arrow{background:url(pf_arrow.png)/*tpa=http://demohtml.templatesquare.com/pureparadise/images/pf_arrow.png*/ no-repeat; height:14px; width:16px; position:absolute; bottom:0; left:20px; z-index:20}
+
+.no-display-pf-text{display:none;}
+
+.ts-display-pf-img a.image{
+	display:block;
+	position:relative;
+	overflow:hidden;
+}
+.ts-display-pf-img a .rollover{
+	background:url(hover-zoom.png)/*tpa=http://demohtml.templatesquare.com/pureparadise/images/hover-zoom.png*/;
+	background-color:#000;
+	background-repeat:no-repeat;
+	background-position:center;
+	display:block;
+    position:absolute;
+	z-index:10;
+	display:none;
+	cursor:pointer;
+}
+.ts-display-pf-img a .rollover.gotolink{
+	background:url(hover-link.png)/*tpa=http://demohtml.templatesquare.com/pureparadise/images/hover-link.png*/;
+	background-color:#000;
+	background-repeat:no-repeat;
+	background-position:center;
+}
+.ts-display-pf-img a .rollover.gotopost{
+	background:url(hover-doc.png)/*tpa=http://demohtml.templatesquare.com/pureparadise/images/hover-doc.png*/;
+	background-color:#000;
+	background-repeat:no-repeat;
+	background-position:center;
+}
+
+
+/* Portfolio 2 Column */
+.ts-display-pf-col-2{list-style-type:none; padding:0; margin:0;}
+.ts-display-pf-col-2 li{list-style-type:none; padding:0; margin:0 20px 20px 0; width:460px; float:left; }
+.ts-display-pf-col-2 li.nomargin{margin-right:0;}
+
+.ts-display-pf-col-2 .ts-display-pf-img{
+	width:460px;
+	height:100%;
+}
+
+.ts-display-pf-col-2 .ts-display-pf-img a.image{
+	width:460px;
+	height:100%;
+	display:block;
+	position:relative;
+}
+
+.ts-display-pf-col-2  .ts-display-pf-img a .rollover{
+	width:460px;
+	height:100%;
+	cursor:pointer;
+}
+
+.ts-display-pf-col-2 .ts-display-pf-text{}
+
+
+/* Portfolio 3 Column */
+.ts-display-pf-col-3{list-style-type:none; padding:0; margin:0;}
+.ts-display-pf-col-3 li{list-style-type:none; padding:0; margin:0 20px 20px 0; width:300px;  float:left;}
+.ts-display-pf-col-3 li.nomargin{margin-right:0;}
+
+.ts-display-pf-col-3 .ts-display-pf-img{
+	width:300px;
+	height:100%;
+}
+
+.ts-display-pf-col-3 .ts-display-pf-img a.image{
+	width:300px;
+	height:100%;
+	display:block;
+	position:relative;
+}
+
+.ts-display-pf-col-3  .ts-display-pf-img a .rollover{
+	width:300px;
+	height:100%;
+	cursor:pointer;
+}
+
+.ts-display-pf-col-3 .ts-display-pf-text{}
+
+
+/* Portfolio 4 Column */
+.ts-display-pf-col-4{list-style-type:none; padding:0; margin:0;}
+.ts-display-pf-col-4 li{list-style-type:none; padding:0; margin:0 20px 20px 0; width:220px;  float:left;}
+.ts-display-pf-col-4 li.nomargin{margin-right:0;}
+
+.ts-display-pf-col-4 .ts-display-pf-img{
+	width:220px;
+	height:100%;
+}
+
+.ts-display-pf-col-4 .ts-display-pf-img a.image{
+	width:220px;
+	height:100%;
+	display:block;
+	position:relative;
+
+}
+
+.ts-display-pf-col-4  .ts-display-pf-img a .rollover{
+	width:220px;
+	height:100%;
+	cursor:pointer;
+}
+
+.ts-display-pf-col-4 .ts-display-pf-text{}
+
+
+
+/* CONTACT */
+form{margin:0; padding:0;}
+fieldset{border:0px;}
+#contactform{margin:0; position:relative; }
+#contactform label{padding:0 0 0 20px; margin:0 0 0 0; line-height:35px; vertical-align:top; width:50%; display:inline-block;}
+span.required{ color:#888;}
+span.error{color:red;text-align:left; font-size:11px; padding-bottom:15px; display:block;}
+#contactform input.text-input{
+	margin-bottom:10px;
+	vertical-align:middle;
+	width:38%;
+	padding:10px
+}
+#contactform textarea{ width:95%; float:left; font-style:italic; padding:10px} 
+#message{ margin-left:0px; font-weight:bold; color:#ff0000}
+#message h2	{}
+#message p{margin:6px 0px; }
+.note{ color:#d45454;}
+#contactform .button{
+	cursor:pointer;
+	margin-top:20px;
+	clear:both;
+ }
+
