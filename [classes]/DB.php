@@ -18,7 +18,7 @@ class DB{
 				die("no such database");
 		}
 		else
-			die("no db connection");
+			die("no db connect1ion");
 	}
 	
 	
