@@ -8,10 +8,15 @@ if($_SERVER['SERVER_ADDR'] == '127.0.0.1')
 }
 else
 {
-	define('DB_NAME', 		'v_21838_ostatki_db');
+	/*define('DB_NAME', 		'v_21838_ostatki_db');
 	define('DB_USER', 		'v_21838_ost_db_u');
 	define('DB_PASSWORD', 	'7pGeXgwnqHcXzGZNAYFrLQmK');
-	define('DB_HOST', 		'localhost');
+	define('DB_HOST', 		'localhost');*/
+    define('DB_NAME', 		'p-7351_ostatki');
+    define('DB_USER', 		'ost_user');
+    define('DB_PASSWORD', 	'Olxf596?Ftvh68#5');
+    define('DB_HOST', 		'localhost');
+
 }
 
 
