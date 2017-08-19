@@ -986,7 +986,7 @@ class CabinetController extends MainController{
 			$user = User::getByEmail($email, Status::code(Status::ACTIVE));
 			if($user && $user->salt == $salt)
 			{
-				$newPassword = Funx::getSalt(10);
+				$newPassword = Funx::getSalt(5);
 				$user->password = User::encryptPassword($newPassword);
 				$user->salt = Funx::getSalt(24);
 				$user->update();
