@@ -62,30 +62,30 @@ if(file_exists($finalDirPath.'/'.$fileName)) 	# забираем из кэша
 	//echo "!";
 	$image = new ImageResize($finalDirPath.'/'.$fileName);
 	$image->output();
-	
+
 }
-else  	
+else
 {
 	$image = new ImageResize($img);
 	$image->quality_jpg = 100;
 	$image->quality_png = 100;
-	
+
 	$cacheInnerDirName = '';
-	
+
 	if($w && $h)
 		$image->crop($w, $h);
 	elseif($w)
 		$image->resizeToWidth($w);
 	elseif($h)
 		$image->resizeToHeight($h);
-	
-	# 	создаём подпапку кэша, если надо 
+
+	# 	создаём подпапку кэша, если надо
 	mkdir($finalDirPath, 0777, true );
-	
+
 	/*$image->scale(50);
-	
+
 	$image->crop(400, 400);*/
-	$image->output(); 
+	$image->output();
 	$image->save($finalDirPath.'/'.$fileName);
 }
 
