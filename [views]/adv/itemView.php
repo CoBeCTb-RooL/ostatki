@@ -291,7 +291,7 @@ if($isOwner)
 			<div class="top-info">
 				<span class="date" ><?=mb_strtolower(Funx::mkDate($item->dateCreated), 'utf-8')?>,</span>
 				<span class="city"><?=$item->city->name?></span>
-				<span> | <a href="<?=Route::getByName(Route::SPISOK_OBYAVLENIY_KATEGORII)->url($item->cat->urlPiece())?>" class="blue" style="font-weight: bold; font-size: 12px;  "><?=$item->cat->name?></a></span>
+				<span> | <a href="<?=Route::getByName(Route::SPISOK_OBYAVLENIY_KATEGORII)->url($item->cat->urlPiece())?>" class="blue cat-name" ><?=$item->cat->name?></a></span>
 			</div>
 			
 			
@@ -300,11 +300,11 @@ if($isOwner)
 			
 			<div class=" text">
 			
-				<?php 
+				<?php
 				if($item->descr)
 				{?>
 					<div class="descr"><?=$item->descr?></div>
-				<?php 
+				<?php
 				}?>
 				
 				<div class="mini-info2">
@@ -332,8 +332,8 @@ if($isOwner)
 						<?php 	
 						}?>
 					</div> 
-					 <div > 
-						Арт. номер: <b class="red">
+					 <div class="artnum">
+						Арт. номер: <b class="red" style="font-weight: normal; ">
 						<?php 
 						if($item->artnum)
 						{?>
@@ -341,7 +341,7 @@ if($isOwner)
 							<?
 							if($item->artnum->pic)
 							{?>
-							<a href="/<?=UPLOAD_IMAGES_REL_DIR?>/<?=$item->artnum->pic?>" class="highslide" onclick="return hs.expand(this)"><img src="<?=Media::img($item->artnum->pic.'&height=21')?>" alt="<?=$item->artnum->name?>"  title="<?=$item->artnum->name?>" style="vertical-align: middle; padding: 0 0 4px 0;  " /></a>
+							<a href="/<?=UPLOAD_IMAGES_REL_DIR?>/<?=$item->artnum->pic?>" class="highslide" onclick="return hs.expand(this)"><img src="<?=Media::img($item->artnum->pic.'&height=38')?>" alt="<?=$item->artnum->name?>"  title="<?=$item->artnum->name?>" style="vertical-align: middle; " /></a>
 							<span style="color: #888; font-size: 11px; font-style: italic; font-weight: normal; ">(нажмите чтобы посмотреть)</span>
 							<?php 	
 							}?>
@@ -355,8 +355,8 @@ if($isOwner)
 						</b>
 					</div>
 				</div>
-				
-				
+
+
 				
 				<?php 
 				if(count($item->cat->class->props) && $item->dealType->code!=DealType::BUY)
