@@ -7,7 +7,7 @@
 	<meta charset="utf-8">
 	
 	<title><?=$CONTENT->title?></title>
-	
+
 	<meta name="keywords" content="<?=$CONTENT->metaKeywords?>" />
 	<meta name="description" content="<?=$CONTENT->metaDescription?>" />
 
@@ -46,10 +46,12 @@
 	<!--Слайдер (для индекса)-->
 	<!-- <script type='text/javascript' src='/js/plugins/jquery.superslides/jquery.superslides.min.js'></script>
 	<link rel="stylesheet" type="text/css" href="/js/plugins/jquery.superslides/superslides.css" /> -->
-	
-	
-	
-	<script type="text/javascript">
+
+    <!--<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+
+
+    <script type="text/javascript">
 		hs.graphicsDir = '/js/libs/highslide-4.1.13/graphics/';
 		hs.align = 'center';
 		hs.transitions = ['expand', 'crossfade'];

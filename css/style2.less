@@ -29,7 +29,7 @@
 
 
 html{margin: 0; padding: 0; -webkit-text-size-adjust: none; height: 100%; }
-body{margin: 0; padding: 0; font-size: 14px; font-family: Tahoma;  color: @bodyColor !important;  height: 100%; }
+body{margin: 0; padding: 0; font-size: 15px; /*font-family: Tahoma;*/ font-family: 'PT Sans', sans-serif;  color: @bodyColor !important;  height: 100%; }
 *{ -moz-box-sizing: border-box; box-sizing: border-box; }
 .container{border: 0px solid red; min-width: @widthLimit;
   @media(max-width:@md){min-width: 1px; }
@@ -214,7 +214,7 @@ input.dark, select.dark{background: url(../img/bottom-input.png) !important; col
 			@media(max-width: @md){display: none; }
 			/*	меню */
 			ul.menu{display: inline-block; margin: 7px 0 0 0; border: 0px solid pink; height: 100%;   padding: 0; .cuprum;
-				li{ list-style: none; display: block ; float: left; font-size: 1.3em;  transition: @transitionTime;
+				li{ list-style: none; display: block ; float: left; font-size: 1.2em;  transition: @transitionTime;
 					a{border: 0px solid yellow;  .cuprum;   text-decoration: none; width: 100%; padding: 4px 10px 6px 10px ;  .border-box;   transition: @transitionTime; color: #787878; border-radius: 2px; margin: 0 0px;
 						&.active{color: #fff !important;  background: @red;}
 						&:hover{color: #000;}
@@ -299,7 +299,7 @@ input.dark, select.dark{background: url(../img/bottom-input.png) !important; col
 
 /************	КРОШКИ	**************/
 .crumbs{margin: 0px 0 9px 0; padding: 0px 0 0px 0;
-	.item{font-size: 12px;
+	.item{font-size: .9em;
 		&:after{content: "/"; margin: 0 8px; font-weight: normal; color: #5c6d70 ; }
 		&:last-child:after{content: none;}
 
@@ -409,13 +409,13 @@ input.dark, select.dark{background: url(../img/bottom-input.png) !important; col
 			}
 			.info{ padding: 0 10px; width: 370px;
 				@media(max-width: @md){width: 100%; }
-				.date{color: #888; font-size: 11px; }
-				a.title{font-size: 14px; color: #18191a; margin: 1px 0 4px 0; display: block;
+				.date{color: #888; font-size: .8em; }
+				a.title{font-size: 1em; color: #18191a; margin: 1px 0 4px 0; display: block;
 					@media(max-width: @md){font-size: 1.3em; }
 					&:hover{text-decoration: none; }
 				}
 				.short-info{}
-				.details{font-size: 12px; line-height: 150%;
+				.details{font-size: .9em; line-height: 150%;
 					.label{color: @red; }
 				}
 			}

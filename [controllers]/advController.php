@@ -2,7 +2,7 @@
 class AdvController extends MainController{
 	
 	const CAT_TYPE = 'adv';
-	const CAT_ADVS_LIST_ELEMENTS_PER_PAGE = 2;
+	const CAT_ADVS_LIST_ELEMENTS_PER_PAGE = 10;
 	
 	
 	function routifyAction()
