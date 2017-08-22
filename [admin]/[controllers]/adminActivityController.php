@@ -21,7 +21,7 @@ class AdminActivityController extends MainController{
 		require(GLOBAL_VARS_SCRIPT_FILE_PATH);
 		Startup::execute(Startup::ADMIN);
 		
-		Core::renderView('adminActivity/indexView.php', $model);
+		Core::renderView('adminActivity/indexView.php', $MODEL);
 	}
 	
 	
@@ -37,7 +37,16 @@ class AdminActivityController extends MainController{
 		//vd($ADMIN);
 		if($ADMIN->hasRole(Role::ADMINS_MODERATOR))
 		{
-		    $params = [];
+            $MODEL['adminId'] = $_REQUEST['adminId'];
+            $MODEL['objectType'] = Object::code($_REQUEST['objectType']);
+
+            $MODEL['admins'] = Admin::getList();
+            $MODEL['objectTypes'] = Object::$items;
+
+            $params = [
+                'adminId' => $MODEL['adminId'],
+                'objectType' => $MODEL['objectType'],
+            ];
 			$MODEL['list'] = JournalEntry::getList($params);
 			foreach($MODEL['list'] as $key=>$val)
 				$val->initAdmin();

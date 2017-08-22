@@ -1,9 +1,10 @@
 <script>
+    var opts = {}
 function drawList()
 {
 	$.ajax({
 		url: '/<?=ADMIN_URL_SIGN?>/adminActivity/list/',
-		data: '',
+		data: opts,
 		beforeSend: function(){$.fancybox.showLoading(); $('.admins .inner').css('opacity', .3); },
 		success: function(data){
 			$('.admins .inner').html(data)

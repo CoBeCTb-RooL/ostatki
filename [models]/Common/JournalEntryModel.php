@@ -59,13 +59,15 @@ class JournalEntry
 	
 	function getList($params)
 	{
-		$sql="SELECT * FROM `".strPrepare(self::TBL)."` 
-		WHERE 1 ";
+		$sql="SELECT * FROM `".strPrepare(self::TBL)."` WHERE 1 ";
 
-		if($params['objectType'])
-		    $sq.=" AND ObjectType='".strPrepare($params['objectId']->code)."'";
-		//objectType='".strPrepare($objectType->code)."' AND objectId='".intval($objectId)."' ";
-		
+        if($params['objectType'])
+            $sq.=" AND ObjectType='".strPrepare($params['objectId']->code)."'";
+        if($params['adminId'])
+            $sql.=" AND adminId='".intval($params['adminId'])."'";
+        if($params['objectType'])
+            $sql.=" AND objectType='".strPrepare($params['objectType']->code)."'";
+
 		if($params['orderBy'])
 			$sql.=" ORDER BY `".strPrepare($params['orderBy'])."` ";
 			

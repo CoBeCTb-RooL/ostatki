@@ -24,9 +24,37 @@ $list = $MODEL['list'];
 </style>
 
 
+
+    <div style="margin: 0 0 5px 0; ">
+        Администратор:
+        <select id="adminId" onchange="opts.adminId=this.value; drawList(); ">
+            <option value="">-все-</option>
+            <?
+            foreach($MODEL['admins'] as $admin)
+            {?>
+                <option value="<?=$admin->id?>" <?=$admin->id == $MODEL['adminId'] ? ' selected="selected" ' : '' ?>><?=$admin->name?></option>
+                <?
+            }?>
+        </select>
+    </div>
+
+    <div style="margin: 0 0 5px 0; ">
+        Сущность:
+        <select id="objectType" onchange="opts.objectType=this.value; drawList(); ">
+            <option value="">-все-</option>
+            <?
+            foreach($MODEL['objectTypes'] as $item)
+            {?>
+                <option value="<?=$item->code?>" <?=$item->code == $MODEL['objectType']->code ? ' selected="selected" ' : '' ?>><?=$item->name?></option>
+                <?
+            }?>
+        </select>
+    </div>
+
 <?php 
 if(count($list) )
 {?>
+
 
 	<table class="t">
 		<tr>
