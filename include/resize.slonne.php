@@ -57,7 +57,7 @@ $finalDirPath .= '/'.AdvMedia::getSubdirsByFile($fileName);
 //vd($fileName);
 
 # 	момент истины
-if(file_exists($finalDirPath.'/'.$fileName) && 1) 	# забираем из кэша
+if(file_exists($finalDirPath.'/'.$fileName) && 0) 	# забираем из кэша
 {
 	//echo "!";
     //vd($finalDirPath.'/'.$fileName);
