@@ -480,7 +480,7 @@ class CabinetController extends MainController{
 						$je = new JournalEntry();
 						$je->objectType = Object::code(Object::ADV);
 						$je->objectId = $item->id;
-						$je->journalEntryType = JournalEntryType::code(JournalEntryType::ADV_APPROVE);
+						$je->journalEntryType = JournalEntryType::code(JournalEntryType::APPROVE);
 						$je->comment = 'Одобрено';
 						$je->adminId = $ADMIN->id;
 						$je->insert();
@@ -565,7 +565,7 @@ class CabinetController extends MainController{
                     $je = new JournalEntry();
                     $je->objectType = Object::code(Object::ADV);
                     $je->objectId = $item->id;
-                    $je->journalEntryType = JournalEntryType::code(JournalEntryType::ADV_DELETE);
+                    $je->journalEntryType = JournalEntryType::code(JournalEntryType::DELETE);
                     $je->comment = 'Удалено';
                     $je->adminId = $ADMIN->id;
                     $je->insert();

@@ -51,6 +51,19 @@ $list = $MODEL['list'];
         </select>
     </div>
 
+    <div style="margin: 0 0 5px 0; ">
+        Действие:
+        <select id="objectType" onchange="opts.journalEntryType=this.value; drawList(); ">
+            <option value="">-все-</option>
+            <?
+            foreach($MODEL['journalEntryTypes'] as $item)
+            {?>
+                <option value="<?=$item->code?>" <?=$item->code == $MODEL['journalEntryType']->code ? ' selected="selected" ' : '' ?>><?=$item->name?></option>
+                <?
+            }?>
+        </select>
+    </div>
+
 <?php 
 if(count($list) )
 {?>

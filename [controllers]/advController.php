@@ -433,7 +433,7 @@ class AdvController extends MainController{
 				$je = new JournalEntry();
 				$je->objectType = Object::code(Object::COMMENT);
 				$je->objectId = $comment->id;
-				$je->journalEntryType = JournalEntryType::code(JournalEntryType::COMMENT_DELETE_BY_USER);
+				$je->journalEntryType = JournalEntryType::code(JournalEntryType::DELETE_BY_USER);
 				$je->comment = 'Комментарий удалён пользователем.';
 				$je->userId = $USER->id;
 					

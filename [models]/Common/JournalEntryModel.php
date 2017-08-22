@@ -67,9 +67,11 @@ class JournalEntry
             $sql.=" AND adminId='".intval($params['adminId'])."'";
         if($params['objectType'])
             $sql.=" AND objectType='".strPrepare($params['objectType']->code)."'";
+        if($params['journalEntryType'])
+            $sql.=" AND journalEntryType='".strPrepare($params['journalEntryType']->code)."'";
 
 		if($params['orderBy'])
-			$sql.=" ORDER BY `".strPrepare($params['orderBy'])."` ";
+			$sql.=" ORDER BY ".strPrepare($params['orderBy'])." ";
 			
 		if( ($from = intval($params['from']))>=0 && ($count = intval($params['count']))>0)
 			$sql.=" LIMIT ".$from.", ".$count." ";

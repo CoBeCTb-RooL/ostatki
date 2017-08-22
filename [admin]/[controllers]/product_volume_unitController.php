@@ -158,7 +158,7 @@ class Product_volume_unitController extends MainController{
 				$je = new JournalEntry();
 				$je->objectType = Object::code(Object::PRODUCT_VOLUME_UNIT);
 				$je->objectId = $item->id;
-				$je->journalEntryType = JournalEntryType::code(JournalEntryType::PRODUCT_VOLUME_UNIT_SET_STATUS);
+				$je->journalEntryType = JournalEntryType::code(JournalEntryType::STATUS_CHANGED);
 				$je->comment = 'Смена статуса с "'.$prevStatus->code.'" на "'.$statusToBe->code.'"';
 				$je->adminId = $ADMIN->id;
 				$je->param1 = $item->status->num;

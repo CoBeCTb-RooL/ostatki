@@ -76,7 +76,7 @@ class CommentController extends MainController{
 						$je = new JournalEntry();
 						$je->objectType = Object::code(Object::COMMENT);
 						$je->objectId = $item->id;
-						$je->journalEntryType = JournalEntryType::code(JournalEntryType::COMMENT_SET_STATUS);
+						$je->journalEntryType = JournalEntryType::code(JournalEntryType::STATUS_CHANGED);
 						$je->comment = 'Статус изменён с "'.$prevStatus.'" на "'.$status->code.'"';
 						$je->adminId = $ADMIN->id;
 						$je->param1 = $status->code;
@@ -84,7 +84,7 @@ class CommentController extends MainController{
 						// 	если сменилось с МОД на АКТИВ
 						if($prevStatus == Status::MODERATION && $status->code == Status::ACTIVE)
 						{
-							$je->journalEntryType = JournalEntryType::code(JournalEntryType::COMMENT_APPROVE);
+							$je->journalEntryType = JournalEntryType::code(JournalEntryType::APPROVE);
 							$je->comment = 'Комментарий одобрен.';
 						}
 						$je->insert();

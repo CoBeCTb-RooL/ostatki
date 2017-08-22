@@ -127,7 +127,7 @@ class UserController extends MainController{
 						$je = new JournalEntry();
 						$je->objectType = Object::code(Object::USER);
 						$je->objectId = $user->id;
-						$je->journalEntryType = JournalEntryType::code(JournalEntryType::USER_SET_STATUS);
+						$je->journalEntryType = JournalEntryType::code(JournalEntryType::STATUS_CHANGED);
 						$je->comment = 'Смена статуса с "'.$prevStatus.'" на "'.$status->code.'"';
 						$je->adminId = $ADMIN->id;
 							

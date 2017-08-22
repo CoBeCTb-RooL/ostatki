@@ -39,13 +39,18 @@ class AdminActivityController extends MainController{
 		{
             $MODEL['adminId'] = $_REQUEST['adminId'];
             $MODEL['objectType'] = Object::code($_REQUEST['objectType']);
+            $MODEL['journalEntryType'] = JournalEntryType::code($_REQUEST['journalEntryType']);
 
             $MODEL['admins'] = Admin::getList();
             $MODEL['objectTypes'] = Object::$items;
+            $MODEL['journalEntryTypes'] = JournalEntryType::$items;
 
             $params = [
                 'adminId' => $MODEL['adminId'],
                 'objectType' => $MODEL['objectType'],
+                'journalEntryType' => $MODEL['journalEntryType'],
+
+                'orderBy' => 'dateCreated DESC',
             ];
 			$MODEL['list'] = JournalEntry::getList($params);
 			foreach($MODEL['list'] as $key=>$val)

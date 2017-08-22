@@ -195,7 +195,7 @@ class CityController extends MainController{
 			$je = new JournalEntry();
 			$je->objectType = Object::code(Object::CITY);
 			$je->objectId = $item->id;
-			$je->journalEntryType = JournalEntryType::code(JournalEntryType::CITY_SET_STATUS);
+			$je->journalEntryType = JournalEntryType::code(JournalEntryType::STATUS_CHANGED);
 			$je->comment = 'Смена статуса с "'.$prevStatus->code.'" на "'.$statusToBe->code.'"';
 			$je->adminId = $ADMIN->id;
 			$je->param1 = $item->status->num;
