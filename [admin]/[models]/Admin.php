@@ -64,7 +64,7 @@ class Admin
 		$qr = DB::query($sql);
 		echo mysql_error();
 		while($next = mysql_fetch_array($qr, MYSQL_ASSOC))
-			$ret[] = self::init($next);
+			$ret[$next['id']] = self::init($next);
 		
 		return $ret;
 	}

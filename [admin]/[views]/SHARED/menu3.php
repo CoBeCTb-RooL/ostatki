@@ -111,6 +111,12 @@ elseif(strpos($uri, '/'.ADMIN_URL_SIGN.'/adminGroup') === 0)
 	$subsection = 'adminGroup';
 }
 
+elseif(strpos($uri, '/'.ADMIN_URL_SIGN.'/adminActivity') === 0 )
+{
+    $section = 'system';
+    $subsection = 'adminActivity';
+}
+
 elseif(strpos($uri, '/'.ADMIN_URL_SIGN.'/admin') === 0 )
 {
 	$section = 'system';
@@ -129,9 +135,10 @@ elseif(strpos($uri, '/'.ADMIN_URL_SIGN.'/settings') === 0 )
 	$subsection = 'settings';
 }
 
-	
+
 elseif(strpos($uri, '/'.ADMIN_URL_SIGN.'/tasks') === 0 )
-	$section = 'tasks';
+    $section = 'tasks';
+
 
 	
 	
@@ -243,8 +250,20 @@ elseif(strpos($uri, '/'.ADMIN_URL_SIGN) === 0)
 					{?>
 					<li class="<?=$subsection=='settings' ? 'active' : ''?>" ><a href="/<?=ADMIN_URL_SIGN?>/settings/"><i class="fa fa-sliders"></i> Настройки сайта</a></li>
 					<li class="<?=$subsection=='backup' ? 'active' : ''?>"><a href="/<?=ADMIN_URL_SIGN?>/backup/"><i class="fa fa-database"></i> Бэкап базы</a></li>
+                    <li class="delimiter"><hr /></li>
 					<?php 
 					}?>
+
+
+                    <?php
+                    if($ADMIN->hasRole(Role::SYSTEM_ADMINISTRATOR ) || $ADMIN->hasRole(Role::ADMINS_MODERATOR ))
+                    {?>
+
+                        <li class="<?=$subsection=='adminActivity' ? 'active' : ''?>"><a href="/<?=ADMIN_URL_SIGN?>/adminActivity/"><i class="fa fa-user "></i> Активность админов</a></li>
+                        <?php
+                    }?>
+
+
 				</ul>
 			</li>
 			<?php 

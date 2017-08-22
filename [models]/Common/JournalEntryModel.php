@@ -43,18 +43,33 @@ class JournalEntry
 			return $u;
 		}
 	}
+
+
+
+	public function initAdmin($admins)
+    {
+        if(!$admins)
+            $admins = Admin::getList();
+
+        $this->admin = $admins[$this->adminId];
+    }
 	
 	
 	
 	
-	function getList($objectType, $objectId, $orderBy, $desc, $from, $count)
+	function getList($params)
 	{
-		$sql="SELECT * FROM `".strPrepare(self::TBL)."` WHERE 1 objectType='".strPrepare($objectType->code)."' AND objectId='".intval($objectId)."' ";
+		$sql="SELECT * FROM `".strPrepare(self::TBL)."` 
+		WHERE 1 ";
+
+		if($params['objectType'])
+		    $sq.=" AND ObjectType='".strPrepare($params['objectId']->code)."'";
+		//objectType='".strPrepare($objectType->code)."' AND objectId='".intval($objectId)."' ";
 		
-		if($orderBy)
-			$sql.=" ORDER BY `".mysql_real_escape_string($orderBy)."` ".($desc?" DESC ":"")."";
+		if($params['orderBy'])
+			$sql.=" ORDER BY `".strPrepare($params['orderBy'])."` ";
 			
-		if( ($from = intval($from))>=0 && ($count = intval($count))>0)
+		if( ($from = intval($params['from']))>=0 && ($count = intval($params['count']))>0)
 			$sql.=" LIMIT ".$from.", ".$count." ";
 			
 		//vd($sql);
