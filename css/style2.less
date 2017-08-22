@@ -120,7 +120,7 @@ input.dark, select.dark{background: url(../img/bottom-input.png) !important; col
 	/* форма выбора города */
 	.cities{display: none;  position: absolute; left: 180px;  top: 0px; border: 0px solid pink; z-index: 30; background: url(../img/gray-bg2.jpg); padding: 25px 30px 25px 30px; box-shadow: 0px 0px 11px rgba(0, 0, 0, .4);
 		@media(max-width: @md){left: 0px;}
-		a.close{/*background: #fff;*/ color: @red; text-decoration: none; border-radius: 100px; width: 16px; height: 16px; display: block; .border-box; text-align: center; font-weight: bold; position: absolute; top: 3px;  right: 7px; font-size: 19px;
+		a.close{/*background: #fff;*/ color: @red; text-decoration: none; border-radius: 100px; width: 16px; height: 16px; display: block;  text-align: center; font-weight: bold; position: absolute; top: 3px;  right: 7px; font-size: 19px;
 			&:hover{color: @red2; }
 		}
 		h4{color: #ececec; text-shadow: 1px 1px 0px #444;  padding: 0; margin: 0 0 5px 0; font-size: 19px; }
@@ -163,7 +163,7 @@ input.dark, select.dark{background: url(../img/bottom-input.png) !important; col
 
 
 	/*	авторизация */
-	.auth{position: absolute; top: 3px; right: 45px;  .border-box; font-size: .8rem; line-height:120%; color: #fff;
+	.auth{position: absolute; top: 3px; right: 45px;   font-size: .8rem; line-height:120%; color: #fff;
 		@media(max-width: @md){right: 10px; }
 		a{color: #fff; .cuprum; text-decoration: none;
 			&:hover{color: @red; }
@@ -174,7 +174,7 @@ input.dark, select.dark{background: url(../img/bottom-input.png) !important; col
 				&:hover{color: @red; }
 			}
 			.inner{position: relative;   padding: 10px 20px;
-				.close{ display: block; width: 23px; height: 23px; background: @bodyColor; .border-box; text-decoration: none; font-weight: bold; font-size: 1rem;  color: @red; padding: 3px 0 0 5px ; position: absolute; top: 0px; right: 0px;   .border-box; font-family: tahoma;
+				.close{ display: block; width: 23px; height: 23px; background: @bodyColor;  text-decoration: none; font-weight: bold; font-size: 1rem;  color: @red; padding: 3px 0 0 5px ; position: absolute; top: 0px; right: 0px;    font-family: tahoma;
 					&:hover{color: @bodyColor; background: @red; }
 				}
 				.row{ margin: 0 0 5px 0;
@@ -213,9 +213,9 @@ input.dark, select.dark{background: url(../img/bottom-input.png) !important; col
 		.subtop{margin: 0 0 10px 0;  background: url(../img/double-dotted-line.png) repeat-x center bottom; padding: 0px 0 10px 0; border: 0px solid red; border: 0px solid red; text-align: right;
 			@media(max-width: @md){display: none; }
 			/*	меню */
-			ul.menu{display: inline-block; margin: 7px 0 0 0; border: 0px solid pink; height: 100%;   padding: 0; .cuprum;
+			ul.menu{display: inline-block; margin: 7px 0 0 0; border: 0px solid pink; height: 100%;   padding: 0; /*.cuprum;*/
 				li{ list-style: none; display: block ; float: left; font-size: 1.2em;  transition: @transitionTime;
-					a{border: 0px solid yellow;  .cuprum;   text-decoration: none; width: 100%; padding: 4px 10px 6px 10px ;  .border-box;   transition: @transitionTime; color: #787878; border-radius: 2px; margin: 0 0px;
+					a{border: 0px solid yellow;  .cuprum;   text-decoration: none; width: 100%; padding: 4px 10px 6px 10px ;     transition: @transitionTime; color: #787878; border-radius: 2px; margin: 0 0px;
 						&.active{color: #fff !important;  background: @red;}
 						&:hover{color: #000;}
 					}
@@ -315,7 +315,7 @@ input.dark, select.dark{background: url(../img/bottom-input.png) !important; col
 	h1{}
 	h3{font-size: 1.1rem; padding: 0 0 15px 0; margin: 0; }
 
-	.news-list{ float: left; width: 78%;
+	.news-list{ float: left; width: 100%;
 		@media(max-width: @md){width: 100% ; }
 		h2{margin: 0px; padding: 0px; background: none; line-height: 80% !important;
 			a{font-size: 1.1rem;
@@ -327,7 +327,7 @@ input.dark, select.dark{background: url(../img/bottom-input.png) !important; col
 			img{/*float:right; margin: 7px 5px 0 5px; border: 0px solid black;*/ float: left; margin: 7px 10px 5px 0;
 				@media(max-width: @md){float: left; margin: 7px 5px 5px 0; }
 			}
-			.date{ display: block; font-size: .8rem; text-transform: lowercase; border-bottom: 1px solid #e7e7e7; text-align: right; padding: 0 10px 5px 0; width: 76%; }
+			.date{ display: block; font-size: .8rem; text-transform: lowercase; border-bottom: 1px solid #e7e7e7; text-align: right; padding: 0 10px 5px 0; width: 100%; }
 			.anons{}
 		}
 	}
@@ -345,9 +345,9 @@ input.dark, select.dark{background: url(../img/bottom-input.png) !important; col
 
 
 .cab-menu{
-	a{display: inline-block; text-decoration: none; padding: 4px 8px; font-size: .9rem; box-shadow: 2px 2px 0px #aaa;  background: #ececec; border-radius: 2px;
+	a{display: inline-block; text-decoration: none; padding: 4px 8px; font-size: .9em; box-shadow: 2px 2px 0px #aaa;  background: #ececec; border-radius: 2px; transition: .2s all;
 		@media(max-width: @md){padding: 2px 4px; font-size: .9em;margin: 0 0 4px 0; }
-		&:hover, &.active{background: @red; color: #fff; }
+		&:hover, &.active{background: @red; color: #fff;  transition: none; }
 		&.active{}
 
 	}
@@ -407,11 +407,11 @@ input.dark, select.dark{background: url(../img/bottom-input.png) !important; col
 					@media(max-width: @md){width: 100%; max-width: 300px; }
 				}
 			}
-			.info{ padding: 0 10px; width: 370px;
+			.info{ padding: 0 0px; width: 370px;
 				@media(max-width: @md){width: 100%; }
 				.date{color: #888; font-size: .8em; }
 				a.title{font-size: 1em; color: #18191a; margin: 1px 0 4px 0; display: block;
-					@media(max-width: @md){font-size: 1.3em; }
+					@media(max-width: @md){font-size: 1.2em; }
 					&:hover{text-decoration: none; }
 				}
 				.short-info{}
@@ -561,10 +561,10 @@ input.dark, select.dark{background: url(../img/bottom-input.png) !important; col
 
 	}
 	.last-advs{text-align: center;
-		a.item{border: 1px solid @red; display: inline-block; width: 22.8%; min-height: 120px; vertical-align: top; background-position: center center; background-size: cover; margin: 0px 10px 10px 0px; position: relative; border-radius: 0px;
+		a.item{border: 1px solid @red; display: inline-block; width: 22.8%; min-height: 140px; vertical-align: top; background-position: center center; background-size: cover; margin: 0px 10px 10px 0px; position: relative; border-radius: 2px;
 			@media(max-width: @md){width: 100%; margin: 0 0 16px 0 ;  }
-			.title{background: rgba(237,100,81, .8); display: block; padding: 5px 4px; text-decoration: none; font-size: 11px; font-weight: bold;   text-align: left; position: absolute; bottom: 0; width: 95.2%; color: #fff; transition: @transitionTime;}
-			.date{background: @black; opacity: .9;  text-decoration: none; position: absolute; white-space: nowrap; left: -6px; top: -5px;   color: #fff; font-size: 11px; font-weight: normal; padding: 1px 5px; }
+			.title{background: rgba(237,100,81, .8); display: block; padding: 3px 4px; text-decoration: none; font-size: .9em;  text-align: left; position: absolute; bottom: 0; width: 100%; color: #fff; transition: @transitionTime; height: 40px; }
+			.date{background: @black; opacity: .8;  text-decoration: none; position: absolute; white-space: nowrap; left: -1px; top: -1px;   color: #fff; font-size: .75em; font-weight: normal; padding: 1px 3px; border-radius: 2px 0 0 0; }
 
 			&:hover{border: 1px solid @red2; transition: @transitionTime;
 				.title{background: @red2;  }
@@ -662,7 +662,7 @@ input.dark, select.dark{background: url(../img/bottom-input.png) !important; col
 	}
 	/* форма выбора города */
 	.cities{display: none;  position: absolute; left: 180px;  top: 0px; border: 0px solid pink; z-index: 30; background: url(../img/gray-bg2.jpg); padding: 25px 30px 25px 30px; box-shadow: 0px 0px 11px rgba(0, 0, 0, .4);
-		a.close{/*background: #fff;*/ color: @red; text-decoration: none; border-radius: 100px; width: 16px; height: 16px; display: block; .border-box; text-align: center; font-weight: bold; position: absolute; top: 3px;  right: 7px; font-size: 19px;
+		a.close{/*background: #fff;*/ color: @red; text-decoration: none; border-radius: 100px; width: 16px; height: 16px; display: block;  text-align: center; font-weight: bold; position: absolute; top: 3px;  right: 7px; font-size: 19px;
 			&:hover{color: @red2; }
 		}
 		h4{color: #ececec; text-shadow: 1px 1px 0px #444;  padding: 0; margin: 0 0 5px 0; font-size: 19px; }
@@ -707,7 +707,7 @@ input.dark, select.dark{background: url(../img/bottom-input.png) !important; col
 
 
 	/*	авторизация */
-	.auth{position: absolute; top: 3px; right: 45px;  .border-box; font-size: .8rem; line-height:120%; color: #fff;
+	.auth{position: absolute; top: 3px; right: 45px;   font-size: .8rem; line-height:120%; color: #fff;
 		a{color: #fff; .cuprum; text-decoration: none;
 			&:hover{color: @red; }
 		}
@@ -717,7 +717,7 @@ input.dark, select.dark{background: url(../img/bottom-input.png) !important; col
 				&:hover{color: @red; }
 			}
 			.inner{position: relative;   padding: 10px 20px;
-				.close{ display: block; width: 23px; height: 23px; background: @bodyColor; .border-box; text-decoration: none; font-weight: bold; font-size: 1rem;  color: @red; padding: 3px 0 0 5px ; position: absolute; top: 0px; right: 0px;   .border-box; font-family: tahoma;
+				.close{ display: block; width: 23px; height: 23px; background: @bodyColor;  text-decoration: none; font-weight: bold; font-size: 1rem;  color: @red; padding: 3px 0 0 5px ; position: absolute; top: 0px; right: 0px;    font-family: tahoma;
 					&:hover{color: @bodyColor; background: @red; }
 				}
 				.row{ margin: 0 0 5px 0;
@@ -746,14 +746,14 @@ input.dark, select.dark{background: url(../img/bottom-input.png) !important; col
 
 /*	контент */
 .content1111{ height: 100%;  background: rgba(255, 255, 255, .6); width: 100%; vertical-align: top;  z-index: 1;
-	.limited{width: @widthLimit;   height: 100%;    padding: 0px 30px; margin-top: 0px  ; z-index: 1; border: 0px solid #000; .border-box;
-		.inner{padding: 1px 30px; text-align: left; height: 100%; box-shadow: 0px 0px 12px rgba(0, 0, 0, .4); .border-box; background: #fff;  border-left: 1px solid #bababa; border-right: 1px solid #bababa;  }
+	.limited{width: @widthLimit;   height: 100%;    padding: 0px 30px; margin-top: 0px  ; z-index: 1; border: 0px solid #000; 
+		.inner{padding: 1px 30px; text-align: left; height: 100%; box-shadow: 0px 0px 12px rgba(0, 0, 0, .4);  background: #fff;  border-left: 1px solid #bababa; border-right: 1px solid #bababa;  }
 		/*	под верхом  */
 		.subtop{margin: 0 0 10px 0;  background: url(../img/double-dotted-line.png) repeat-x center bottom; padding: 0px 0 10px 0; border: 0px solid red; border: 0px solid red; text-align: right;
 			/*	меню */
 			ul.menu{display: inline-block; margin: 7px 0 0 0; border: 0px solid pink; height: 100%;   padding: 0; .cuprum;
 				li{ list-style: none; display: block ; float: left; font-size: 1.3em;  transition: @transitionTime;
-					a{border: 0px solid yellow;  .cuprum;   text-decoration: none; width: 100%; padding: 4px 10px 6px 10px ;  .border-box;   transition: @transitionTime; color: #787878; border-radius: 2px; margin: 0 0px;
+					a{border: 0px solid yellow;  .cuprum;   text-decoration: none; width: 100%; padding: 4px 10px 6px 10px ;     transition: @transitionTime; color: #787878; border-radius: 2px; margin: 0 0px;
 						&.active{color: #fff !important;  background: @red;}
 						&:hover{color: #000;}
 					}
@@ -762,7 +762,7 @@ input.dark, select.dark{background: url(../img/bottom-input.png) !important; col
 		}
 
 		/*	контент */
-		.real-content{ height: 100%; padding: 22px 0 130px 0; border: 0px solid red; .border-box;  }
+		.real-content{ height: 100%; padding: 22px 0 130px 0; border: 0px solid red;   }
 
 	}
 }
@@ -775,7 +775,7 @@ input.dark, select.dark{background: url(../img/bottom-input.png) !important; col
 
 		.info{ padding: 30px 35px 0 35px;
 			h4{padding: 0; margin: 0 ; font-size: 18px;  }
-			.column{border: 0px solid red; width: 33%; float: left; .border-box; vertical-align: top; }
+			.column{border: 0px solid red; width: 33%; float: left;  vertical-align: top; }
 			.left{
 				.logo{}
 				.copyright{margin: 20px 0 0 0 ; font-size: 11px;}
@@ -832,7 +832,7 @@ input.dark, select.dark{background: url(../img/bottom-input.png) !important; col
 	.middle{display: table; width: 100%; margin: 15px 0 0 0 ;
 		h3{margin: 0 0 10px 0; }
 		.col{display: table-cell; border: 0px solid red; }
-		.left{width: 241px; .border-box; padding: 0 20px 0 0 ; border-right: 1px dotted #bfbfbf;
+		.left{width: 241px;  padding: 0 20px 0 0 ; border-right: 1px dotted #bfbfbf;
 			.cats{
 				h2, h2 a{font-size: 18px; font-weight: normal; .cuprum; margin: 0; padding: 0;  }
 				ul{margin: 0; padding: 0;}
@@ -893,7 +893,7 @@ input.dark, select.dark{background: url(../img/bottom-input.png) !important; col
 
 }
 /*страница со списком объявлений */
-.filters11111111{display: table-cell; vertical-align: top; width: 160px;  background: #f6f6f6; border: 1px solid #ededed;  padding: 15px; .border-box;
+.filters11111111{display: table-cell; vertical-align: top; width: 160px;  background: #f6f6f6; border: 1px solid #ededed;  padding: 15px; 
 	h1{font-size: 1.3rem; margin: 0 0 8px 0; padding: 0; letter-spacing: 0px; }
 	.prop{margin: 0 0 8px 0 ;
 		.label{display: block; font-weight: normal; font-size: .8rem;  }
@@ -1161,17 +1161,11 @@ table.advs-list{border-spacing: 2px;
 	.txt{margin: 0 0 20px 0 ; }
 
 }
-.cab-menu11111{
-	a{display: inline-block; text-decoration: none; padding: 4px 8px; font-size: .9rem; box-shadow: 2px 2px 0px #aaa;    background: #ececec; border-radius: 2px;
-		&:hover, &.active{background: @red; color: #fff; }
-		&.active{}
 
-	}
-}
 
 
 /* индекс авторизованного пользователя */
-.auth-user-index{.cuprum;  font-size: 16px;
+.auth-user-index{.cuprum;  /*font-size: 1.2em;*/
 	.row{}
 	.col{display: inline-block; padding: 10px 20px ; margin: 0 15px 0 0; vertical-align: top;
 		&.left{border-right: 2px solid #ededed; padding-right: 50px; }
@@ -1179,7 +1173,7 @@ table.advs-list{border-spacing: 2px;
 	h4{margin: 0 0 10px 0; .cuprum; }
 	.icons-table{
 		tr{height: 26px; }
-		td{font-size: 16px; }
+		td{font-size: 1.0em; }
 		.icon{width: 10px; text-align: center; }
 		.text{padding: 0 0 0 3px; }
 		.label{ }
@@ -1188,15 +1182,15 @@ table.advs-list{border-spacing: 2px;
 	.contacts{
 
 		.icons-table tr{height: 22px; }
-		.icons-table .icon{color: @red;  font-size: 11px;}
-		.icons-table .text{padding: 0 0 0 3px; font-size: 20px; }
-		.icons-table .label{color: @red; font-weight: bold;  font-size: 12px; }
+		.icons-table .icon{color: @red;  font-size: 1em;}
+		.icons-table .text{padding: 0 0 0 3px; font-size: 1em; }
+		.icons-table .label{color: @red; font-weight: bold;  font-size: 1em; }
 	}
 
-	.advs-stats{ font-family: tahoma;
+	.advs-stats{
 		ul{
 			li{padding: 0 0 2px 0;
-				a{font-size: 13px; text-decoration: none;
+				a{font-size: 1.0em; text-decoration: none;
 					&:hover{text-decoration: underline; }
 				}
 			}
@@ -1204,7 +1198,7 @@ table.advs-list{border-spacing: 2px;
 	}
 }
 
-a.edit-link{font-size: 13px; color: #aaa;
+a.edit-link{font-size: .9em;  color: #aaa;
 	&:hover{text-decoration: none; }
 }
 
@@ -1282,7 +1276,7 @@ input[type=button], input[type=submit], input[type=reset], button{
 
 
 /*инпуты*/
-input[type=text], input[type=password], select, textarea{ border-radius: 0px; border: 1px solid #787878; height: 24px; .cuprum; font-size: .9rem; font-weight: normal;  padding: 0 3px ; .border-box;  box-shadow: 2px 2px 0px #ccc;
+input[type=text], input[type=password], select, textarea{ border-radius: 0px; border: 1px solid #787878; height: 24px; .cuprum; font-size: .9rem; font-weight: normal;  padding: 0 3px ;   box-shadow: 2px 2px 0px #ccc;
 	&:focus{box-shadow: 2px 2px 0px #bba; background: #F5F5F5; }
 }
 select[multiple]{min-height: 100px;}
