@@ -57,9 +57,10 @@ $finalDirPath .= '/'.AdvMedia::getSubdirsByFile($fileName);
 //vd($fileName);
 
 # 	момент истины
-if(file_exists($finalDirPath.'/'.$fileName)) 	# забираем из кэша
+if(file_exists($finalDirPath.'/'.$fileName) && 1) 	# забираем из кэша
 {
 	//echo "!";
+    //vd($finalDirPath.'/'.$fileName);
 	$image = new ImageResize($finalDirPath.'/'.$fileName);
 	$image->output();
 
@@ -68,7 +69,7 @@ else
 {
 	$image = new ImageResize($img);
 	$image->quality_jpg = 100;
-	$image->quality_png = 100;
+	$image->quality_png = 1;
 
 	$cacheInnerDirName = '';
 
@@ -85,8 +86,9 @@ else
 	/*$image->scale(50);
 
 	$image->crop(400, 400);*/
+    $image->save($finalDirPath.'/'.$fileName);
 	$image->output();
-	$image->save($finalDirPath.'/'.$fileName);
+
 }
 
 //$image->scale(70);
