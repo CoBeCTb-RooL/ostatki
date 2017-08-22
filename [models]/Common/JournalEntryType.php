@@ -30,7 +30,8 @@ class JournalEntryType{
 	
 	# 	объявления
 	const ADV_APPROVE 						= 'adv_approve';
-	
+	const ADV_DELETE 						= 'adv_delete';
+
 	# 	города
 	const CITY_SET_STATUS 					= 'city_set_status';
 	

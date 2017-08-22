@@ -560,6 +560,15 @@ class CabinetController extends MainController{
 				{
 					$statusToBe = Status::code(Status::DELETED);
 					$item->setStatus($statusToBe);
+
+                    # 	записываем в журнал событий
+                    $je = new JournalEntry();
+                    $je->objectType = Object::code(Object::ADV);
+                    $je->objectId = $item->id;
+                    $je->journalEntryType = JournalEntryType::code(JournalEntryType::ADV_DELETE);
+                    $je->comment = 'Удалено';
+                    $je->adminId = $ADMIN->id;
+                    $je->insert();
 				}
 				else
 					$errors[] = new Error('Ошибка! Не не найдено объявление '.$_REQUEST['catId'].'');
