@@ -488,7 +488,7 @@ class CabinetController extends MainController{
 						#   оповещение клиента
                         $user = User::get($item->userId);
                         $m = new Mail();
-                        $m->to = $user->email;
+                        $m->to = $item->email;
                         $m->from = ROBOT_EMAIL;
                         $m->subject = 'Восстановление пароля на '.DOMAIN_CAPITAL;
                         $m->msg = Mail::advApproved([
@@ -496,6 +496,7 @@ class CabinetController extends MainController{
                             'adv'=>$item,
                         ]);
                         //vd($m);
+                        //vd($item);
                         $m->send();
 
 					}
