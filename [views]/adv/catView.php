@@ -257,7 +257,7 @@ if($cat || 1)
 		<?php
 		if(count($items))
 		{?>
-			<div class="heading">Найдено <b><?=$totalCount?> <?=Funx::okon($totalCount, array('объявлений', 'объявление', 'объявленя'))?></b>: </div>
+			<div class="heading">Найдено <b><?=$totalCount?> <?=Funx::okon($totalCount, array('объявлений', 'объявление', 'объявления'))?></b>: </div>
 			
 			<div class="wrapper">
 			<?php 

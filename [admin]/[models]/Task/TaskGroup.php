@@ -27,7 +27,7 @@ class TaskGroup{
 		$m->status = Status::code($arr['status']);
 		$m->dateCreated = $arr['dateCreated'];
 		$m->creatorId = $arr['creatorId'];
-	
+
 		return $m;
 	}
 	

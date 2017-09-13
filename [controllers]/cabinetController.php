@@ -968,7 +968,7 @@ class CabinetController extends MainController{
 				$m->send();
 			}
 			else
-				$errors[] = Slonne::setError('email', 'Указанный Вами e-mail не найден.');
+				$errors[] = Slonne::setError('email', 'Указанный Вами e-mail ещё не зарегистрирован. <br>Для дальнейшей работы пройдите <a href="/profile/edit/">регистрацию</a>.  ');
 		}
 		else 
 			$errors[] = Slonne::setError('email', 'Пожалуйста, укажите Вам e-mail.');

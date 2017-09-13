@@ -416,20 +416,23 @@ class TasksController extends MainController{
 				$item->update();
 				
 				# 	смотрим, нужно ли менять статус группы
-				$group = TaskGroup::get($item->groupId);
-				if($tmp = Task::getList($group->id, $statuses=array(Status::code(Status::ACTIVE))))
-				{
-					if($group->status->code!=Status::ACTIVE)
-					{
-						$group->status = Status::code(Status::ACTIVE);
-						$group->update();
-					}
-				}
-				elseif($group->status->code!=Status::DONE)
-				{
-					$group->status = Status::code(Status::DONE);
-					$group->update();
-				}
+                if($item->groupId)
+                {
+                    $group = TaskGroup::get($item->groupId);
+                    if($tmp = Task::getList($group->id, $statuses=array(Status::code(Status::ACTIVE))))
+                    {
+                        if($group->status->code!=Status::ACTIVE)
+                        {
+                            $group->status = Status::code(Status::ACTIVE);
+                            $group->update();
+                        }
+                    }
+                    elseif($group->status->code!=Status::DONE)
+                    {
+                        $group->status = Status::code(Status::DONE);
+                        $group->update();
+                    }
+                }
 			}
 			else
 				$errors[] = new Error('Ошибка! Не найдена задача '.$_REQUEST['id'].'');

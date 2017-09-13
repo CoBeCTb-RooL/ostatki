@@ -66,7 +66,7 @@ function switchStatus(id)
 <?php 
 /*for($a=0; $a<=30; $a++)
 {
-	echo'<br/>'.$a.' '.Funx::okon($a, array('объявлений', 'объявление', 'объявленя'));
+	echo'<br/>'.$a.' '.Funx::okon($a, array('объявлений', 'объявление', 'объявления'));
 }*/?>
 
 
@@ -125,7 +125,7 @@ function switchStatus(id)
 		<?php
 		if(count($advs))
 		{?>
-			<div class="heading">У Вас <b><?=$totalCount?> <?=Funx::okon($totalCount, array('объявлений', 'объявление', 'объявленя'))?></b>: </div>
+			<div class="heading">У Вас <b><?=$totalCount?> <?=Funx::okon($totalCount, array('объявлений', 'объявление', 'объявления'))?></b>: </div>
 			
 			<div class="wrapper">
 			<?php 
