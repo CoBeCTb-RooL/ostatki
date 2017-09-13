@@ -105,8 +105,9 @@ class AdvItem{
 		$m->phone = $arr['phone'];
 		$m->email = $arr['email'];
 		$m->status = Status::num($m->statusId);
-		$m->views = $arr['views'];
+        $m->views = $arr['views'];
 		$m->currency = Currency::code($arr['currency']);
+        $m->reason = $arr['reason'];
 	
 		return $m;
 	}
@@ -294,6 +295,7 @@ class AdvItem{
 		, `email`='".strPrepare($this->email)."'
 		, `views`='".intval($this->views)."'
 		, `currency`='".strPrepare($this->currency->code)."'
+		, `reason`='".strPrepare($this->reason)."'
 		";
 		
 		return $str;

@@ -496,7 +496,6 @@ class CabinetController extends MainController{
                             'adv'=>$item,
                         ]);
                         //vd($m);
-                        //vd($item);
                         $m->send();
 
 					}
@@ -573,17 +572,32 @@ class CabinetController extends MainController{
 				$item = AdvItem::get($_REQUEST['id']);
 				if($item)
 				{
-					$statusToBe = Status::code(Status::DELETED);
-					$item->setStatus($statusToBe);
+					$item->status = Status::code(Status::DELETED);
+					$item->reason = $_REQUEST['reason'];
+					$item->update();
 
                     # 	записываем в журнал событий
                     $je = new JournalEntry();
                     $je->objectType = Object::code(Object::ADV);
                     $je->objectId = $item->id;
                     $je->journalEntryType = JournalEntryType::code(JournalEntryType::DELETE);
-                    $je->comment = 'Удалено';
+                    $je->comment = 'Удалено. (причина: '.($item->reason ? $item->reason : 'не указана').')';
                     $je->adminId = $ADMIN->id;
                     $je->insert();
+
+                    #   оповещение клиента
+                    $user = User::get($item->userId);
+                    $m = new Mail();
+                    $m->to = $item->email;
+                    $m->from = ROBOT_EMAIL;
+                    $m->subject = 'Ваше объявление удалено модератором. '.DOMAIN_FIRST_CAPITAL;
+                    $m->msg = Mail::advDeleted([
+                        'name'=>$user->name.' '.$user->fathername,
+                        'adv'=>$item,
+                    ]);
+                    //vd($m);
+                    $m->send();
+
 				}
 				else
 					$errors[] = new Error('Ошибка! Не не найдено объявление '.$_REQUEST['catId'].'');
@@ -595,7 +609,7 @@ class CabinetController extends MainController{
 			$errors[] = new Error(Error::NO_ACCESS_ERROR);
 	
 		$json['errors'] = $errors;
-		$json['status'] = $statusToBe;
+		$json['status'] = $item->status;
 	
 		echo json_encode($json);
 	}

@@ -14,6 +14,7 @@ class Status{
 	const ACTIVE 		= 'active';
 	const INACTIVE 		= 'inactive';
 	const MODERATION 	= 'moderation';
+	const REJECTED  	= 'rejected';
 	const DELETED 		= 'deleted';
 	const ARCHIVED 		= 'archived';
 	const DONE 			= 'done';

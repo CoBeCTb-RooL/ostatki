@@ -189,10 +189,12 @@ function taskSave()
 				{
 					listAll()
 
-					if(data.group.status.code == '<?=Status::DONE?>')
-						$('#group-'+data.group.id).addClass('group-status-<?=Status::DONE?>')
-					else
-						$('#group-'+data.group.id).removeClass('group-status-<?=Status::DONE?>')
+                    if(data.group){
+                        if(data.group.status.code == '<?=Status::DONE?>')
+                            $('#group-'+data.group.id).addClass('group-status-<?=Status::DONE?>')
+                        else
+                            $('#group-'+data.group.id).removeClass('group-status-<?=Status::DONE?>')
+                    }
 				}
 				else
 					$('#task-'+data.result.id+' h1').html(data.result.title)

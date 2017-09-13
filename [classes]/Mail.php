@@ -146,7 +146,7 @@ class Mail
 
 
 
-    # 	письмо с НОВЫМ ПАРОЛЕМ
+    # 	письмо ОБЪЯВЛЕНИЕ ОДОБРЕНО
     function advApproved($arr)
     {
         if($arr)
@@ -157,6 +157,28 @@ class Mail
             <p>
                 <?//vd($arr)?>
             Посмотреть его Вы можете здесь: <a href="http://<?=$_SERVER['HTTP_HOST']?><?=$arr['adv']->url()?>" target="_blank"><?=$arr['adv']->name?></a>
+            <p>
+            С уважением,<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;команда <a href="http://<?=$_SERVER['HTTP_HOST']?>"><?=DOMAIN_FIRST_CAPITAL?></a>
+
+            <?php
+            $ret = ob_get_clean();
+        }
+        return $ret;
+    }
+
+
+
+    # 	письмо ОБЪЯВЛЕНИЕ УДАЛЕНО
+    function advDeleted($arr)
+    {
+        if($arr)
+        {
+            ob_start();
+            ?>
+            <p><?=$arr['name']?>, Ваше объявление <b>"<?=$arr['adv']->name?>"</b> на сайте <a href="http://<?=$_SERVER['HTTP_HOST']?>"><?=DOMAIN_CAPITAL?></a> было удалено модератором.</p>
+            <p>
+                Причина: <?=$arr['adv']->reason ? : 'не указана'?>
             <p>
             С уважением,<br/>
             &nbsp;&nbsp;&nbsp;&nbsp;команда <a href="http://<?=$_SERVER['HTTP_HOST']?>"><?=DOMAIN_FIRST_CAPITAL?></a>

@@ -155,9 +155,11 @@ if($isAdmin)
 
 	function adminDelete(id)
 	{
+	    var reason = $('.reason-delete textarea').val()
+
 		$.ajax({
 			url: '/cabinet/advs/advAdminDeleteItem',
-			data: 'id='+id,
+			data: {id: id, reason: reason},
 			dataType: 'json',
 			beforeSend: function(){$.fancybox.showLoading()},
 			success: function(data){
@@ -168,6 +170,8 @@ if($isAdmin)
 					
 					$('.delete-btn').css('display', 'none')
 					$('.edit-btn').css('display', 'none')
+
+                    $('.reason-delete').slideUp('fast')
 				}
 				else
 					showErrors(data.errors)
@@ -208,22 +212,40 @@ if($isAdmin)
 	</div>
 	
 	<?php 
-	if($item->status->code==Status::code(Status::MODERATION)->code)
+	if($item->status->code==Status::MODERATION)
 	{?>
-		<div class="col approve-btn">
-			<a href="#" onclick="if(confirm('Одобрить объявление? ')){approve(<?=$item->id?>)}; return false;"><i class="fa fa-thumbs-o-up"></i> одобрить</a>
-		</div>
+        <div class="col approve-btn">
+            <a href="#" onclick="if(confirm('Одобрить объявление? ')){approve(<?=$item->id?>)}; return false;"><i class="fa fa-thumbs-o-up"></i> одобрить</a>
+        </div>
+
+        <div class="col reject-btn">
+            <a href="#" onclick="$('.reason-rejection').slideToggle('fast'); return false; "><i class="fa fa-thumbs-o-down"></i> отклонить</a>
+        </div>
+        
+
 	<?php 
 	}?>
 	
 	<?php 
-	if($item->status->code!=Status::code(Status::DELETED)->code)
+	if($item->status->code!=Status::DELETED)
 	{?>
 	<div class="col delete-btn" style="padding-left: 30px;">
-		<a href="#" onclick=" if(confirm('Удалить объявление? ')){adminDelete(<?=$item->id?>);}; return false; "><i class="fa fa-times"></i> удалить</a>
+		<a href="#" onclick="$('.reason-delete').slideToggle('fast'); return false; "><i class="fa fa-times"></i> удалить</a>
 	</div>
 	<?php 
 	}?>
+
+    <div class="reason-rejection" style="display: none; ">
+        Причина отклонения:<br>
+        <textarea style="width: 400px; height: 60px; "></textarea>
+        <input type="button" value="Отклонить" onclick="alert('reject!'); ">
+    </div>
+
+    <div class="reason-delete" style="display: none; ">
+        Причина удаления:<br>
+        <textarea style="width: 400px; height: 60px; "></textarea>
+        <input type="button" value="Удалить" onclick=" if(confirm('Удалить объявление? ')){adminDelete(<?=$item->id?>);}; return false; ">
+    </div>
 	
 </div>
 <?php 
