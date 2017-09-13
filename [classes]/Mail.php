@@ -156,7 +156,7 @@ class Mail
             <p><?=$arr['name']?>, Ваше объявление на сайте <a href="http://<?=$_SERVER['HTTP_HOST']?>"><?=DOMAIN_CAPITAL?></a> прошло модерацию, и теперь видно всем!</p>
             <p>
                 <?//vd($arr)?>
-            Объявление: <a href="http://<?=$_SERVER['HTTP_HOST']?><?=$arr['adv']->url()?>" target="_blank"><?=$arr['adv']->name?></a>
+            Посмотреть его Вы можете здесь: <a href="http://<?=$_SERVER['HTTP_HOST']?><?=$arr['adv']->url()?>" target="_blank"><?=$arr['adv']->name?></a>
             <p>
             С уважением,<br/>
             &nbsp;&nbsp;&nbsp;&nbsp;команда <a href="http://<?=$_SERVER['HTTP_HOST']?>"><?=DOMAIN_FIRST_CAPITAL?></a>

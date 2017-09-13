@@ -471,7 +471,7 @@ class CabinetController extends MainController{
 				$item = AdvItem::get($_REQUEST['id']);
 				if($item)
 				{
-					if($item->status->code == Status::code(Status::MODERATION)->code || 1)
+					if($item->status->code == Status::code(Status::MODERATION)->code )
 					{
 						$statusToBe = Status::code(Status::ACTIVE);
 						$item->setStatus($statusToBe);
@@ -490,7 +490,7 @@ class CabinetController extends MainController{
                         $m = new Mail();
                         $m->to = $item->email;
                         $m->from = ROBOT_EMAIL;
-                        $m->subject = 'Восстановление пароля на '.DOMAIN_CAPITAL;
+                        $m->subject = 'Одобрение объявления на  '.DOMAIN_CAPITAL;
                         $m->msg = Mail::advApproved([
                             'name'=>$user->name.' '.$user->fathername,
                             'adv'=>$item,
