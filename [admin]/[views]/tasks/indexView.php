@@ -267,10 +267,12 @@ function taskCheckboxClick(id)
 
 				// 	пересмотр статуса группы
 				//alert(data.group.status.code == '<?=Status::DONE?>')
-				if(data.group.status.code == '<?=Status::DONE?>')
-					$('#group-'+data.group.id).addClass('group-status-<?=Status::DONE?>')
-				else
-					$('#group-'+data.group.id).removeClass('group-status-<?=Status::DONE?>')
+                if(data.group){
+                    if(data.group.status.code == '<?=Status::DONE?>')
+                        $('#group-'+data.group.id).addClass('group-status-<?=Status::DONE?>')
+                    else
+                        $('#group-'+data.group.id).removeClass('group-status-<?=Status::DONE?>')
+                }
 			}
 			else
 				showErrors(data.errors)
