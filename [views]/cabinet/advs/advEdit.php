@@ -210,7 +210,7 @@ function switchDealType(dt)
 		<div class="row">
 			<div class="label">Короткий заголовок<span class="req">*</span>: </div>
 			<div class="input"><input type="text" name="name" id="name" value="<?=$item->name?>" /></div>
-			<div class="hint">Введите короткий заголовок в несколько слов, например "Куплю кафель", или "Продам ДСП 20м."</div>
+			<div class="hint">Введите короткий заголовок в несколько слов, например "Срочно продам или поменяю ЛДСП"</div>
 		</div>
 		
 		

@@ -93,7 +93,9 @@ define('PIC_CACHE_DIR_NAME', '_cache');
 
 
 define('ROBOT_EMAIL', 		'robot@ostatki.kz');
+
 define('DOMAIN', 			'ostatki.kz');
+define('DOMAIN_FIRST_CAPITAL',	'Ostatki.kz');
 define('DOMAIN_CAPITAL', 	'OSTATKI.KZ');
 
 

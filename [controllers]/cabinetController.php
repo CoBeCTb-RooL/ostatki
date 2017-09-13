@@ -471,7 +471,7 @@ class CabinetController extends MainController{
 				$item = AdvItem::get($_REQUEST['id']);
 				if($item)
 				{
-					if($item->status->code == Status::code(Status::MODERATION)->code)
+					if($item->status->code == Status::code(Status::MODERATION)->code || 1)
 					{
 						$statusToBe = Status::code(Status::ACTIVE);
 						$item->setStatus($statusToBe);
@@ -484,6 +484,20 @@ class CabinetController extends MainController{
 						$je->comment = 'Одобрено';
 						$je->adminId = $ADMIN->id;
 						$je->insert();
+
+						#   оповещение клиента
+                        $user = User::get($item->userId);
+                        $m = new Mail();
+                        $m->to = $user->email;
+                        $m->from = ROBOT_EMAIL;
+                        $m->subject = 'Восстановление пароля на '.DOMAIN_CAPITAL;
+                        $m->msg = Mail::advApproved([
+                            'name'=>$user->name.' '.$user->fathername,
+                            'adv'=>$item,
+                        ]);
+                        //vd($m);
+                        $m->send();
+
 					}
 					else
 						$errors[] = new Error('Объявление не находится в модерации.');
@@ -1013,12 +1027,12 @@ class CabinetController extends MainController{
 				$m->to = $user->email;
 				$m->from = ROBOT_EMAIL;
 				$m->subject = 'Восстановление пароля на '.DOMAIN_CAPITAL;
-				$arr = array(
-						'name'=>$user->name.' '.$user->fathername,
-						'email'=>$user->email,
-						'password'=>$newPassword,
-				);
-				$m->msg = Mail::getMsgForNewPasswordInfo($arr);
+
+				$m->msg = Mail::getMsgForNewPasswordInfo([
+                    'name'=>$user->name.' '.$user->fathername,
+                    'email'=>$user->email,
+                    'password'=>$newPassword,
+                ]);
 				
 				$m->send();
 			}

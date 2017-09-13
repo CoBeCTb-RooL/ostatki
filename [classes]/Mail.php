@@ -56,7 +56,7 @@ class Mail
 			<a href="<?=$arr['url']?>"><?=$arr['url']?></a>
 			<p>
 			С уважением,<br/> 
-			&nbsp;&nbsp;&nbsp;&nbsp;команда <a href="http://<?=$_SERVER['HTTP_HOST']?>"><?=DOMAIN_CAPITAL?></a>
+			&nbsp;&nbsp;&nbsp;&nbsp;команда <a href="http://<?=$_SERVER['HTTP_HOST']?>"><?=DOMAIN_FIRST_CAPITAL?></a>
 			<?php
 			$ret = ob_get_clean();
 		}
@@ -81,7 +81,7 @@ class Mail
 			
 			<p>
 			С уважением,<br/> 
-			&nbsp;&nbsp;&nbsp;&nbsp;команда <a href="http://<?=$_SERVER['HTTP_HOST']?>"><?=DOMAIN_CAPITAL?></a>
+			&nbsp;&nbsp;&nbsp;&nbsp;команда <a href="http://<?=$_SERVER['HTTP_HOST']?>"><?=DOMAIN_FIRST_CAPITAL?></a>
 			<?php
 			$ret = ob_get_clean();
 		}
@@ -108,40 +108,64 @@ class Mail
 				
 				<p>
 				С уважением,<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;команда <a href="http://<?=$_SERVER['HTTP_HOST']?>"><?=DOMAIN_CAPITAL?></a>
+				&nbsp;&nbsp;&nbsp;&nbsp;команда <a href="http://<?=$_SERVER['HTTP_HOST']?>"><?=DOMAIN_FIRST_CAPITAL?></a>
 
 			<?php
 			$ret = ob_get_clean();
 		}
 		return $ret; 
 	}
-	
-	
-	
-	
-	# 	письмо с НОВЫМ ПАРОЛЕМ
-	function getMsgForNewPasswordInfo($arr)
-	{
-		if($arr)
-		{
-			ob_start();
-			?>
-				<p><?=$arr['name']?>, Вы успешно восстановили пароль на сайте<a href="http://<?=$_SERVER['HTTP_HOST']?>"><?=DOMAIN_CAPITAL?></a>!</p>
 
-				<p>Ваши авторизационные данные:</p>
-				
-				<p>e-mail: <strong><?=$arr['email']?></strong><br />
-				пароль: <strong><?=$arr['password']?></strong></p>
-				
-				<p>
-				С уважением,<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;команда <a href="http://<?=$_SERVER['HTTP_HOST']?>"><?=DOMAIN_CAPITAL?></a>
 
-			<?php
-			$ret = ob_get_clean();
-		}
-		return $ret; 
-	}
+
+
+    # 	письмо с НОВЫМ ПАРОЛЕМ
+    function getMsgForNewPasswordInfo($arr)
+    {
+        if($arr)
+        {
+            ob_start();
+            ?>
+            <p><?=$arr['name']?>, Вы успешно восстановили пароль на сайте <a href="http://<?=$_SERVER['HTTP_HOST']?>"><?=DOMAIN_CAPITAL?></a>!</p>
+
+            <p>Ваши авторизационные данные:</p>
+
+            <p>e-mail: <strong><?=$arr['email']?></strong><br />
+                пароль: <strong><?=$arr['password']?></strong></p>
+
+            <p>
+            С уважением,<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;команда <a href="http://<?=$_SERVER['HTTP_HOST']?>"><?=DOMAIN_FIRST_CAPITAL?></a>
+
+            <?php
+            $ret = ob_get_clean();
+        }
+        return $ret;
+    }
+
+
+
+
+    # 	письмо с НОВЫМ ПАРОЛЕМ
+    function advApproved($arr)
+    {
+        if($arr)
+        {
+            ob_start();
+            ?>
+            <p><?=$arr['name']?>, Ваше объявление на сайте <a href="http://<?=$_SERVER['HTTP_HOST']?>"><?=DOMAIN_CAPITAL?></a> прошло модерацию, и теперь видно всем!</p>
+            <p>
+                <?//vd($arr)?>
+            Объявление: <a href="http://<?=$_SERVER['HTTP_HOST']?><?=$arr['adv']->url()?>" target="_blank"><?=$arr['adv']->name?></a>
+            <p>
+            С уважением,<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;команда <a href="http://<?=$_SERVER['HTTP_HOST']?>"><?=DOMAIN_FIRST_CAPITAL?></a>
+
+            <?php
+            $ret = ob_get_clean();
+        }
+        return $ret;
+    }
 	
 	
 	

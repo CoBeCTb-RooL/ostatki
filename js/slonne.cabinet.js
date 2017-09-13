@@ -36,7 +36,7 @@ var Cabinet = {
 					if(data.errors.length == 0)
 					{
 						
-						$('#'+formId+' .info').html('OK!').slideDown('fast'); 
+						$('#'+formId+' .info').html('Вы успешно авторизованы!').slideDown('fast');
 						
 						setTimeout(function(){
 							//location.reload();
