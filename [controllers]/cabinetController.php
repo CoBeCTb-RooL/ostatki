@@ -490,7 +490,7 @@ class CabinetController extends MainController{
                         $m = new Mail();
                         $m->to = $item->email;
                         $m->from = ROBOT_EMAIL;
-                        $m->subject = 'Одобрение объявления на  '.DOMAIN_CAPITAL;
+                        $m->subject = 'Ваше объявление ОДОБРЕНО! '.DOMAIN_FIRST_CAPITAL;
                         $m->msg = Mail::advApproved([
                             'name'=>$user->name.' '.$user->fathername,
                             'adv'=>$item,
