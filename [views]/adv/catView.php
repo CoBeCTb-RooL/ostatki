@@ -188,9 +188,9 @@ if($cat || 1)
 					</div>
 				</div>
 				<!--//арт.номера-->
-				
-				
+
 				<div style="height: 20px; "></div>
+
 				<?
 				foreach($cat->class->props as $key=>$prop)
 				{

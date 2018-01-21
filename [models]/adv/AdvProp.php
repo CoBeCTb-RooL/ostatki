@@ -283,9 +283,33 @@ class AdvProp{
 	
 	function initOptions($status)
 	{
-		//vd($activeOnly);
 		if($this->type == 'select')
+		{
 			$this->options = AdvCatSelectOption::getList($propId=$this->id, $status);
+			//vd($this->options);
+			$isFloatVals = true;
+
+			foreach ($this->options as $opt)
+			{
+				if(strlen($opt->value) !== strlen(floatval($opt->value)))
+				{
+					$isFloatVals = false;
+					break;
+				}
+				else
+					$opt->value = floatval($opt->value);
+			}
+
+			if($isFloatVals) 	# 	надо сортировать по флоутвалу
+			{
+				function cmp($a, $b)
+				{
+					return ($a->value < $b->value) ? -1 : 1;
+				}
+
+				usort($this->options, "cmp");
+			}
+		}
 	}
 	
 	

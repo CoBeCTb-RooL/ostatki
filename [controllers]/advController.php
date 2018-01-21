@@ -117,7 +117,7 @@ class AdvController extends MainController{
 			$cat->initClass();
 			if($cat->class)
 				$cat->class->initProps(Status::code(Status::ACTIVE));
-			
+
 			# 	бренды категории
 			$MODEL['brands'] = Brand::getList(Status::code(Status::ACTIVE), $cat->id);
 			
@@ -138,7 +138,7 @@ class AdvController extends MainController{
 					//vd($MODEL['artnums']);
 					//vd($MODEL['chosenArtnum']);
 				}
-				
+
 				# 	обработка выбранных свойств
 				foreach($cat->class->props as $key=>$prop)
 				{
@@ -166,8 +166,8 @@ class AdvController extends MainController{
 		{
 			//echo 'NO CAT!';
 		}
-		
-		
+
+
 		$MODEL['cities'] = $_GLOBALS['cities'];
 		$MODEL['city'] = isset($_REQUEST['cityId']) ? $_GLOBALS['cities'][$_REQUEST['cityId']] : $_GLOBALS['city'];
 		

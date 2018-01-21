@@ -264,7 +264,6 @@ class Prop{
 	
 	function initOptions($activeOnly = false)
 	{
-		//vd($activeOnly);
 		if($this->type == 'select')
 			$this->options = CatSelectOption::getOptions($this->id, $activeOnly);
 	}

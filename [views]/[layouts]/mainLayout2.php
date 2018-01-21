@@ -87,6 +87,12 @@
 
 
 <body >
+<?php
+if(Admin::isAdmin())
+{
+	Core::renderPartial(SHARED_VIEWS_DIR.'/adminTools/adminPanel.php', $model=null, $buffer=false, $ignoreIsAdminka=true);
+}
+?>
 
 	<table class="global-table" border="0">
 

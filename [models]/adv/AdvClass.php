@@ -165,7 +165,6 @@ class AdvClass
 	
 	function initProps($status)
 	{
-		//$this->props = Prop::getPropsOfClass($this->id, $activeOnly);
 		$this->props = AdvProp::getList($this->id, $status);
 		foreach($this->props as $key=>$prop)
 			$prop->initOptions($status);
