@@ -148,7 +148,7 @@ if(Admin::isAdmin())
 						<?
 						foreach($_GLOBALS['cities'] as $city )
 						{?>
-							<option value="<?=$city->id?>" style="<?=$city->isLarge?'font-size: 15px; ':''?>" <?=$city->id==$_GLOBALS['city']->id? ' selected ' : ''?> ><?=$city->name?></option>
+							<option value="<?=$city->id?>" style="<?=$city->isLarge?'font-size: 15px; ':''?> " <?=$city->id==$_GLOBALS['city']->id? ' selected ' : ''?> ><?=$city->name?></option>
 						<?
 						}?>
 						</select>-->
@@ -167,7 +167,7 @@ if(Admin::isAdmin())
 								<?php
 								foreach($largeCities as $city)
 								{?>
-									<li><a href="?globalCityId=<?=$city->id?>" class="<?=$city->id==$_GLOBALS['city']->id? 'active' : ''?>" ><?=$city->name?></a></li>
+									<li><a href="?globalCityId=<?=$city->id?>" class="<?=$city->id==$_GLOBALS['city']->id? 'active' : ''?>" style="<?=$city->isSpecial ? 'font-size: 24px; text-decoration: underline; ' : '' ?>" ><?=$city->name?></a></li>
 									<?php
 								}?>
 							</ul>

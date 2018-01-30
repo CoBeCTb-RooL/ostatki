@@ -8,7 +8,7 @@ class City{
 		, $countryId
 		, $name
 		, $status
-		, $ddateCreated
+		, $dateCreated
 		
 		, $country
 		;

@@ -39,7 +39,24 @@ class Startup{
 				
 		$t = new Timer('города (запрос)');
 		# 	города
-		$_GLOBALS['cities'] = City::getList(Country::KAZAKHSTAN_ID, Status::code(Status::ACTIVE), $orderBy='isLarge DESC, name');
+		$cities = City::getList(Country::KAZAKHSTAN_ID, Status::code(Status::ACTIVE), $orderBy='isLarge DESC, name');
+		$specialCities = [];
+		$otherCities = [];
+		foreach ($cities as $key=>$c)
+			if(in_array($c->name, ['Алматы', 'Астана', ]))
+			{
+				$c->isSpecial = true;
+				$specialCities[$key] = $c;
+			}
+			else
+				$otherCities[$key] = $c;
+		$cities = [];
+		foreach ($specialCities as $key=>$c)
+			$cities[$key] = $c;
+		foreach ($otherCities as $key=>$c)
+			$cities[$key] = $c;
+		//vd($cities);
+		$_GLOBALS['cities'] = $cities;
 		$t->stop();
 	
 		/*
