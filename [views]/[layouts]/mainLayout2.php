@@ -167,7 +167,7 @@ if(Admin::isAdmin())
 								<?php
 								foreach($largeCities as $city)
 								{?>
-									<li><a href="?globalCityId=<?=$city->id?>" class="<?=$city->id==$_GLOBALS['city']->id? 'active' : ''?>" style="<?=$city->isSpecial ? 'font-size: 24px; text-decoration: underline; ' : '' ?>" ><?=$city->name?></a></li>
+									<li><a href="?globalCityId=<?=$city->id?>" class="<?=$city->id==$_GLOBALS['city']->id? 'active' : ''?>" style="<?=$city->isSpecial ? 'font-size: 20px; text-decoration: underline; ' : '' ?>" ><?=$city->name?></a></li>
 									<?php
 								}?>
 							</ul>
@@ -256,11 +256,12 @@ if(Admin::isAdmin())
 							</div>
 
 							<div class="column center">
-								<div class="phone">8 (727) 995-65-54</div>
-								<a href="/<?=LANG?>/forms/feedback" class="request-call">заказать звонок</a>
-								<h4>Наш офис:</h4>
-								<div class="address">г. Алматы, Панфилова 110 , офис 209, <br/>уг. Богенбай батыра.</div>
-								<a href="/<?=LANG?>/forms/feedback" class="send-msg">отправить сообщение</a>
+                                &nbsp;
+<!--								<div class="phone">8 (727) 995-65-54</div>-->
+<!--								<a href="/--><?//=LANG?><!--/forms/feedback" class="request-call">заказать звонок</a>-->
+<!--								<h4>Наш офис:</h4>-->
+<!--								<div class="address">г. Алматы, Панфилова 110 , офис 209, <br/>уг. Богенбай батыра.</div>-->
+<!--								<a href="/--><?//=LANG?><!--/forms/feedback" class="send-msg">отправить сообщение</a>-->
 							</div>
 
 							<div class="column right">

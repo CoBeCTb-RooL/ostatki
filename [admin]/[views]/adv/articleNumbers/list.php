@@ -66,4 +66,4 @@ else
 } 
 ?>
 
-<p><input id="add-btn" type="button" onclick="Slonne.Adv.ArtNums.edit(); " value="+ артикульный номер">
+<p><input id="add-btn" type="button" onclick="/*Slonne.Adv.ArtNums.edit();*/ edit();  " value="+ артикульный номер">
