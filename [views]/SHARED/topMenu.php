@@ -8,6 +8,10 @@ elseif(strpos($uri, Route::getByName(Route::NEWS)->url()) === 0)
 	$section = 'news';
 elseif(strpos($uri, Route::getByName(Route::CABINET)->url()) === 0)
 	$section = 'cabinet';
+
+elseif(strpos($uri, Route::getByName(Route::HELP)->url()) === 0)
+	$section = 'help';
+
 elseif(		strpos($uri, Route::getByName(Route::SPISOK_KATEGORIY)->url()) === 0
 		||	strpos($uri, Route::getByName(Route::SPISOK_OBYAVLENIY_KATEGORII)->url()) === 0
 		||	strpos($uri, Route::getByName(Route::KARTOCHKA_OBYAVLENIYA)->url()) === 0
@@ -35,6 +39,10 @@ elseif(		strpos($uri, Route::getByName(Route::SPISOK_KATEGORIY)->url()) === 0
 	</li>
 	<?php 
 	}?>
-	
+
+    <!--<li>
+        <a class="<?=$section == 'help' ? 'active' : ''?>" href="<?=Route::getByName(Route::HELP)->url()?>">Помощь</a>
+    </li>-->
+
 	<li class="clear"></li>
 </ul>

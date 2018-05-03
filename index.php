@@ -41,7 +41,8 @@ Route::$routes = array(
 		new Route('/adv/artnums_list_ajax', 	'', 						Route::ARTNUMS_LIST_BY_BRAND),
 		new Route('/suggestions', 				'', 						Route::SUGGESTIONS),
 		new Route('/news', 						'', 						Route::NEWS),
-		
+		new Route('/help', 						'', 						Route::HELP),
+
 );
 if($route = Route::getSuitableRoute($url))
 	$url = $route->urlTransformed ? $route->urlTransformed : $route->pattern;

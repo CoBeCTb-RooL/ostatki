@@ -26,7 +26,8 @@ class Route{
 	const ARTNUMS_LIST_BY_BRAND 			= 'Список артНомеров по бренду'; 
 	const SUGGESTIONS 			 			= 'Вопросы / предложения';
 	const NEWS 					 			= 'Новости';
-	
+	const HELP 					 			= 'Помощь';
+
 	
 	function __construct($pattern, $replaceWith, $name)
 	{

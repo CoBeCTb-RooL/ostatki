@@ -123,6 +123,11 @@ if(Admin::isAdmin())
 							<li>
 								<a class="<?=$section == 'suggestions' ? 'active' : ''?>" href="<?=Route::getByName(Route::SUGGESTIONS)->url()?>">Вопросы, предложения</a>
 							</li>
+
+                            <!--<li>
+                                <a class="<?=$section == 'help' ? 'active' : ''?>" href="<?=Route::getByName(Route::HELP)->url()?>">Помощь</a>
+                            </li>-->
+
 							<?php
 							if($USER)
 							{?>
@@ -288,6 +293,8 @@ if(Admin::isAdmin())
 						<img id="plitka" src="/img/plitka-bottom.png" alt=""  />
 						<div id="banner-wrapper">
 							<img id="banner" src="/img/banners/appolonius.jpg" alt=""  />
+                            <br>
+							<img id="banner" src="/img/banners/proteus.jpg" alt="" style="padding: 6px 0 0 0; " />
 						</div>
 
 						<img class="screw screw-1" src="/img/screw.png" alt=""  />
