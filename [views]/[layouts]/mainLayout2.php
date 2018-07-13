@@ -291,12 +291,12 @@ if(Admin::isAdmin())
 
 						<img id="cement" src="/img/cement-bottom.png" alt=""  />
 						<img id="plitka" src="/img/plitka-bottom.png" alt=""  />
-						<div id="banner-wrapper">
-							<img id="banner" src="/img/banners/appolonius.jpg" alt=""  />
-                            <br>
-							<img id="banner" src="/img/banners/proteus.jpg" alt="" style="padding: 6px 0 0 0; " />
-						</div>
 
+                        <div id="banner-wrapper">
+                            <img id="banner" src="/img/banners/appolonius.jpg" alt=""  />
+                            <br>
+                            <img id="banner" src="/img/banners/proteus.jpg" alt="" style=" " />
+                        </div>
 						<img class="screw screw-1" src="/img/screw.png" alt=""  />
 						<img class="screw screw-2" src="/img/screw.png" alt=""  />
 						<img class="screw screw-3" src="/img/screw.png" alt=""  />
