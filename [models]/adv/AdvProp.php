@@ -302,9 +302,12 @@ class AdvProp{
 
 			if($isFloatVals) 	# 	надо сортировать по флоутвалу
 			{
-				function cmp($a, $b)
+				if(!function_exists('cmp'))
 				{
-					return ($a->value < $b->value) ? -1 : 1;
+					function cmp($a, $b)
+					{
+						return ($a->value < $b->value) ? -1 : 1;
+					}
 				}
 
 				usort($this->options, "cmp");

@@ -20,7 +20,7 @@ if($item)
 if($item || 1)
 {?>
 	<div class="view" >
-		<form id="edit-form" method="post" enctype="multipart/form-data" action="/<?=ADMIN_URL_SIGN?>/adv/article_numbers/editSubmit" target="frame7" onsubmit="editSubmitStart();" >	
+		<form id="edit-form" method="post" enctype="multipart/form-data" action="/<?=ADMIN_URL_SIGN?>/adv/article_numbers/editSubmit" target="frame77" onsubmit="editSubmitStart();" >
 			<input type="hidden" name="id" value="<?=$item->id?>">
 				<h1><?=$titlePrefix?><span class="title-gray"><?=$titlePostfix?></span></h1>
 					<div class="field-wrapper">
@@ -66,7 +66,7 @@ if($item || 1)
 			<div class="info"></div>
 		</form>
 	</div>
-	<iframe name="frame7" style="display: none; "></iframe>
+	<iframe name="frame77" style="display: none; ">asdasd</iframe>
 <?php 	
 }
 else 

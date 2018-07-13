@@ -149,7 +149,7 @@ class ArtNum{
 		".$this->alterSql()."
 		WHERE id=".intval($this->id)."
 		";
-		//vd($sql);
+		vd($sql);
 		$qr=DB::query($sql);
 		echo mysql_error();
 	}
@@ -163,7 +163,8 @@ class ArtNum{
 		  `status`='".intval($this->status->num)."'
 		, `idx`='".intval($this->idx)."'
 		, `name`='".strPrepare($this->name)."'
-		, `pic`='".strPrepare($this->picRaw)."'
+		/*, `pic`='".strPrepare($this->picRaw)."'*/
+		, `pic`='".strPrepare($this->pic)."'
 		";
 		
 		return $str;
