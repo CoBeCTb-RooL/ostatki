@@ -801,7 +801,11 @@ function backendInput($value, $lang/*для тайтлов картинок*/)
 				{
 					if(!$this->multiple)
 					{
-						if($this->options[$value])
+						$exists = false;
+						foreach ($this->options as $opt)
+							if($opt->id == $value)
+								$exists = true;
+						if($exists)
 						{}
 						else
 							$problem = Slonne::setError($this->code, 'Ошибка! В поле <b>'.$this->name.'</b> выбрана опция, не принадлежащая этому списку! <b>optId:'.$value.'</b>');
