@@ -10,7 +10,6 @@ $lastAdvs = $MODEL['lastAdvs'];
 ?>
 
 
-11111111111111111111111111111111112
 <div class="index">
 	
 	<div class="top-pic-wrapper">
