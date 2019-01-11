@@ -24,53 +24,34 @@ $lastAdvs = $MODEL['lastAdvs'];
 			<div class="cats">
 				<h3>Объявления</h3>
 				<ul>
-				<?php 
-				foreach($cats as $cat)
-				{?>
+				<? foreach($cats as $cat):?>
 					<li>
 						<!-- <a href="<?=$cat->url()?>"><?=$cat->name?></a> -->
-						<?php 
-						if(count($cat->subCats))
-						{?>
+						<? if(count($cat->subCats)):?>
 							<h2><?=$cat->name?></h2>
 							<ul class="subs">
-							<?php 
-							foreach($cat->subCats as $subcat)
-							{?>
+							<? foreach($cat->subCats as $subcat):?>
 								<li>
 									<a href="<?=$subcat->url()?>"><?=$subcat->name?>
-									<?php 
-									if($subcat->advsCount)
-									{?>
+									<? if($subcat->advsCount): ?>
 										<sup><?=Funx::numberFormat($subcat->advsCount)?></sup>
-									<?php 	
-									}?>
+									<? endif; ?>
 									</a>
 								</li>
-							<?php 	
-							}?>
+							<?endforeach?>
 							</ul>
-						<?php 
-						}
-						else
-						{?>	
+						<? else: ?>
 							<h2>
 								<a href="<?=$cat->url()?>">
 									<?=$cat->name?>
-									<?php 
-									if($cat->advsCount)
-									{?>
+									<? if($cat->advsCount): ?>
 										<sup><?=Funx::numberFormat($cat->advsCount)?></sup>
-									<?php 	
-									}?>
+									<? endif; ?>
 								</a>
 							</h2>
-							
-						<?php 	
-						}?>
+						<?endif?>
 					</li>
-				<?php 	
-				}?>
+				<?endforeach?>
 				</ul>
 			</div>
 			
@@ -82,19 +63,19 @@ $lastAdvs = $MODEL['lastAdvs'];
 			<div class="about">
 				<h3 class="about">О проекте</h3>
 				<div class="txt">
-					Проект <a href="<?=Route::getByName(Route::MAIN)->url()?>">OSTATKI.KZ</a> ориентирован на производителей мебели и наружной рекламы* -  словом, <b>для тех, кто при производстве своего продукта изпользует какие-либо материалы. </b>
+					Проект <a href="<?=Route::getByName(Route::MAIN)->url()?>">OSTATKI.KZ</a> ориентирован на производителей мебели* -  на тех, <b>кто при производстве своего продукта изпользует какие-либо материалы. </b>
 
 
 					<p>
 						<img src="/img/index/pic2.png" alt="" style="float: right; width: 180px; padding: 0 15px 15px 15px ; "/>
-					Допустим, Вам нужно изготовить шкаф или лайтбокс. Материала для этого требуется немного, и покупать его за полную стоимость <b  class="red">не рационально</b>.
+					Допустим, Вам нужно изготовить шкаф. Материала для этого требуется немного, и покупать его за полную стоимость <b  class="red">не рационально</b>.
 					<p>А представьте, что кто-то уже приобрёл материалы, которые Вы ищете, и их остатки лежат без надобности, и занимают место.
 					<br>Или Вы - обладатель тех остатков, и желаете от них избавиться, а выкинуть  - жалко, да и расточительно...
 					<p>
 					<b>Тут пригодимся мы!</b>
 					<p><b><a class="red" href="<?=Route::getByName(Route::MAIN)->url()?>">OSTATKI.KZ</a></b> -  это площадка для обмена информацией по остаткам материалов, сводящая вместе спрос и предложения. Размещая объявления о поиске или наличии остатков, Вы сможете значительно <b class="green">оптимизировать свой бизнес</b>.
 
-					<div style="font-size: .8em; font-style: italic; "><p>* В перспективе проект <a href="<?=Route::getByName(Route::MAIN)->url()?>">OSTATKI.KZ</a> ставит задачу охватить более широкую область, относящеюся к теме остатков (строительство, торговля, сервис, и другие сферы производства).</div>
+					<div style="font-size: .8em; font-style: italic; "><p>* В перспективе проект <a href="<?=Route::getByName(Route::MAIN)->url()?>">OSTATKI.KZ</a> ставит задачу охватить более широкую область, относящеюся к теме остатков (производство наружной рекламы, строительство, торговля, сервис, и другие сферы производства).</div>
 
 					<hr />
 
