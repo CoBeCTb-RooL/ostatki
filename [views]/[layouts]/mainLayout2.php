@@ -270,12 +270,13 @@ if(Admin::isAdmin())
 							</div>
 
 							<div class="column right">
-								<h4>МЫ В СОЦИАЛЬНЫХ СЕТЯХ</h4>
-								<div class="socials">
-									<a href="/" class="facebook" title="FaceBook"><i class="fa fa-facebook"></i></a>
-									<a href="/" class="vk" title="ВКонтакте"><i class="fa fa-vk"></i></a>
-									<a href="/" class="insta" title="Instagram"><i class="fa fa-instagram"></i></a>
-								</div>
+                                <h4>Экономьте вместе с OSTATKI.KZ! </h4>
+<!--								<h4>МЫ В СОЦИАЛЬНЫХ СЕТЯХ</h4>-->
+<!--								<div class="socials">-->
+<!--									<a href="/" class="facebook" title="FaceBook"><i class="fa fa-facebook"></i></a>-->
+<!--									<a href="/" class="vk" title="ВКонтакте"><i class="fa fa-vk"></i></a>-->
+<!--									<a href="/" class="insta" title="Instagram"><i class="fa fa-instagram"></i></a>-->
+<!--								</div>-->
 
 								<form  class="search" method="get" action="<?=Route::getByName(Route::SPISOK_OBYAVLENIY_KATEGORII)->url()?>">
 									<span>Вы ищете что-то конкретное?</span>
@@ -312,13 +313,13 @@ if(Admin::isAdmin())
 						<a href="/" class="logo" title="OSTATKI.KZ - перейти на главную"><img src="/img/logo-bottom.png" alt="OSTATKI.KZ" /></a>
 						<div class="copyright">
 							2015 &copy; Все права защищены. <br/>
-							<div class="slonne">Powered by <b style="font-size: 1.1em; ">SLONNE</b><img src="/img/slonne.png" alt="" width="18" style="vertical-align:middle; "/></div>
+							<div class="slonne">Powered by <b style="font-size: 1.1em; ">SLONNE</b> <img src="/img/slonne.png" alt="" width="18" style="vertical-align:middle; "/></div>
 						</div>
-						<div class="socials">
-							<a href="/" class="facebook" title="FaceBook"><i class="fa fa-facebook"></i></a>
-							<a href="/" class="vk" title="ВКонтакте"><i class="fa fa-vk"></i></a>
-							<a href="/" class="insta" title="Instagram"><i class="fa fa-instagram"></i></a>
-						</div>
+<!--						<div class="socials">-->
+<!--							<a href="/" class="facebook" title="FaceBook"><i class="fa fa-facebook"></i></a>-->
+<!--							<a href="/" class="vk" title="ВКонтакте"><i class="fa fa-vk"></i></a>-->
+<!--							<a href="/" class="insta" title="Instagram"><i class="fa fa-instagram"></i></a>-->
+<!--						</div>-->
 					</div>
 
 				</div>
