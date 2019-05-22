@@ -15,7 +15,8 @@ $list = $MODEL['list'];
 	
 </style>
 
-
+<input id="add-btn" type="button" style="font-size: 1.2em; padding: 10px 15px; " onclick="/*Slonne.Adv.ArtNums.edit();*/ edit();  " value="+ артикульный номер">
+<p>
 
 <?php 
 if(count($list) )
@@ -66,4 +67,4 @@ else
 } 
 ?>
 
-<p><input id="add-btn" type="button" onclick="/*Slonne.Adv.ArtNums.edit();*/ edit();  " value="+ артикульный номер">
+<p><input id="add-btn" type="button" style="font-size: 1.2em; padding: 10px 15px; " onclick="/*Slonne.Adv.ArtNums.edit();*/ edit();  " value="+ артикульный номер">

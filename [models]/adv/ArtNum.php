@@ -149,7 +149,7 @@ class ArtNum{
 		".$this->alterSql()."
 		WHERE id=".intval($this->id)."
 		";
-		vd($sql);
+		//vd($sql);
 		$qr=DB::query($sql);
 		echo mysql_error();
 	}
