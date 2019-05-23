@@ -1,9 +1,10 @@
 <script>
+    var opts = {}
 function list()
 {
 	$.ajax({
 		url: '/<?=ADMIN_URL_SIGN?>/adv/article_numbers/list/',
-		data: '',
+		data: opts,
 		beforeSend: function(){$.fancybox.showLoading(); $('.article-numbers .inner').css('opacity', .3)},
 		success: function(data){
 			$('.article-numbers .inner').html(data)

@@ -424,7 +424,17 @@ class AdvController extends MainController{
 	
 		if($ADMIN->hasRole(Role::SYSTEM_ADMINISTRATOR) )
 		{
-			$MODEL['list'] = ArtNum::getList();
+            $params = [];
+            $elPP = $_REQUEST['elPP'] ? $_REQUEST['elPP'] : 20;
+
+            $MODEL['listCount'] = ArtNum2::getCount($params);
+
+            $MODEL['pageHelper'] = new PageHelper($_REQUEST['p'], $elPP, $MODEL['listCount']);
+
+            $params['count'] = $MODEL['pageHelper']->elPP;
+            $params['from'] = ($MODEL['pageHelper']->page-1)*$MODEL['pageHelper']->elPP;
+
+			$MODEL['list'] = ArtNum2::getList($params);
 		}
 		else 
 			$MODEL['error'] = Error::NO_ACCESS_ERROR;

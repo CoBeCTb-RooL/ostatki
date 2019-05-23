@@ -1,6 +1,9 @@
 <?php
 $list = $MODEL['list']; 
 //vd($list);
+//vd($MODEL['pageHelper']);
+//$ph = $MODEL['pageHelper'];
+//vd($ph);
 ?>
 
 
@@ -15,13 +18,18 @@ $list = $MODEL['list'];
 	
 </style>
 
-<input id="add-btn" type="button" style="font-size: 1.2em; padding: 10px 15px; " onclick="/*Slonne.Adv.ArtNums.edit();*/ edit();  " value="+ артикульный номер">
+<input id="add-btn" type="button" style="font-size: 1.2em; padding: 10px 15px; " onclick="edit();  " value="+ артикульный номер">
 <p>
 
 <?php 
 if(count($list) )
 {?>
-Всего: <b><?=count($list)?></b>
+Всего: <b><?=$MODEL['listCount']?></b> (<?=$MODEL['pageHelper']->infoStr()?>) <a href="javascript:void(0); " onclick="opts.elPP = 999999999; list(); ">показать все</a>
+
+
+<div style="margin: 7px 0 7px 0; font-size: 10px; "><?=$MODEL['pageHelper']->html2(['onclick'=>'opts.p=###; list();', ])?></div>
+
+
 <form id="list-form" method="post" action="/<?=ADMIN_URL_SIGN?>/adv/article_numbers/listSubmit" target="frame7" onsubmit="listSubmitStart();" >
 	<table class="t">
 		<tr>
@@ -54,6 +62,10 @@ if(count($list) )
 		<?php 
 		}?>
 	</table>
+
+    <div style="margin: 7px 0 7px 0; font-size: 10px; "><?=$MODEL['pageHelper']->html2(['onclick'=>'opts.p=###; list();', ])?></div>
+
+
 	<input type="submit" id="list-submit-btn" value="Сохранить изменения">
 </form>
 	

@@ -113,10 +113,6 @@ function drawPages($totalCount, $currentPage, $elPP, $onclick, $class, $sym)
 	$sym['end'] = $sym['end'] ? $sym['end'] : '>> конец';
 	$sym['next'] = $sym['next'] ? $sym['next'] : 'следующие &rarr;';
 	
-	
-	
-	
-	
 	$totalPages=ceil($totalCount/$elPP);
 	$str = '';
 	if($totalPages > 1)
@@ -164,8 +160,7 @@ function drawPages($totalCount, $currentPage, $elPP, $onclick, $class, $sym)
         	<div class="item inactive">'.$sym['next'].'</div>
         	<div class="item inactive end">'.$sym['end'].'</div>';
         }
-        
-		
+
 		$str.='
 		</div>';
 		$str.='
