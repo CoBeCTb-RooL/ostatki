@@ -23,7 +23,6 @@ $list = $MODEL['list'];
 
 
 
-<button onclick="list();" type="button">s</button>
 
 <div class="filters">
 
