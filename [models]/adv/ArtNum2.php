@@ -122,6 +122,9 @@ class ArtNum2{
         if($params['status'])
             $sql.=" AND status='".strPrepare($params['status']->num)."'  ";
 
+        if($params['searchWord'])
+            $sql.=" AND name LIKE '%".strPrepare($params['searchWord'])."%'  ";
+
         if($params['orderBy'])
             $sql .= " ORDER BY ".mysql_real_escape_string($params['orderBy'])." ";
 

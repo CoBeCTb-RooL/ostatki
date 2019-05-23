@@ -21,13 +21,34 @@ $list = $MODEL['list'];
 <input id="add-btn" type="button" style="font-size: 1.2em; padding: 10px 15px; " onclick="edit();  " value="+ артикульный номер">
 <p>
 
+
+
+<button onclick="list();" type="button">s</button>
+
+<div class="filters">
+
+    <div class="section id">
+        <h1>Искать:</h1>
+        <input type="text" id="searchWord" value="<?=$MODEL['filters']['searchWord']?>" style="width: 140px;" />
+        <button type="button" onclick="opts.searchWord=$('#searchWord').val(); list();  " >искать</button>
+        <button type="button" onclick="opts.searchWord=''; list(); " >&times;</button>
+    </div>
+
+
+    <div class="clear"></div>
+</div>
+
+
+
+
+
 <?php 
 if(count($list) )
 {?>
 Всего: <b><?=$MODEL['listCount']?></b> (<?=$MODEL['pageHelper']->infoStr()?>) <a href="javascript:void(0); " onclick="opts.elPP = 999999999; list(); ">показать все</a>
 
 
-<div style="margin: 7px 0 7px 0; font-size: 10px; "><?=$MODEL['pageHelper']->html2(['onclick'=>'opts.p=###; list();', ])?></div>
+<div style="margin: 17px 0 7px 0; font-size: 10px; "><?=$MODEL['pageHelper']->html2(['onclick'=>'opts.p=###; list();', ])?></div>
 
 
 <form id="list-form" method="post" action="/<?=ADMIN_URL_SIGN?>/adv/article_numbers/listSubmit" target="frame7" onsubmit="listSubmitStart();" >
@@ -63,7 +84,7 @@ if(count($list) )
 		}?>
 	</table>
 
-    <div style="margin: 7px 0 7px 0; font-size: 10px; "><?=$MODEL['pageHelper']->html2(['onclick'=>'opts.p=###; list();', ])?></div>
+    <div style="margin: 7px 0 17px 0; font-size: 10px; "><?=$MODEL['pageHelper']->html2(['onclick'=>'opts.p=###; list();', ])?></div>
 
 
 	<input type="submit" id="list-submit-btn" value="Сохранить изменения">

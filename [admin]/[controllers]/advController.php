@@ -424,8 +424,11 @@ class AdvController extends MainController{
 	
 		if($ADMIN->hasRole(Role::SYSTEM_ADMINISTRATOR) )
 		{
-            $params = [];
             $elPP = $_REQUEST['elPP'] ? $_REQUEST['elPP'] : 20;
+
+            $params = [];
+            $MODEL['filters']['searchWord'] = strPrepare($_REQUEST['searchWord']);
+            $params['searchWord'] = $MODEL['filters']['searchWord'];
 
             $MODEL['listCount'] = ArtNum2::getCount($params);
 
