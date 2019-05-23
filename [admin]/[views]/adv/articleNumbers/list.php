@@ -44,7 +44,7 @@ $list = $MODEL['list'];
 <?php 
 if(count($list) )
 {?>
-Всего: <b><?=$MODEL['listCount']?></b> (<?=$MODEL['pageHelper']->infoStr()?>) <a href="javascript:void(0); " onclick="opts.page=1; opts.elPP=999999999; list(); ">показать все</a>
+Всего: <b><?=$MODEL['listCount']?></b> (<?=$MODEL['pageHelper']->infoStr()?>) <a href="javascript:void(0); " onclick="opts.p=1; opts.elPP=999999999; list(); ">показать все</a>
 
 
 <div style="margin: 17px 0 7px 0; font-size: 10px; "><?=$MODEL['pageHelper']->html2(['onclick'=>'opts.p=###; list();', ])?></div>
