@@ -69,7 +69,9 @@
 	
 	<script type="text/javascript" src="/js/libs/highslide-4.1.13/highslide-with-gallery.packed.js"></script>
 	<link rel="stylesheet" type="text/css" href="/js/highslide/highslide.css" />
-	
+
+    <!--Vue.js-->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 	
 	
 	<script>

@@ -23,15 +23,18 @@ class ArtNum2{
 		$m->idx = $arr['idx'];
 		$m->dateCreated = $arr['dateCreated'];
 		//$m->pic = $arr['pic'] ? self::MEDIA_SUBDIR.'/'.$arr['pic'] : '';
-		$m->picRaw = $arr['pic'];
-		$m->pic = $m->picRaw ? self::MEDIA_SUBDIR.'/'.$arr['pic'] : '';;
+//		$m->picRaw = $arr['pic'];
+//		$m->pic = $m->picRaw ? self::MEDIA_SUBDIR.'/'.$arr['pic'] : '';;
+        $m->pic = $arr['pic'];
 		$m->status = Status::num($arr['status']);
 		
 		//vd($m);
 		return $m;
 	}
 	
-	
+
+
+
 	
 //	function getList($status, $brandId, $catId)
 //	{
@@ -122,8 +125,10 @@ class ArtNum2{
         if($params['status'])
             $sql.=" AND status='".strPrepare($params['status']->num)."'  ";
 
-        if($params['searchWord'])
-            $sql.=" AND name LIKE '%".strPrepare($params['searchWord'])."%'  ";
+        if($params['nameLike'])
+            $sql.=" AND name LIKE '%".strPrepare($params['nameLike'])."%'  ";
+        if($params['name'])
+            $sql.=" AND name='".strPrepare($params['name'])."'  ";
 
         if($params['orderBy'])
             $sql .= " ORDER BY ".mysql_real_escape_string($params['orderBy'])." ";
@@ -227,7 +232,6 @@ class ArtNum2{
 		  `status`='".intval($this->status->num)."'
 		, `idx`='".intval($this->idx)."'
 		, `name`='".strPrepare($this->name)."'
-		/*, `pic`='".strPrepare($this->picRaw)."'*/
 		, `pic`='".strPrepare($this->pic)."'
 		";
 		
@@ -290,7 +294,25 @@ class ArtNum2{
 		
 		return $res;
 	}
-	
+
+
+
+
+
+	function mediaDir()
+    {
+        return ROOT.'/'.UPLOAD_IMAGES_REL_DIR.ArtNum::MEDIA_SUBDIR;
+    }
+
+    function img()
+    {
+        return self::MEDIA_SUBDIR.'/'.$this->pic;
+    }
+    function imgAbs()
+    {
+        return '/'.UPLOAD_IMAGES_REL_DIR.$this->img();
+    }
+
 	
 	
 	

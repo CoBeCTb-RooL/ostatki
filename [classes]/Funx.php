@@ -336,7 +336,15 @@ class Funx
 		
 		return $a;
 	}
-	
+
+
+
+	function escapedUniqueFilename($file)
+    {
+        return mb_substr(uniqid(), -5).'_'.Funx::correctFileName($file);
+    }
+
+
 	
 	
 	

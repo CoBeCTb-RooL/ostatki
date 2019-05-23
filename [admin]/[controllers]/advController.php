@@ -36,10 +36,17 @@ class AdvController extends MainController{
 		
 			if($p == 'list')
 				$action = 'articleNumbersList';
-			if($p == 'edit')
-				$action = 'articleNumbersEdit';
+            if($p == 'edit')
+                $action = 'articleNumbersEdit';
 			if($p == 'editSubmit')
 				$action = 'articleNumbersEditSubmit';
+
+            if($p == 'multipleAddingForm')
+                $action = 'articleNumbersMultipleAddingForm';
+            if($p == 'multipleAddingFormSubmit')
+                $action = 'articleNumbersMultipleAddingFormSubmit';
+
+
 			if($p == 'listSubmit')
 				$action = 'articleNumbersListSubmit';
 			if($p == 'delete' )
@@ -428,7 +435,7 @@ class AdvController extends MainController{
 
             $params = [];
             $MODEL['filters']['searchWord'] = strPrepare($_REQUEST['searchWord']);
-            $params['searchWord'] = $MODEL['filters']['searchWord'];
+            $params['nameLike'] = $MODEL['filters']['searchWord'];
 
             $MODEL['listCount'] = ArtNum2::getCount($params);
 
@@ -477,18 +484,19 @@ class AdvController extends MainController{
 		{
 			if($id = intval($_REQUEST['id']))
 			{
-				if(!($item = ArtNum::get($_REQUEST['id'])))
+				if(!($item = ArtNum2::get($_REQUEST['id'])))
 					$errors[] = new Error('Ошибка! Не найден арт. номер '.$_REQUEST['id'].'');
 			}
 			else
-				$item = new ArtNum();
-		
+				$item = new ArtNum2();
+
+
 			$item->status = ($_REQUEST['active'] ? Status::code(Status::ACTIVE) : Status::code(Status::INACTIVE));
 			$item->name = strPrepare(trim($_REQUEST['name']));
 			
 			if($item->pic)
 				$prevFile = ROOT.'/'.UPLOAD_IMAGES_REL_DIR.$item->pic;
-		
+
 			if($_REQUEST['delete_pic']) 	// 	удаление картинки
 			{
 				if($item->pic)
@@ -503,7 +511,7 @@ class AdvController extends MainController{
 				# 	обработка файлов
 				if($_FILES['pic']['name'])
 				{
-					$destDir = ROOT.'/'.UPLOAD_IMAGES_REL_DIR.ArtNum::MEDIA_SUBDIR;
+					$destDir = ROOT.'/'.UPLOAD_IMAGES_REL_DIR.ArtNum2::MEDIA_SUBDIR;
 					$newFileName = uniqid().'_'.Funx::correctFileName($_FILES['pic']['name']);
 					//vd($newFileName);
 					$savingResult = Slonne::saveFile($_FILES['pic'], $destDir, $newFileName);
@@ -513,15 +521,18 @@ class AdvController extends MainController{
 						if($item->pic)
 							unlink($prevFile);
 								
-						$item->pic = /*ArtNum::MEDIA_SUBDIR.'/'.*/$newFileName;
+						$item->pic = $newFileName;
 					}
 				}
 					
 				if($item->id)
-					$item->update();
+                {
+//                    vd($item);
+                    $item->update();
+                }
 				else
 				{
-					$item->idx = ArtNum::getNextIdx();
+					$item->idx = ArtNum2::getNextIdx();
 					$item->id = $item->insert();
 				}
 			}
@@ -531,6 +542,100 @@ class AdvController extends MainController{
 		
 		echo '<script>window.top.editSubmitComplete('.json_encode($errors).')</script>';
 	}
+
+
+
+
+    function articleNumbersMultipleAddingForm()
+    {
+        require(GLOBAL_VARS_SCRIPT_FILE_PATH);
+        Startup::execute(Startup::ADMIN);
+        $CORE->setLayout(null);
+
+        if($ADMIN->hasRole(Role::SYSTEM_ADMINISTRATOR) )
+        {
+
+        }
+        else
+            $MODEL['error'] = Error::NO_ACCESS_ERROR;
+
+        Core::renderView('adv/articleNumbers/multipleAddingForm.php', $MODEL);
+    }
+
+
+    function articleNumbersMultipleAddingFormSubmit()
+    {
+        require(GLOBAL_VARS_SCRIPT_FILE_PATH);
+        Startup::execute(Startup::ADMIN);
+        $CORE->setLayout(null);
+
+        ini_set('max_file_uploads', 10000);
+        $ret = [];
+        $errors = null;
+
+
+        if($ADMIN->hasRole(Role::SYSTEM_ADMINISTRATOR) )
+        {
+            $files = $_FILES['pics'];
+            
+            $problemFilesCount = 0;
+
+            foreach ($files as $k=>$f)
+            {
+                $error = false;
+                $files[$k]['base64'] = 'data:image/jpeg;base64,'.base64_encode(file_get_contents($f['tmp_name']));
+                $files[$k]['artName'] = strPrepare(mb_substr($f['name'], 0, strrpos($f['name'], '.')));
+
+                #   существует ли с таким же названием
+                $similarName = ArtNum2::getList(['name'=>$files[$k]['artName']]);
+                if($similarName)
+                {
+                    $files[$k]['error'] = 'УЖЕ СУЩЕСТВУЕТ!';
+                    $error = true;
+                    $problemFilesCount++;
+                }
+
+                #   действительно сохраняем
+                if($_REQUEST['save'])
+                {
+                    if(!$error)
+                    {
+                        $item = new ArtNum2();
+                        $item->status = Status::code(Status::ACTIVE);
+                        $item->name = $files[$k]['artName'];
+
+                        $destFilename = Funx::escapedUniqueFilename($f['name']);
+                        $destFile = ArtNum2::mediaDir().'/'.$destFilename;
+
+                        if( move_uploaded_file($f['tmp_name'], $destFile))
+                            $item->pic = $destFilename;
+                        $item->insert();
+                    }
+                }
+            }
+
+            $ret['files'] = $files;
+
+        }
+        else
+            $MODEL['error'] = Error::NO_ACCESS_ERROR;
+
+
+//        $errors[] = new Error('asdasdasdasd');
+
+
+        $ret['errors'] = $errors;
+
+//        vd($ret);
+
+        if(!$_REQUEST['save'])
+            echo '<script>window.top.multipleAddingFormPreview('.json_encode($ret).')</script>';
+        else
+            echo '<script>window.top.list(); window.top.$.fancybox.close(); window.top.notice("Сохранено")</script>';
+//        echo json_encode($ret);
+//        Core::renderView('adv/articleNumbers/multipleAddingForm.php', $MODEL);
+    }
+
 	
 	
 	function articleNumbersDelete()

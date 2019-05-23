@@ -136,6 +136,8 @@ class Startup{
 			if($ADMIN)
 				$ADMIN->initGroup();
 		}
+
+        fixFILESArray();
 	}
 	
 	

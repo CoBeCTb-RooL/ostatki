@@ -190,5 +190,37 @@ function getOnclick($page, $onclick)
 
 
 
+function fixFILESArray()
+{
+    //vd($_FILES);
+    if($_FILES)
+    {
+        $pics = NULL;
+        foreach($_FILES as $fieldCode=>$val)
+        {
+            $pics[$fieldCode] = NULL;
+            foreach($val['name'] as $num=>$pic)
+            {
+                if($_FILES[$fieldCode]['name'][0])
+                {
+                    $tmp['name'] = $_FILES[$fieldCode]['name'][$num];
+                    $tmp['type'] = $_FILES[$fieldCode]['type'][$num];
+                    $tmp['tmp_name'] = $_FILES[$fieldCode]['tmp_name'][$num];
+                    $tmp['error'] = $_FILES[$fieldCode]['error'][$num];
+                    $tmp['size'] = $_FILES[$fieldCode]['size'][$num];
+
+                    $pics[$fieldCode][] = $tmp;
+                }
+            }
+        }
+
+        $_FILES = $pics;
+    }
+}
+
+
+
+
+
 
 ?>

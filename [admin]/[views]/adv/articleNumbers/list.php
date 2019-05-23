@@ -1,9 +1,5 @@
 <?php
 $list = $MODEL['list']; 
-//vd($list);
-//vd($MODEL['pageHelper']);
-//$ph = $MODEL['pageHelper'];
-//vd($ph);
 ?>
 
 
@@ -15,12 +11,12 @@ $list = $MODEL['list'];
 	.status-inactive{opacity: .4;  }
 	.delete-btn{display: none; }
 	.status-inactive .delete-btn{display: block; }
-	
 </style>
 
 <input id="add-btn" type="button" style="font-size: 1.2em; padding: 10px 15px; " onclick="edit();  " value="+ артикульный номер">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input id="add-btn" type="button" style="font-size: 1.2em; padding: 10px 15px; " onclick="multipleAddingForm();  " value="+ добавить толпой">
 <p>
-
 
 
 
@@ -33,17 +29,13 @@ $list = $MODEL['list'];
         <button type="button" onclick="opts.searchWord=''; list(); " >&times;</button>
     </div>
 
-
     <div class="clear"></div>
 </div>
 
 
 
 
-
-<?php 
-if(count($list) )
-{?>
+<?if(count($list)):?>
 Всего: <b><?=$MODEL['listCount']?></b> (<?=$MODEL['pageHelper']->infoStr()?>) <a href="javascript:void(0); " onclick="opts.p=1; opts.elPP=999999999; list(); ">показать все</a>
 
 
@@ -61,9 +53,7 @@ if(count($list) )
 			<th>Сорт.</th>
 			<th>Удалить</th>
 		</tr>
-		<?php 
-		foreach($list as $key=>$artNum)
-		{?>
+		<?foreach($list as $key=>$artNum):?>
 			<tr id="row-<?=$artNum->id?>" class="status-<?=$artNum->status ? $artNum->status->code : ''?> "  ondblclick="edit(<?=$artNum->id?>)">
 				<td><?=$artNum->id?></td>
 				<td width="1"  class="status-switcher" style="text-align: center; ">
@@ -72,15 +62,14 @@ if(count($list) )
 				<td><a href="#edit" onclick="edit(<?=$artNum->id?>); return false;">ред.</a></td>
 				<td style="font-weight: bold; "><?=$artNum->icon?> <?=$artNum->name?></td>
 				
-				<td><a class="highslide" href="/<?=UPLOAD_IMAGES_REL_DIR.$artNum->pic?>" onclick="return hs.expand(this)" title="Нажмите, чтобы увеличить"><img src="<?=Media::img($artNum->pic.'&height=30')?>" alt="" /></a></td>
+				<td><a class="highslide" href="<?=$artNum->imgAbs()?>" onclick="return hs.expand(this)" title="Нажмите, чтобы увеличить"><img src="<?=Media::img($artNum->img().'&height=30')?>" alt="" /></a></td>
 				
 				<td><input size="2" style="width: 25px; font-size: 9px;" id="idx-<?=$artNum->id?>" name="idx[<?=$artNum->id?>]" value="<?=$artNum->idx?>" type="text"></td>
 				<td>
 					<a href="#delete" class="delete-btn status-<?=$item->status->code?>" onclick="if(confirm('Удалить?')){delete1(<?=$artNum->id?>);} return false;" style="font-size: 10px; color: red; ">&times; удалить</a>
 				</td>
 			</tr>
-		<?php 
-		}?>
+		<?endforeach;?>
 	</table>
 
     <div style="margin: 7px 0 17px 0; font-size: 10px; "><?=$MODEL['pageHelper']->html2(['onclick'=>'opts.p=###; list();', ])?></div>
@@ -90,13 +79,8 @@ if(count($list) )
 </form>
 	
 	
-<?php
-}
-else
-{?>
+<?else:?>
 	Ничего нет.
-<?php 	
-} 
-?>
+<?endif?>
 
 <p><input id="add-btn" type="button" style="font-size: 1.2em; padding: 10px 15px; " onclick="/*Slonne.Adv.ArtNums.edit();*/ edit();  " value="+ артикульный номер">

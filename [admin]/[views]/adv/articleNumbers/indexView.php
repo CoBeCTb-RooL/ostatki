@@ -1,7 +1,6 @@
 <script>
     var opts = {}
-function list()
-{
+function list() {
 	$.ajax({
 		url: '/<?=ADMIN_URL_SIGN?>/adv/article_numbers/list/',
 		data: opts,
@@ -15,8 +14,7 @@ function list()
 }
 
 
-function edit(id)
-{
+function edit(id) {
 	if(typeof id == 'undefined') id = ''
 	
 	$.ajax({
@@ -34,17 +32,18 @@ function edit(id)
 
 
 
-function editSubmitStart()
-{
+
+
+
+
+function editSubmitStart() {
 	$('#edit-form input').removeClass('field-error');
 	$('#edit-form .info').html('');
 	$.fancybox.showLoading();
 }
-function editSubmitComplete(errors)
-{
+function editSubmitComplete(errors) {
 	$.fancybox.hideLoading();
-	if(!errors)
-	{
+	if(!errors) {
 		notice("Сохранено")
 		$.fancybox.close()
 		list();
@@ -54,16 +53,73 @@ function editSubmitComplete(errors)
 }
 
 
-function switchBrandStatus(id)
-{
+
+function multipleAddingForm(){
+    $.ajax({
+        url: '/<?=ADMIN_URL_SIGN?>/adv/article_numbers/multipleAddingForm/',
+        data: {},
+        beforeSend: function(){$.fancybox.showLoading(); },
+        success: function(data){
+            $('#float').html(data)
+            $.fancybox('#float');
+        },
+        error: function(){alert('Возникла ошибка...Попробуйте позже!')},
+        complete: function(){$.fancybox.hideLoading(); }
+    });
+}
+
+
+
+function multipleAddingFormSubmitStart() {
+    $('#edit-form input').removeClass('field-error');
+    $('#edit-form .info').html('');
+    $.fancybox.showLoading();
+}
+// function multipleAddingFormSubmitComplete(data) {
+//     $.fancybox.hideLoading();
+//     if(!data.errors) {
+//         // notice("Сохранено")
+//         // $.fancybox.close()
+//         // list();
+//     }
+//     else
+//         alert(data.errors[0].error)
+// }
+
+function multipleAddingFormPreview(data) {
+    $.fancybox.hideLoading();
+    if(!data.errors) {
+        app.files = data.files
+
+        // for(var i in data.files)
+        // {
+            // alert(i)
+            // $('#preview').append('<img src="data:image/png;base64,'+data.files[i].base64+'">')
+        // }
+        // notice("Сохранено")
+        // $.fancybox.close()
+        // list();
+    }
+    else
+        alert(data.errors[0].error)
+}
+
+
+
+
+
+
+
+
+
+function switchBrandStatus(id) {
 	$.ajax({
 		url: '/<?=ADMIN_URL_SIGN?>/adv/article_numbers/articleNumbersSwitchStatus',
 		data: 'id='+id,
 		dataType: 'json',
 		beforeSend: function(){$.fancybox.showLoading(); },
 		success: function(data){
-			if(!data.errors)
-			{
+			if(!data.errors) {
 				$('#status-switcher-'+id).html(data.status.icon)
 				$('#row-'+id).removeAttr('class').addClass('status-'+data.status.code)
 			}
@@ -76,8 +132,7 @@ function switchBrandStatus(id)
 }
 
 
-function delete1(id)
-{
+function delete1(id) {
 	$.ajax({
 		url: '/<?=ADMIN_URL_SIGN?>/adv/article_numbers/delete/',
 		data: 'id='+id,
@@ -85,9 +140,7 @@ function delete1(id)
 		beforeSend: function(){$.fancybox.showLoading(); $('.article-numbers .inner').css('opacity', .3); },
 		success: function(data){
 			if(!data.errors)
-			{
 				$('#row-'+id).fadeOut()
-			}
 			else
 				showErrors(data.errors)
 		},
@@ -98,17 +151,14 @@ function delete1(id)
 
 
 
-function listSubmitStart()
-{
+function listSubmitStart() {
 	$.fancybox.showLoading();
 	$('.article-numbers .inner').css('opacity', .3);
 }
-function listSubmitComplete(errors)
-{
+function listSubmitComplete(errors) {
 	$.fancybox.hideLoading();
 	$('.article-numbers .inner').css('opacity', 1);
-	if(!errors)
-	{
+	if(!errors) {
 		list()
 		notice('Сохранено')
 		$.fancybox.close();
@@ -134,7 +184,7 @@ function listSubmitComplete(errors)
 
 
 <!--форма редактирования-->
-<div id="float"  style="display: none; min-width: 700px; max-width: 700px;">!!</div>
+<div id="float"  style="display: none; min-width: 800px; max-width: 800px;">!!</div>
 
 
 

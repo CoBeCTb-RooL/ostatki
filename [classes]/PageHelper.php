@@ -24,7 +24,7 @@ class PageHelper{
     function infoStr()
     {
 
-        $ret = ''.(($this->page-1)*$this->elPP+1).'-'.($this->elPP < $this->totalCount ? (($this->page-1)*$this->elPP+$this->elPP) : $this->totalCount).' из '.$this->totalCount.'';
+        $ret = ''.(($this->page-1)*$this->elPP+1).'-'.(($this->page-1)*$this->elPP+$this->elPP < $this->totalCount ? (($this->page-1)*$this->elPP+$this->elPP) : $this->totalCount).' из '.$this->totalCount.'';
 
         return $ret;
     }
