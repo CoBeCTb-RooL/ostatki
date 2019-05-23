@@ -263,6 +263,10 @@ elseif(strpos($uri, '/'.ADMIN_URL_SIGN) === 0)
                         <?php
                     }?>
 
+                    <? if($ADMIN->hasRole(Role::SYSTEM_ADMINISTRATOR ) ):?>
+                        <li class="<?=$subsection=='systemInfo' ? 'active' : ''?>"><a href="/<?=ADMIN_URL_SIGN?>/systemInfo/"><i class="fa fa-user "></i> Системная инфа</a></li>
+                    <?endif?>
+
 
 				</ul>
 			</li>
