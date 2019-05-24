@@ -16,8 +16,10 @@ if($item || 1)
 
             <div class="field-wrapper">
                 <span class="label">Картинки: </span>
-                <span class="value"><input type="file" name="pics[]" multiple="multiple" onchange="$('#edit-form input[name=save]').val('0'); $('#edit-form').submit(); " /></span>
-                <button type="button" onclick="$('#edit-form input[name=save]').val('0'); $('#edit-form').submit();">обновить</button>
+                <span class="value">
+                    <input type="file" name="pics[]" multiple="multiple" onchange="$('#edit-form input[name=save]').val('0'); $('#edit-form').submit(); " />
+                    <button type="button" onclick="$('#edit-form input[name=save]').val('0'); $('#edit-form').submit();">обновить</button>
+                </span>
                 <div class="clear"></div>
             </div>
 

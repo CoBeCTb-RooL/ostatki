@@ -27,6 +27,9 @@ class ArtNum2{
 //		$m->pic = $m->picRaw ? self::MEDIA_SUBDIR.'/'.$arr['pic'] : '';;
         $m->pic = $arr['pic'];
 		$m->status = Status::num($arr['status']);
+
+		if(isset($arr['brandId']))
+		    $m->brandId = $arr['brandId'];
 		
 		//vd($m);
 		return $m;
@@ -79,7 +82,11 @@ class ArtNum2{
 
     public function getList($params)
     {
-        $sql = "SELECT artnums.* FROM `".mysql_real_escape_string(self::TBL)."` AS artnums  ". self::getListInnerSql($params);
+        $selectFieldsStr = 'artnums.*';
+
+        if(isset($params['withBrandId']) && $params['withBrandId'])
+            $selectFieldsStr.=', cmb.brandId';
+        $sql = "SELECT ".$selectFieldsStr." FROM `".mysql_real_escape_string(self::TBL)."` AS artnums  ". self::getListInnerSql($params);
 //        vd($sql);
         $qr=DB::query($sql);
 		echo mysql_error();
@@ -108,10 +115,10 @@ class ArtNum2{
         $sql="";
 
         if($params['catId'] && $params['brandId'])
-            $sql.=" INNER JOIN  `".CatBrandArtnumCmb::TBL."` AS cmb  ON cmb.artnumId=artnums.id  
-					INNER JOIN  `".BrandArtnumCmb::TBL."` AS cmb2  ON cmb2.artnumId=artnums.id  AND cmb2.brandId=cmb.brandId
+            $sql.=" INNER JOIN  `".CatBrandArtnumCmb::TBL."` AS cmb2  ON cmb2.artnumId=artnums.id  
+					INNER JOIN  `".BrandArtnumCmb::TBL."` AS cmb  ON cmb.artnumId=artnums.id  AND cmb.brandId=cmb.brandId
 					WHERE 1 ";
-        elseif($params['brandId'])
+        elseif($params['brandId'] || $params['withBrandId'])
             $sql.=" INNER JOIN  `".BrandArtnumCmb::TBL."` AS cmb  ON cmb.artnumId=artnums.id 
             WHERE 1 ";
         else
@@ -119,6 +126,7 @@ class ArtNum2{
 
         if($params['brandId'])
             $sql.=" AND cmb.brandId=".$params['brandId']." ";
+
         if($params['catId'])
             $sql.=" AND cmb.catId=".$params['catId']." ";
 
@@ -136,6 +144,7 @@ class ArtNum2{
         if(isset($params['from']) && isset($params['count']) && strPrepare($params['count']))
             $sql.=" LIMIT  ".intval(strPrepare($params['from'])).", ".intval(strPrepare($params['count']))."";
 
+//        vd($sql);
         return $sql;
     }
 
@@ -313,6 +322,17 @@ class ArtNum2{
         return '/'.UPLOAD_IMAGES_REL_DIR.$this->img();
     }
 
+
+
+
+
+    function initBrand($brands)
+    {
+        if(!$brands)
+            $brands = Brand::getList();
+
+        $this->brand = $brands[$this->brandId];
+    }
 	
 	
 	

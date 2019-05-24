@@ -1,6 +1,7 @@
 <script>
-    var opts = {}
-function list() {
+var opts = {}
+// function list2(){alert(123)}
+function list2() {
 	$.ajax({
 		url: '/<?=ADMIN_URL_SIGN?>/adv/article_numbers/list/',
 		data: opts,
@@ -213,7 +214,7 @@ if(!isset($_REQUEST['from_file']))
 {?>
 <script>
 $(document).ready(function(){
-	list()
+	list2()
 })
 </script>
 <?php 

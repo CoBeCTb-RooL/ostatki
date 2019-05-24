@@ -433,9 +433,15 @@ class AdvController extends MainController{
 		{
             $elPP = $_REQUEST['elPP'] ? $_REQUEST['elPP'] : 20;
 
-            $params = [];
             $MODEL['filters']['searchWord'] = strPrepare($_REQUEST['searchWord']);
+            $MODEL['filters']['brandId'] = strPrepare($_REQUEST['brandId']);
+
+//            vd($MODEL['filters']);
+
+            $params = [];
+            $params['withBrandId'] = true;
             $params['nameLike'] = $MODEL['filters']['searchWord'];
+            $params['brandId'] = $MODEL['filters']['brandId'];
 
             $MODEL['listCount'] = ArtNum2::getCount($params);
 
@@ -444,7 +450,14 @@ class AdvController extends MainController{
             $params['count'] = $MODEL['pageHelper']->elPP;
             $params['from'] = ($MODEL['pageHelper']->page-1)*$MODEL['pageHelper']->elPP;
 
+            $MODEL['dicts']['brands'] = Brand::getList();
+
 			$MODEL['list'] = ArtNum2::getList($params);
+			if(count($MODEL['list']))
+			    foreach ($MODEL['list'] as $val)
+			        $val->initBrand($MODEL['dicts']['brands']);
+
+
 		}
 		else 
 			$MODEL['error'] = Error::NO_ACCESS_ERROR;

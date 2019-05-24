@@ -54,7 +54,7 @@ class Brand{
 		$qr=DB::query($sql);
 		echo mysql_error();
 		while($next = mysql_fetch_array($qr, MYSQL_ASSOC))
-			$res[] = self::init($next);
+			$res[$next['id']] = self::init($next);
 		
 		return $res;
 	}

@@ -129,16 +129,16 @@ class PageHelper{
         </style>
 
         <div class="pages">
-            <a href="#" class="<?=$this->page <= 1 ? 'disabled' : ''?>" onclick="<?=$this->getOnclick(1, $onclick)?>" ><<начало </a>
-            <a href="#" class="<?=$this->page <= 1 ? 'disabled' : ''?>" onclick="<?=$this->getOnclick($this->page-1, $onclick)?>" >&larr; пред</a>
+            <a href="#" class="<?=$this->page <= 1 ? 'disabled' : ''?>" onclick="<?=$this->getOnclick(1, $onclick)?>; return false;" ><<начало </a>
+            <a href="#" class="<?=$this->page <= 1 ? 'disabled' : ''?>" onclick="<?=$this->getOnclick($this->page-1, $onclick)?>; return false;" >&larr; пред</a>
             стр.
             <select onchange="<?=$this->getOnclick('$(this).val()', $onclick)?>">
                 <?for($i=1; $i<=$this->pagesCount; $i++):?>
                 <option <?=$this->page == $i ? ' selected ' : ''?> ><?=$i?> из <?=$this->pagesCount?></option>
                 <?endfor?>
             </select>
-            <a href="#" class="<?=$this->page >= $this->pagesCount ? 'disabled' : '' ?>" onclick="<?=$this->getOnclick($this->page+1, $onclick)?>" >след &rarr;</a>
-            <a href="#" class="<?=$this->page >= $this->pagesCount ? 'disabled' : '' ?>" onclick="<?=$this->getOnclick($this->pagesCount, $onclick)?>" >конец>></a>
+            <a href="#" class="<?=$this->page >= $this->pagesCount ? 'disabled' : '' ?>" onclick="<?=$this->getOnclick($this->page+1, $onclick)?>; return false;" >след &rarr;</a>
+            <a href="#" class="<?=$this->page >= $this->pagesCount ? 'disabled' : '' ?>" onclick="<?=$this->getOnclick($this->pagesCount, $onclick)?>; return false;" >конец>></a>
         </div>
             <?
             $str .= ob_get_clean();
