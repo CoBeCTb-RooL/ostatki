@@ -50,7 +50,7 @@ class Brand{
 		if($status) 
 			$sql.=" AND status='".strPrepare($status->num)."' ";
 		
-		//vd($sql);
+//		vd($sql);
 		$qr=DB::query($sql);
 		echo mysql_error();
 		while($next = mysql_fetch_array($qr, MYSQL_ASSOC))

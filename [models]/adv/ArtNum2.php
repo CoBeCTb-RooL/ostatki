@@ -86,7 +86,7 @@ class ArtNum2{
     {
         $selectFieldsStr = 'artnums.*';
 
-        if(isset($params['withBrandId']) && $params['withBrandId'])
+        if($params['withBrandId'] || $params['withBrandIdLeftJoin'])
             $selectFieldsStr.=', cmb.brandId';
         $sql = "SELECT ".$selectFieldsStr." FROM `".mysql_real_escape_string(self::TBL)."` AS artnums  ". self::getListInnerSql($params);
 //        vd($sql);
@@ -340,7 +340,7 @@ class ArtNum2{
 
     function imgResized($requestTail)
     {
-        return Media::img(ArtNum2::MEDIA_SUBDIR.'/'.$this->pic).$requestTail;
+        return Media::img(ArtNum2::MEDIA_SUBDIR.'/'.$this->pic).$requestTail1;
     }
 
 
