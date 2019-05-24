@@ -47,7 +47,7 @@ function editSubmitComplete(errors) {
 	if(!errors) {
 		notice("Сохранено")
 		$.fancybox.close()
-		list();
+		list2();
 	}
 	else
 		showErrors(errors)

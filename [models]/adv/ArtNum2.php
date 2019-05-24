@@ -11,6 +11,7 @@ class ArtNum2{
 		, $name
 		, $pic
 		, $picRaw
+        , $staffComment
 		;
 		
 	
@@ -27,7 +28,8 @@ class ArtNum2{
 //		$m->pic = $m->picRaw ? self::MEDIA_SUBDIR.'/'.$arr['pic'] : '';;
         $m->pic = $arr['pic'];
 		$m->status = Status::num($arr['status']);
-
+        $m->staffComment = $arr['staffComment'];
+//        vd($arr);
 		if(isset($arr['brandId']))
 		    $m->brandId = $arr['brandId'];
 		
@@ -91,7 +93,12 @@ class ArtNum2{
         $qr=DB::query($sql);
 		echo mysql_error();
 		while($next = mysql_fetch_array($qr, MYSQL_ASSOC))
+        {
 			$res[] = self::init($next);
+//			vd($next);
+        }
+
+
 
 		return $res;
     }
@@ -118,9 +125,14 @@ class ArtNum2{
             $sql.=" INNER JOIN  `".CatBrandArtnumCmb::TBL."` AS cmb2  ON cmb2.artnumId=artnums.id  
 					INNER JOIN  `".BrandArtnumCmb::TBL."` AS cmb  ON cmb.artnumId=artnums.id  AND cmb.brandId=cmb.brandId
 					WHERE 1 ";
-        elseif($params['brandId'] || $params['withBrandId'])
-            $sql.=" INNER JOIN  `".BrandArtnumCmb::TBL."` AS cmb  ON cmb.artnumId=artnums.id 
+        elseif($params['brandId'] || $params['withBrandId'] || $params['withBrandIdLeftJoin'])
+        {
+            $join = "INNER";
+            if($params['withBrandIdLeftJoin'])
+                $join = "LEFT";
+            $sql.=" ".$join." JOIN  `".BrandArtnumCmb::TBL."` AS cmb  ON cmb.artnumId=artnums.id 
             WHERE 1 ";
+        }
         else
             $sql.=" WHERE 1 ";
 
@@ -137,6 +149,9 @@ class ArtNum2{
             $sql.=" AND name LIKE '%".strPrepare($params['nameLike'])."%'  ";
         if($params['name'])
             $sql.=" AND name='".strPrepare($params['name'])."'  ";
+
+        if($params['staffComment'])
+            $sql.=" AND staffComment LIKE '%".strPrepare($params['staffComment'])."%'  ";
 
         if($params['orderBy'])
             $sql .= " ORDER BY ".mysql_real_escape_string($params['orderBy'])." ";
@@ -241,6 +256,7 @@ class ArtNum2{
 		  `status`='".intval($this->status->num)."'
 		, `idx`='".intval($this->idx)."'
 		, `name`='".strPrepare($this->name)."'
+		, `staffComment`='".strPrepare($this->staffComment)."'
 		, `pic`='".strPrepare($this->pic)."'
 		";
 		

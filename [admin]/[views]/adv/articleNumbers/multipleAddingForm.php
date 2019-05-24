@@ -24,6 +24,7 @@ if($item || 1)
             </div>
 
 <!--			<input type="submit" value="добавить">-->
+            <div style="margin: 10px 0 "> Комментарий: <input type="text" name="staffComment" style="width: 400px; "> </div>
 				
 			<div class="loading" style="display: none;">Секунду...</div>
 			<div class="info"></div>

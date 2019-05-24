@@ -41,6 +41,14 @@ $list = $MODEL['list'];
         <button type="button" onclick="opts.brandId=''; list2(); " >&times;</button>
     </div>
 
+    <div class="section id">
+        <h1>По комменту:</h1>
+        <input type="text" id="staffComment" value="<?=$MODEL['filters']['staffComment']?>" onblur="opts.staffComment=$(this).val(); list2();  " style="width: 140px;" />
+        <button type="button" >искать</button>
+        <button type="button" onclick="opts.staffComment=''; list2(); " >&times;</button>
+    </div>
+
+
     <div class="clear"></div>
 </div>
 
@@ -63,6 +71,7 @@ $list = $MODEL['list'];
 			<th>Название</th>
 			<th>Картинка</th>
             <th>Бренд</th>
+            <th>Коммент(адм.)</th>
 			<th>Сорт.</th>
 			<th>Удалить</th>
 		</tr>
@@ -81,9 +90,10 @@ $list = $MODEL['list'];
                 <?if($artNum->brand):?>
                     <?=$artNum->brand->name?>
                 <?else:?>
-                    -не указан (или не существует в базе - id:<?=$artNum->brandId?>)-
+                    -не указан-
                 <?endif?>
                 </td>
+                <td><?=$artNum->staffComment?></td>
 				
 				<td><input size="2" style="width: 25px; font-size: 9px;" id="idx-<?=$artNum->id?>" name="idx[<?=$artNum->id?>]" value="<?=$artNum->idx?>" type="text"></td>
 				<td>

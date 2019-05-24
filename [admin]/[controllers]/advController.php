@@ -435,13 +435,16 @@ class AdvController extends MainController{
 
             $MODEL['filters']['searchWord'] = strPrepare($_REQUEST['searchWord']);
             $MODEL['filters']['brandId'] = strPrepare($_REQUEST['brandId']);
+            $MODEL['filters']['staffComment'] = strPrepare($_REQUEST['staffComment']);
 
 //            vd($MODEL['filters']);
 
             $params = [];
-            $params['withBrandId'] = true;
+            $params['withBrandIdLeftJoin'] = true;
             $params['nameLike'] = $MODEL['filters']['searchWord'];
             $params['brandId'] = $MODEL['filters']['brandId'];
+            $params['staffComment'] = $MODEL['filters']['staffComment'];
+
 
             $MODEL['listCount'] = ArtNum2::getCount($params);
 
@@ -475,7 +478,7 @@ class AdvController extends MainController{
 	
 		if($ADMIN->hasRole(Role::SYSTEM_ADMINISTRATOR) )
 		{
-			$MODEL['item'] = ArtNum::get($_REQUEST['id']);
+			$MODEL['item'] = ArtNum2::get($_REQUEST['id']);
 		}
 		else
 			$MODEL['error'] = Error::NO_ACCESS_ERROR;
@@ -506,7 +509,8 @@ class AdvController extends MainController{
 
 			$item->status = ($_REQUEST['active'] ? Status::code(Status::ACTIVE) : Status::code(Status::INACTIVE));
 			$item->name = strPrepare(trim($_REQUEST['name']));
-			
+			$item->staffComment = strPrepare(trim($_REQUEST['staffComment']));
+
 			if($item->pic)
 				$prevFile = ROOT.'/'.UPLOAD_IMAGES_REL_DIR.$item->pic;
 
@@ -589,6 +593,8 @@ class AdvController extends MainController{
 
         if($ADMIN->hasRole(Role::SYSTEM_ADMINISTRATOR) )
         {
+//            vd($_REQUEST);
+//            die;
             $files = $_FILES['pics'];
             
             $problemFilesCount = 0;
@@ -616,7 +622,9 @@ class AdvController extends MainController{
                         $item = new ArtNum2();
                         $item->status = Status::code(Status::ACTIVE);
                         $item->name = $files[$k]['artName'];
+                        $item->staffComment = strPrepare($_REQUEST['staffComment']);
 
+                        vd($_REQUEST);
                         $destFilename = Funx::escapedUniqueFilename($f['name']);
                         $destFile = ArtNum2::mediaDir().'/'.$destFilename;
 
@@ -633,7 +641,6 @@ class AdvController extends MainController{
         else
             $MODEL['error'] = Error::NO_ACCESS_ERROR;
 
-
 //        $errors[] = new Error('asdasdasdasd');
 
 
@@ -644,7 +651,7 @@ class AdvController extends MainController{
         if(!$_REQUEST['save'])
             echo '<script>window.top.multipleAddingFormPreview('.json_encode($ret).')</script>';
         else
-            echo '<script>window.top.list(); window.top.$.fancybox.close(); window.top.notice("Сохранено")</script>';
+            echo '<script>window.top.list2(); window.top.$.fancybox.close(); window.top.notice("Сохранено")</script>';
 //        echo json_encode($ret);
 //        Core::renderView('adv/articleNumbers/multipleAddingForm.php', $MODEL);
     }
