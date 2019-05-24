@@ -338,6 +338,11 @@ class ArtNum2{
         return '/'.UPLOAD_IMAGES_REL_DIR.$this->img();
     }
 
+    function imgResized($requestTail)
+    {
+        return Media::img(ArtNum2::MEDIA_SUBDIR.'/'.$this->pic).$requestTail;
+    }
+
 
 
 

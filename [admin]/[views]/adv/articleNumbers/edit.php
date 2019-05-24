@@ -45,7 +45,7 @@ if($item || 1)
                     <?php
                     if($item->pic)
                     {?>
-                    <img src="<?=Media::img($item->pic.'&height=100')?>" alt="" /><br/>
+                    <img src="<?=$item->imgResized('&height=100')?>" alt="" /><br/>
                     <label >Удалить картинку? <input type="checkbox" name="delete_pic" /></label>
                     <p/>
                     <?php
