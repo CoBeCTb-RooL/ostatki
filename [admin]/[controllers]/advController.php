@@ -603,7 +603,7 @@ class AdvController extends MainController{
             {
                 $error = false;
                 $files[$k]['base64'] = 'data:image/jpeg;base64,'.base64_encode(file_get_contents($f['tmp_name']));
-                $files[$k]['artName'] = strPrepare(mb_substr($f['name'], 0, strrpos($f['name'], '.')));
+                $files[$k]['artName'] = strPrepare(mb_substr($f['name'], 0, mb_strrpos($f['name'], '.')));
 
                 #   существует ли с таким же названием
                 $similarName = ArtNum2::getList(['name'=>$files[$k]['artName']]);
