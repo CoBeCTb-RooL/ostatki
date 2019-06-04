@@ -348,7 +348,11 @@ class AdvController extends MainController{
 
 		$cat = AdvCat::get($_REQUEST['cat']);
 		$brand = Brand::get($_REQUEST['brand']);
-		$MODEL['artnums'] = ArtNum::getList(Status::$items[Status::ACTIVE], $brand->id, $cat->id);
+		$MODEL['artnums'] = ArtNum2::getList([
+		    'status' => Status::$items[Status::ACTIVE],
+            'brandId' => $brand->id,
+            'catId' => $cat->id,
+        ]);
 		$MODEL['otherOption'] = $_REQUEST['otherOption'];
 		
 		ob_start();

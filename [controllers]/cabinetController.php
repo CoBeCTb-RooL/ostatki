@@ -186,8 +186,7 @@ class CabinetController extends MainController{
 		else 
 			$MODEL['error'] = 'Вам необходимо авторизоваться на сайте.';
 		
-		
-		
+
 		if($MODEL['error'])
 		{
 			Core::renderView('cabinet/advs/advEdit.php', $MODEL);
@@ -202,9 +201,14 @@ class CabinetController extends MainController{
 			# 	список арт. номеров
 			if($MODEL['chosenBrand'])
 			{
-				$MODEL['artnums'] = ArtNum::getList(Status::$items[Status::ACTIVE], $MODEL['chosenBrand']->id, $item->catId);
+//				$MODEL['artnums'] = ArtNum::getList(Status::$items[Status::ACTIVE], $MODEL['chosenBrand']->id, $item->catId);
+				$MODEL['artnums'] = ArtNum2::getList([
+				    'status' => Status::$items[Status::ACTIVE],
+                    'brandId' => $MODEL['chosenBrand']->id,
+                    'catId' => $item->catId,
+                ]);
 				# 	выбранный арт.номер
-				$MODEL['chosenArtnum'] = ArtNum::get($item->artnumId);
+				$MODEL['chosenArtnum'] = ArtNum2::get($item->artnumId);
 			}
 			
 			$item->initMedia(Status::code(Status::ACTIVE));

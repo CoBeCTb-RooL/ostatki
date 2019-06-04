@@ -229,19 +229,21 @@ function switchDealType(dt)
 		<!--//бренды-->
 		
 		<?php //vd(Adv::FRONTEND_CONTROLLER.'/filtersPartial/selectArtnumsPartial.php')?>
-		
+
 		<!--арт.номера-->
 		<div class=" row" id="filter-artnums" style="display: <?=(!count($artnums) ? 'none' : 'block')?>; position: relative;  "  onChange="toggleArtnumOtherOption();">
 			<div class="label">Артикульный номер:</div>
 			<div class="input artnums-wrapper">
 				<?php Core::renderPartial(Adv::FRONTEND_CONTROLLER.'/filtersPartial/selectArtnumsPartial.php', $a=array('artnums'=>$artnums, 'chosenArtnum'=>$chosenArtnum, 'otherOption'=>true, 'otherOptionSelected'=>trim($item->artnumOther) ))?>
 			</div>
-			
+
+            <div id="artNumImgWrapper" style="display: <?=$chosenArtnum ? '' : 'none'?>; margin: 5px 0 0 0; "><img src="<?=$chosenArtnum ? $chosenArtnum->imgResized('&height=100') : ''?>" id="artNumImg" alt="" ></div>
+
 			<div id="artnum-other" style="margin: 10px 0 0 0 ;<?=!($item&&trim($item->artnumOther))?'display: none; ':''?>">
 				Введите артикульный номер, но прежде, убедитесь, что его нет в списке!
-				<input type="text" name="artnumOther" id="artnum-other-input" value="<?=$item->artnumOther?>" placeholder="Введите артикульный номер" style="width: 200px ; min-width: 200px;" />	
+				<input type="text" name="artnumOther" id="artnum-other-input" value="<?=$item->artnumOther?>" placeholder="Введите артикульный номер" style="width: 200px ; min-width: 200px;" />
 			</div>
-			
+
 		</div>
 		<!--//арт.номера-->
 		

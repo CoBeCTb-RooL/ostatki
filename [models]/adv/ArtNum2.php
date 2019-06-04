@@ -140,7 +140,7 @@ class ArtNum2{
             $sql.=" AND cmb.brandId=".$params['brandId']." ";
 
         if($params['catId'])
-            $sql.=" AND cmb.catId=".$params['catId']." ";
+            $sql.=" AND cmb2.catId=".$params['catId']." ";
 
         if($params['status'])
             $sql.=" AND status='".strPrepare($params['status']->num)."'  ";
@@ -340,7 +340,7 @@ class ArtNum2{
 
     function imgResized($requestTail)
     {
-        return Media::img(ArtNum2::MEDIA_SUBDIR.'/'.$this->pic).$requestTail1;
+        return Media::img(ArtNum2::MEDIA_SUBDIR.'/'.$this->pic).$requestTail;
     }
 
 
