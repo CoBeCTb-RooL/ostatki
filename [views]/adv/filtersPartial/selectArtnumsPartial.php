@@ -21,9 +21,8 @@ $otherOptionSelected = $MODEL['otherOptionSelected'];
 
 <select name="artnumId" id="filter-artnums" >
 	<option value="" onclick="$('#artNumImgWrapper').slideUp('fast')">-выберите-</option>
-<?php
-foreach($artnums as $key=>$artnum)
-{?>
+
+<?foreach($artnums as $key=>$artnum):?>
 	<option
             value="<?=$artnum->id?>" <?=( $artnum->id == $chosenArtnum->id ? ' selected="selected" ' : "" )?>
             artnumImg="<?=$artnum->imgResized('&height=100')?>"
@@ -31,13 +30,10 @@ foreach($artnums as $key=>$artnum)
     >
         <?=$artnum->name?>
     </option>
-<?php
-}?>
+<?endforeach;?>
 
-<?php
-if($otherOption)
-{?>
+
+<?if($otherOption):?>
 	<option value="other" <?=$otherOptionSelected ? ' selected="selected" ' : ''?> onclick="$('#artNumImgWrapper').slideUp('fast')">Другое..</option>
-<?php
-}?>
+<?endif;?>
 </select>

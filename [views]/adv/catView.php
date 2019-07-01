@@ -187,6 +187,8 @@ if($cat || 1)
 						<?php Core::renderPartial(Adv::FRONTEND_CONTROLLER.'/filtersPartial/selectArtnumsPartial.php', $a=array('artnums'=>$artnums, 'chosenArtnum'=>$chosenArtnum))?>
 					</div>
 				</div>
+
+                <div id="artNumImgWrapper" style="display: <?=$chosenArtnum ? '' : 'none'?>; margin: 5px 0 0 0; "><img src="<?=$chosenArtnum ? $chosenArtnum->imgResized('&height=100') : ''?>" id="artNumImg" alt="" ></div>
 				<!--//арт.номера-->
 
 				<div style="height: 20px; "></div>

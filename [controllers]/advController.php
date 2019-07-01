@@ -95,7 +95,7 @@ class AdvController extends MainController{
 	{
 		require(GLOBAL_VARS_SCRIPT_FILE_PATH);
 		Startup::execute(Startup::FRONTEND);
-		
+
 		$CONTENT->setTitle('Категории');
 		
 		$elPP = self::CAT_ADVS_LIST_ELEMENTS_PER_PAGE;
@@ -131,10 +131,15 @@ class AdvController extends MainController{
 				# 	список арт. номеров
 				if($MODEL['brands'] && $MODEL['chosenBrand'] )
 				{
-					$MODEL['artnums'] = ArtNum::getList(Status::$items[Status::ACTIVE], $MODEL['chosenBrand']->id, $cat->id);
+//					$MODEL['artnums'] = ArtNum::getList(Status::$items[Status::ACTIVE], $MODEL['chosenBrand']->id, $cat->id);
+					$MODEL['artnums'] = ArtNum2::getList([
+                                                'status'=>Status::$items[Status::ACTIVE],
+                                                'brandId' => $MODEL['chosenBrand']->id,
+                                                'catId' => $cat->id,
+                                            ]);
 					//vd($cat);
 					# 	выбранный арт.номер
-					$MODEL['chosenArtnum'] = ArtNum::get($_REQUEST['artnumId']);
+					$MODEL['chosenArtnum'] = ArtNum2::get($_REQUEST['artnumId']);
 					//vd($MODEL['artnums']);
 					//vd($MODEL['chosenArtnum']);
 				}
@@ -159,9 +164,8 @@ class AdvController extends MainController{
 					}
 				}
 			}
-			
-			
-		}
+
+        }
 		else 
 		{
 			//echo 'NO CAT!';
@@ -206,9 +210,9 @@ class AdvController extends MainController{
 		$units = ProductVolumeUnit::getByIdsList(array_unique($unitsIds));
 		foreach($MODEL['items'] as $item)
 			$item->productVolumeUnit = $units[$item->productVolumeUnitId];
-				
-		
-		
+
+
+
 		$MODEL['cat'] = $cat;
 		
 		$crumbs = array();
@@ -217,6 +221,7 @@ class AdvController extends MainController{
 		{
 			$crumbs[] = '<a href="'.Route::getByName(Route::SPISOK_KATEGORIY)->url().'">Объявления</a>';
 			$crumbs[] = $MODEL['cat']->name;
+
 		}
 		else 
 			$crumbs[] = 'Объявления';
