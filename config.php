@@ -22,7 +22,7 @@ else
 
 
 $_CONFIG['ZAGLUSHKA'] 		= false;
-$_CONFIG['ZAGLUSHKA_INDEX'] = true;
+$_CONFIG['ZAGLUSHKA_INDEX'] = false;    //  true
 
 
 
