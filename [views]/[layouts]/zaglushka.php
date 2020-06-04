@@ -5,7 +5,7 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 	<meta charset="utf-8">
 	
-	<title>OSTATKI.KZ :: Скоро открытие...</title>
+	<title><?=DOMAIN_CAPITAL?> :: Скоро открытие...</title>
 	
 	<meta name="description" content="<?=$_CONFIG['SETTINGS']['description']?>" />
 	<meta name="keywords" content="<?=$_CONFIG['SETTINGS']['keywords']?>" />

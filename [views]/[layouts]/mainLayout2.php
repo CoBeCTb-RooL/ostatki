@@ -1,3 +1,8 @@
+<?
+$logoPath = '/img/logo-org2.png';
+$logoBottomPath = '/img/logo-org-bottom2.png';
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -144,7 +149,7 @@ if(Admin::isAdmin())
 							</li>
 						</ul>
 						
-						<a class="logo"  href="<?=Route::getByName(Route::MAIN)->url()?>" title="OSTATKI.KZ"><img src="/img/logo.png" alt="" /></a>
+						<a class="logo"  href="<?=Route::getByName(Route::MAIN)->url()?>" title="<?=DOMAIN_CAPITAL?>"><img src="<?=$logoPath?>" alt="" /></a>
 						<!--города-->
 						<div class="current-city">
 							Город: <a href="#" onclick="$('#city-pick').slideDown(); return false; "><?=$_GLOBALS['city']->name?></a>
@@ -253,7 +258,7 @@ if(Admin::isAdmin())
 						<div class="info">
 
 							<div class="column left">
-								<a href="/" class="logo" title="OSTATKI.KZ - перейти на главную"><img src="/img/logo-bottom.png" alt="OSTATKI.KZ" /></a>
+								<a href="/" class="logo" title="<?=DOMAIN_CAPITAL?> - перейти на главную"><img src="<?=$logoBottomPath?>" alt="<?=DOMAIN_CAPITAL?>" /></a>
 								<div class="copyright">
 									2015 &copy; Все права защищены. <br/>
 									<div class="slonne">Powered by <b style="font-size: 1.1em; ">SLONNE</b><img src="/img/slonne.png" alt="" width="18" style="vertical-align:middle; "/></div>
@@ -270,7 +275,7 @@ if(Admin::isAdmin())
 							</div>
 
 							<div class="column right">
-                                <h4>Экономьте вместе с OSTATKI.KZ! </h4>
+                                <h4>Экономьте вместе с <?=DOMAIN_CAPITAL?>! </h4>
 <!--								<h4>МЫ В СОЦИАЛЬНЫХ СЕТЯХ</h4>-->
 <!--								<div class="socials">-->
 <!--									<a href="/" class="facebook" title="FaceBook"><i class="fa fa-facebook"></i></a>-->
@@ -310,7 +315,7 @@ if(Admin::isAdmin())
 
 				<div class="footer-mobile">
 					<div class="logo1">
-						<a href="/" class="logo" title="OSTATKI.KZ - перейти на главную"><img src="/img/logo-bottom.png" alt="OSTATKI.KZ" /></a>
+						<a href="/" class="logo" title="<?=DOMAIN_CAPITAL?> - перейти на главную"><img src="<?=$logoBottomPath?>" alt="<?=DOMAIN_CAPITAL?>" /></a>
 						<div class="copyright">
 							2015 &copy; Все права защищены. <br/>
 							<div class="slonne">Powered by <b style="font-size: 1.1em; ">SLONNE</b> <img src="/img/slonne.png" alt="" width="18" style="vertical-align:middle; "/></div>

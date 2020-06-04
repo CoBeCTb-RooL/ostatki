@@ -101,7 +101,7 @@ if($ADMIN && $ADMIN->hasRole(Role::SYSTEM_ADMINISTRATOR))
 	<div class="container top">
 		<div class="limited">
 		
-			<a href="<?=Route::getByName(Route::MAIN)->url()?>" class="logo" title="OSTATKI.KZ"><img src="/img/logo.png" alt="" width="233" /></a>
+			<a href="<?=Route::getByName(Route::MAIN)->url()?>" class="logo" title="<?=DOMAIN_CAPITAL?>"><img src="/img/logo.png" alt="" width="233" /></a>
 			
 			
 			<a class="add-adv-btn " href="<?=Route::getByName(Route::CABINET_ADV_EDIT)->url()?>">+ Подать объявление</a>
@@ -211,7 +211,7 @@ if($ADMIN && $ADMIN->hasRole(Role::SYSTEM_ADMINISTRATOR))
 			<div class="info">
 			
 				<div class="column left">
-					<a href="/" class="logo" title="OSTATKI.KZ - перейти на главную"><img src="/img/logo-bottom.png" alt="OSTATKI.KZ" /></a>
+					<a href="/" class="logo" title="<?=DOMAIN_CAPITAL?> - перейти на главную"><img src="/img/logo-bottom.png" alt="<?=DOMAIN_CAPITAL?>" /></a>
 					<div class="copyright">
 						2015 &copy; Все права защищены. <br/>
 						<div class="slonne">Powered by <b style="font-size: 1.1em; ">SLONNE</b><img src="/img/slonne.png" alt="" width="18" style="vertical-align:middle; "/></div>

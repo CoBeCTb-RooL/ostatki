@@ -13,6 +13,8 @@ class Object{
 	const COMMENT 				= 'comment';
 	const USER 					= 'user';
 	const PRODUCT_VOLUME_UNIT 	= 'product_volume_unit';
+	const COUNTRY               = 'country';
+	const REGION                = 'region';
 	const CITY 					= 'city';
 	const TOOL 					= 'tool';
 	const TASK_GROUP 			= 'task_group';
@@ -32,6 +34,8 @@ class Object{
 		$arr[self::COMMENT]				= new self( self::COMMENT, 'Комментарий');
 		$arr[self::USER]				= new self( self::USER, 'Пользователь');
 		$arr[self::PRODUCT_VOLUME_UNIT]	= new self( self::PRODUCT_VOLUME_UNIT, 'Единица объёма товара');
+		$arr[self::COUNTRY]				= new self( self::COUNTRY, 'Страна');
+		$arr[self::REGION]				= new self( self::REGION, 'Регион');
 		$arr[self::CITY]				= new self( self::CITY, 'Город');
 		$arr[self::TOOL]				= new self( self::TOOL, 'Тул');
 		$arr[self::TASK_GROUP]			= new self( self::TASK_GROUP, 'Группа задач');

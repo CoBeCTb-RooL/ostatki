@@ -35,11 +35,11 @@ class Startup{
 		$CONTENT->metaDescription = $_CONFIG['SETTINGS']['description'];
 		
 		$t = new Timer('Главное меню');
-		
-				
-		$t = new Timer('города (запрос)');
-		# 	города
-		$cities = City::getList(Country::KAZAKHSTAN_ID, Status::code(Status::ACTIVE), $orderBy='isLarge DESC, name');
+
+
+        # 	города
+        $t = new Timer('города (запрос)');
+        $cities = City::getList(Country::KAZAKHSTAN_ID, Status::code(Status::ACTIVE), $orderBy='isLarge DESC, name');
 		$specialCities = [];
 		$otherCities = [];
 		foreach ($cities as $key=>$c)
@@ -69,7 +69,9 @@ class Startup{
 		 $_GLOBALS['cities'] = City::getFromCacheFile();
 		 $t->stop();
 		 */
-	
+
+
+
 		# 	выбранный город
 		if($_REQUEST['globalCityId'])
 		{
@@ -80,7 +82,10 @@ class Startup{
 			$_SESSION['cityId'] = City::ALMATY_ID;
 		$_GLOBALS['city'] = $_GLOBALS['cities'][$_SESSION['cityId']];
 		//vd($_GLOBALS['city']);
-		
+
+
+
+
 		#	инициализируем юзера
 		if($_SESSION['user'])
 		{
@@ -90,6 +95,8 @@ class Startup{
 			else
 				$USER->city = $USER->cityId ? $_GLOBALS['cities'][$USER->cityId] : null;
 		}
+
+
 		
 	}
 	

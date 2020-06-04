@@ -20,7 +20,7 @@ class IndexController extends MainController{
 		Startup::execute(Startup::FRONTEND);
 		
 		//$CONTENT->setTitle('ПаНКи');
-		$CONTENT->title = 'OSTATKI.KZ :: Главная';
+		$CONTENT->title = ''.DOMAIN_CAPITAL.' :: Главная';
 		//vd($CONTENT);
 		
 		$MODEL['dealType'] = DealType::code($_REQUEST['type']);

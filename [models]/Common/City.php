@@ -21,6 +21,7 @@ class City{
 		
 		$m->id = $arr['id'];
 		$m->countryId = $arr['countryId'];
+		$m->regionId = $arr['regionId'];
 		$m->name = $arr['name'];
 		$m->status = Status::num($arr['status']);
 		$m->dateCreated = $arr['dateCreated'];
@@ -43,6 +44,51 @@ class City{
 		
 		return $res;
 	}
+
+
+
+
+
+    function getList2($params)
+    {
+        $sql = "SELECT * FROM `".self::TBL."` WHERE 1 ".self::getListInnerSql($params)." ";
+//		vd($sql);
+        $qr=DB::query($sql);
+        echo mysql_error();
+        while($next = mysql_fetch_array($qr, MYSQL_ASSOC))
+        {
+            $res[] = self::init($next);
+        }
+//        vd($res);
+
+        return $res;
+    }
+
+
+    function getListInnerSql($params)
+    {
+        //vd($params);
+        if(isset($params['status']))
+            $sql .= " AND status = '".$params['status']->num."' ";
+
+        if($params['id'])
+            $sql.=" AND id=".$params['id']."";
+        if($params['countryId'])
+            $sql.=" AND countryId=".intval($params['countryId'])."";
+        if($params['regionId'])
+            $sql.=" AND regionId=".intval($params['regionId'])."";
+        if(isset($params['name']))
+            $sql.=" AND name='".strPrepare($params['name'])."'";
+
+        $sql.="		
+		".($params['orderBy'] ? " ORDER BY ".($params['orderBy'] ? strPrepare($params['orderBy']) : 'id') : "")."
+		".strPrepare($params['limit'])."
+		";
+
+        return $sql;
+    }
+
+
 	
 	
 	function getByIdsList($ids, $status)
@@ -103,7 +149,9 @@ class City{
 		//vd($sql);
 		$qr=DB::query($sql);
 		echo mysql_error();
-		return mysql_insert_id();
+
+		$this->id = mysql_insert_id();
+		return $this->id;
 	}
 	
 
@@ -130,6 +178,7 @@ class City{
 		$str.="
 		  `name`='".strPrepare($this->name)."'
 		, `countryId`='".intval($this->countryId)."'
+		, `regionId`='".intval($this->regionId)."'
 		, `status`='".intval($this->status->num)."'
 		, `isLarge`='".($this->isLarge ? 1 : 0)."'
 		";
@@ -160,12 +209,16 @@ class City{
 	{
 		if(!trim($this->name))
 			$problems[] = Slonne::setError('name', 'Введите название!');
-		if(!intval($this->name))
-			$problems[] = Slonne::setError('countryId', 'Укажите страну!');
-		
-		return $problems;
+        if(!intval($this->countryId))
+            $problems[] = Slonne::setError('countryId', 'Укажите страну!');
+        if(!intval($this->regionId))
+            $problems[] = Slonne::setError('regionId', 'Укажите регион!');
+
+        return $problems;
 	}
-	
+
+
+
 	
 	
 	function getByName($name)
@@ -186,8 +239,21 @@ class City{
 	{
 		$this->country = Country::get($this->countryId);
 	}
-	
-	
+
+
+
+
+    public function setDataFromArray($arr)
+    {
+        $this->name = $arr['name'];
+        $this->countryId = $arr['countryId'];
+        $this->regionId = $arr['regionId'];
+        $this->isLarge = $arr['isLarge'] ? 1 : 0;
+//        vd($this);
+    }
+
+
+
 	
 	
 	function getFromCacheFile()

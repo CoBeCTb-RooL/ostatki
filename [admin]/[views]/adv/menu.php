@@ -1,20 +1,20 @@
 <?php
 $menu = array(
-			
-		
-		
+
+
+
 		array(
 				'groupName'=>'kj2',
 				'items'=>array(
 						array('url'=>'/'.ADMIN_URL_SIGN.'/categories/', 'title'=>'<i class="fa fa-tasks"></i> Категории '),
-						
+
 						array('url'=>'/'.ADMIN_URL_SIGN.'/props/', 'title'=>'<i class="fa fa-cube"></i> Свойства'),
 						array('url'=>'/'.ADMIN_URL_SIGN.'/classes/', 'title'=>'<i class="fa fa-cubes"></i> Классы'),
 						array('url'=>'/'.ADMIN_URL_SIGN.'/product_volume_unit/', 'title'=>'<i class="fa fa-balance-scale"></i> Единицы объёма товара'),
-		
+
 				),
 		),
-		
+
 		array(
 			'groupName'=>'rty',
 			'items'=>array(
@@ -25,41 +25,43 @@ $menu = array(
 					array('url'=>'/'.ADMIN_URL_SIGN.'/adv/cat_brand_artnum_combine', 'title'=>'Категория + Бренд + Арт. номер'),
 			),
 		),
-		
-		
-		
-		
+
+
+
+
 		array(
 				'groupName'=>'kj',
 				'items'=>array(
 						array('url'=>'/'.ADMIN_URL_SIGN.'/adv/items/itemsList?1', 'title'=>'<i class="fa fa-list-alt"></i> Объявления'),
 						array('url'=>'/'.ADMIN_URL_SIGN.'/adv/items/itemsList?status='.Status::code(Status::MODERATION)->num.'', 'title'=>'<i class="fa fa-clock-o"></i> Премодерация'),
-		
+
 				),
 		),
-		
-		
+
+
 		array(
 				'groupName'=>'фыв',
 				'dim'=>'0',
 				'items'=>array(
-			
+
 						array('url'=>'/'.ADMIN_URL_SIGN.'/user/', 'title'=>'<span class="fa fa-users "></span> Пользователи'),
 						array('url'=>'/'.ADMIN_URL_SIGN.'/comment/', 'title'=>'<i class="fa fa-comments"></i> Комментарии'),
 						array('url'=>'/'.ADMIN_URL_SIGN.'/city/', 'title'=>'<i class="fa fa-globe"></i> Города'),
-						
+						array('url'=>'/'.ADMIN_URL_SIGN.'/geo/', 'title'=>'<i class="fa fa-globe"></i> Города и страны'),
+						array('url'=>'/'.ADMIN_URL_SIGN.'/geo/indexNew', 'title'=>'<i class="fa fa-globe"></i> Города и страны NEW'),
+
 				),
 		),
-		
+
 		array(
 				'groupName'=>'фыв',
 				'dim'=>'0',
 				'items'=>array(
 						array('url'=>'/'.ADMIN_URL_SIGN.'/tools/', 'title'=>'<i class="fa fa-cogs"></i> Служебные'),
-						
+
 				),
 		),
-		
+
 		/*array(
 			'groupName'=>'фыв',
 			'dim'=>'1',
@@ -77,8 +79,8 @@ $menu = array(
 					array('url'=>'/'.ADMIN_URL_SIGN.'/catalog/classes', 'title'=>'Классы'),
 			),
 		),*/
-			
-); 
+
+);
 ?>
 
 
@@ -93,7 +95,7 @@ $menu = array(
 
 
 <ul class="submenu">
-<?php 
+<?php
 foreach($menu as $menuGroup)
 {?>
 	<li <?=$menuGroup['dim'] ? 'style="opacity: .3; "' : ''?>>
@@ -103,10 +105,10 @@ foreach($menu as $menuGroup)
 		$active = strpos($_SERVER['REQUEST_URI'], $item['url'])!==false ;
 		?>
 		<a class="<?=$active ? 'active' : '' ?>" href="<?=$item['url']?>"><?=$item['title']?></a>
-	<?php 
+	<?php
 	}?>
 	</li>
-<?php 	
+<?php
 }?>
 </ul>
 
