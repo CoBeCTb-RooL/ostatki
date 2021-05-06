@@ -46,9 +46,9 @@ $menu = array(
 
 						array('url'=>'/'.ADMIN_URL_SIGN.'/user/', 'title'=>'<span class="fa fa-users "></span> Пользователи'),
 						array('url'=>'/'.ADMIN_URL_SIGN.'/comment/', 'title'=>'<i class="fa fa-comments"></i> Комментарии'),
-						array('url'=>'/'.ADMIN_URL_SIGN.'/city/', 'title'=>'<i class="fa fa-globe"></i> Города'),
-						array('url'=>'/'.ADMIN_URL_SIGN.'/geo/', 'title'=>'<i class="fa fa-globe"></i> Города и страны'),
-						array('url'=>'/'.ADMIN_URL_SIGN.'/geo/indexNew', 'title'=>'<i class="fa fa-globe"></i> Города и страны NEW'),
+//						array('url'=>'/'.ADMIN_URL_SIGN.'/city/', 'title'=>'<i class="fa fa-globe"></i> Города'),
+//						array('url'=>'/'.ADMIN_URL_SIGN.'/geo/', 'title'=>'<i class="fa fa-globe"></i> Города и страны'),
+						array('url'=>'/'.ADMIN_URL_SIGN.'/geo/indexNew', 'title'=>'<i class="fa fa-globe"></i> Города и страны <sup>new</sup>'),
 
 				),
 		),

@@ -196,7 +196,7 @@ elseif(strpos($uri, '/'.ADMIN_URL_SIGN) === 0)
 					
 					<li class="<?=$subsection=='users' ? 'active' : ''?>"><a href="/<?=ADMIN_URL_SIGN?>/user"><i class="fa fa-users"></i> Пользователи</a></li>
 					<li class="<?=$subsection=='comments' ? 'active' : ''?>"><a href="/<?=ADMIN_URL_SIGN?>/comment"><i class="fa fa-comments"></i> Комментарии</a></li>
-					<li class="<?=$subsection=='cities' ? 'active' : ''?>"><a href="/<?=ADMIN_URL_SIGN?>/city"><i class="fa fa-globe"></i> Города</a></li>
+					<li class="<?=$subsection=='cities' ? 'active' : ''?>"><a href="/<?=ADMIN_URL_SIGN?>/geo/indexNew"><i class="fa fa-globe"></i> Города и страны <sup>new</sup></a></li>
 					
 					<li class="delimiter"><hr /></li>
 					
