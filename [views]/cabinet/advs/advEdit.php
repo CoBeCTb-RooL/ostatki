@@ -207,9 +207,7 @@ function switchDealType(dt)
         <?
         if($user)
         {
-            $currentCity = $_GLOBALS['cities'][$chosenCity ? $chosenCity->id : $_SESSION['city']->id];
-            $currentRegion = $_GLOBALS['regions'][$currentCity->regionId];
-            $currentCountry = $_GLOBALS['countries'][$currentCity->countryId];
+            $geo = new GeoHelper($chosenCity ? $chosenCity->id : $_SESSION['city']->id);
         }
         ?>
 
@@ -223,7 +221,7 @@ function switchDealType(dt)
                     <select name="countryId" onchange="GeoPick.Regions.initList($(this).val(), '#geo-pick-cabinet')">
                         <?if($_SESSION['city'] || 1):?>
                             <?foreach ($_GLOBALS['countries'] as $country):?>
-                                <option value="<?=$country->id?>" <?=$country->id == $currentCountry->id ? ' selected="selected" ' : ''?>><?=$country->name?></option>
+                                <option value="<?=$country->id?>" <?=$country->id == $geo->country->id ? ' selected="selected" ' : ''?>><?=$country->name?></option>
                             <?endforeach;?>
                         <?endif?>
                     </select>
@@ -237,8 +235,8 @@ function switchDealType(dt)
                     <select name="countryId" onchange="GeoPick.Cities.initList($(this).val(), '#geo-pick-cabinet')">
                         <?if($_SESSION['city'] || 1):?>
                             <?foreach ($_GLOBALS['regions'] as $region):?>
-                                <?if($region->countryId!=$currentCountry->id){continue; }?>
-                                <option value="<?=$region->id?>" <?=$region->id == $currentRegion->id ? ' selected="selected" ' : ''?>><?=$region->name?></option>
+                                <?if($region->countryId!=$geo->country->id){continue; }?>
+                                <option value="<?=$region->id?>" <?=$region->id == $geo->region->id ? ' selected="selected" ' : ''?>><?=$region->name?></option>
                             <?endforeach;?>
                         <?endif?>
                     </select>
@@ -252,8 +250,8 @@ function switchDealType(dt)
                     <select name="city"  >
                         <?if($_SESSION['city'] || 1):?>
                             <?foreach ($_GLOBALS['cities'] as $city):?>
-                                <?if($city->regionId!=$currentRegion->id){continue; }?>
-                                <option value="<?=$city->id?>" <?=$city->id == $currentCity->id ? ' selected="selected" ' : ''?>><?=$city->name?></option>
+                                <?if($city->regionId!=$geo->region->id){continue; }?>
+                                <option value="<?=$city->id?>" <?=$city->id == $geo->city->id ? ' selected="selected" ' : ''?>><?=$city->name?></option>
                             <?endforeach;?>
                         <?endif?>
                     </select>

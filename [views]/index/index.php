@@ -10,6 +10,18 @@ $lastAdvs = $MODEL['lastAdvs'];
 ?>
 
 
+
+
+<?//
+//$a = GeoHelper::countries();
+////vd($a);
+//$b = new GeoHelper(3);
+//vd($b);
+//?>
+
+
+
+
 <div class="index">
 	
 	<div class="top-pic-wrapper">

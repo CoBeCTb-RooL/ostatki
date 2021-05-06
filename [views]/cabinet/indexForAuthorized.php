@@ -41,10 +41,9 @@ if($user)
 					<td class="icon" style="vertical-align: top;"><i class="fa fa-map-marker"></i></td>
 					<td class="text">
                         <?
-                        $region = $_GLOBALS['regions'][$user->city->regionId];
-                        $country = $_GLOBALS['countries'][$region->countryId];
+                        $geo = new GeoHelper($user->city->id);
                         ?>
-                        <span class="label">Город:</span> <?=$user->city->name?> <span style="font-weight: normal; font-size: .8em; "><br>(<?=$region->name?>, <?=$country->name?>)</span>
+                        <span class="label">Город:</span> <?=$user->city->name?> <span style="font-weight: normal; font-size: .8em; "><br>(<?=$geo->region->name?>, <?=$geo->country->name?>)</span>
                     </td>
 				</tr>
 			</table>

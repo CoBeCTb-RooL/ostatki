@@ -148,10 +148,9 @@ if($cat || 1)
                         return false;
                     "><b><?=$_SESSION['city']->name?></b></a>
                     <?
-                    $region = $_GLOBALS['regions'][$_SESSION['city']->regionId];
-                    $country = $_GLOBALS['countries'][$region->countryId];
+                    $geo = new GeoHelper($_SESSION['city']->id);
                     ?>
-                    <div style="font-size: .7em; ">(<?=$region->name?>, <?=$country->name?>)</div>
+                    <div style="font-size: .7em; ">(<?=$geo->region->name?>, <?=$geo->country->name?>)</div>
 <!--					<select name="cityId" id="cityId">-->
 <!--						<option value="">-выберите-</option>-->
 <!--					--><?php //

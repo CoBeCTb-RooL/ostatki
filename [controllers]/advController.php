@@ -57,7 +57,7 @@ class AdvController extends MainController{
 		
 		$MODEL['chosenCityId'] = $_REQUEST['cityId'];
 		//vd($_GLOBALS['city']);
-		$MODEL['city'] = isset($_REQUEST['cityId']) ? $_GLOBALS['cities'][$_REQUEST['cityId']] : $_SESSION['city'];
+		$MODEL['city'] = isset($_REQUEST['cityId']) ? GeoHelper::city($_REQUEST['cityId']) : $_SESSION['city'];
 
 //		vd($MODEL['city']);
 		

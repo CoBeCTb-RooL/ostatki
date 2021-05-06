@@ -73,26 +73,28 @@ class Startup{
 
 
 		#   получим все города и регионы
-        $_GLOBALS['cities'] = City::getList2(['status'=>Status::code(Status::ACTIVE)]);
-        $_GLOBALS['regions'] = Region::getList(['status'=>Status::code(Status::ACTIVE)]);
-        $_GLOBALS['countries'] = Country::getList(['status'=>Status::code(Status::ACTIVE)]);
-
+        $_GLOBALS['cities'] = GeoHelper::cities();
+        $_GLOBALS['regions'] = GeoHelper::regions();
+        $_GLOBALS['countries'] = GeoHelper::countries();
+//        $_GLOBALS['cities'] = City::getList2(['status'=>Status::code(Status::ACTIVE)]);
+//        $_GLOBALS['regions'] = Region::getList(['status'=>Status::code(Status::ACTIVE)]);
+//        $_GLOBALS['countries'] = Country::getList(['status'=>Status::code(Status::ACTIVE)]);
 
 
 
 		# 	выбранный город
 		if($_REQUEST['globalCityId'])
 		{
-			if($_GLOBALS['cities'][$_REQUEST['globalCityId']])
-				$_SESSION['cityId'] = $_GLOBALS['cities'][$_REQUEST['globalCityId']]->id;
+			if(GeoHelper::city($_REQUEST['globalCityId']))
+				$_SESSION['cityId'] = GeoHelper::city($_REQUEST['globalCityId'])->id;
 		}
 		if(!$_SESSION['cityId'])
 			$_SESSION['cityId'] = City::ALMATY_ID;
 
-		$_SESSION['city'] = $_GLOBALS['cities'][$_SESSION['cityId']];
+		$_SESSION['city'] = GeoHelper::city($_SESSION['cityId']);
 		$GLOBALS['city'] = $_SESSION['city'];
-        $_SESSION['region'] = $_GLOBALS['regions'][$_SESSION['city']->regionId];
-        $_SESSION['country'] = $_GLOBALS['countries'][$_SESSION['region']->countryId];
+        $_SESSION['region'] = GeoHelper::region($_SESSION['city']->regionId);
+        $_SESSION['country'] = GeoHelper::country($_SESSION['region']->countryId) ;
 
 
 		//vd($_GLOBALS['city']);

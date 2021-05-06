@@ -157,10 +157,9 @@ function switchStatus(id)
 								<!-- <div><span class="label">Цена: </span> 3 000 тг.</div> -->
 
                                 <?
-                                $region = $_GLOBALS['regions'][$item->city->regionId];
-                                $country = $_GLOBALS['countries'][$region->countryId];
+                                $geo = new GeoHelper($item->city->id);
                                 ?>
-								<div><span class="label"></span><b>г. <?=$item->city->name?> </b> (<?=$region->name?>, <?=$country->name?>)</div>
+								<div><span class="label"></span><b>г. <?=$item->city->name?> </b> (<?=$geo->region->name?>, <?=$geo->country->name?>)</div>
 							</div>
 						</div>
 						
