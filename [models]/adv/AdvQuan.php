@@ -58,7 +58,7 @@ class AdvQuan{
 		$sql.=" AND cityId=".intval($cityId)." ";
 		$sql.=" AND dealType='".strPrepare($dealType->code)."' ";
 		
-		//vd($sql);
+//		vd($sql);
 		$qr=DB::query($sql);
 		echo mysql_error();
 		while($next = mysql_fetch_array($qr, MYSQL_ASSOC))
@@ -133,7 +133,8 @@ class AdvQuan{
 		}
 	
 		# 	по городам
-		$cities = City::getList(Status::code(Status::ACTIVE));
+		$cities = City::getList2(['status'=>Status::code(Status::ACTIVE), ]);
+//		vd($cities);
 		foreach($cities as $city)
 		{
 			self::recacheCatCity($city->id);

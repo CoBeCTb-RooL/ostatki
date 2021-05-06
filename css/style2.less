@@ -111,6 +111,11 @@ input.dark, select.dark{background: url(../img/bottom-input.png) !important; col
 			&:hover{color: @red2; }
 		}
 	}
+	.current-city-new{position: absolute; left: 190px;  top: 9px; color: #ececec; font-size: 12px;
+		a{color: @red; text-decoration: none; border-bottom: 1px dotted @red; padding: 0 2px; font-weight: bold; font-size: 13px;
+			&:hover{color: @red2; }
+		}
+	}
 	.current-city-mobile{display: none;
 		@media(max-width: @md){display: inline-block; position: absolute; left: 133px;  top: 6px;  font-size: 13px; box-shadow: none; }
 	}
@@ -144,6 +149,14 @@ input.dark, select.dark{background: url(../img/bottom-input.png) !important; col
 				column-count: 3;
 				li{display: block; }
 				a{font-size: 12px; }
+			}
+		}
+	}
+	#city-pick-new{
+		.block{margin: 0 0 7px 0;
+			span.lbl{ min-width: 50px !important; color: #a4a4a4;  display: inline-block;    }
+			select{
+				option{font-family: 'PT Sans', sans-serif; }
 			}
 		}
 	}
@@ -234,7 +247,7 @@ input.dark, select.dark{background: url(../img/bottom-input.png) !important; col
 
 
 /* 	footer */
-.footer{height: 194px; background: url(../img/gray-bg2.jpg); color: #fff; font-family: arial; line-height: 140%;  text-shadow: 1px 1px 0px #000;
+.footer{height: 160px; background: url(../img/gray-bg2.jpg); color: #fff; font-family: arial; line-height: 140%;  text-shadow: 1px 1px 0px #000;
 	@media(max-width: @md){display: none; }
 	.limited{border: 0px solid yellow;  height: 100%; position: relative;
 
@@ -270,7 +283,7 @@ input.dark, select.dark{background: url(../img/bottom-input.png) !important; col
 
 		#cement{position: absolute; left: 31px; top: -62px; }
 		#plitka{position: absolute; right: 18px; top: -59px; }
-		#banner-wrapper{position: absolute; left: 0; top: /*-97px*/ 30px; text-align: center; width: 100%;
+		#banner-wrapper{
 			img{width: 330px; display: inline-block;  border-radius: 5px ; border: 0px solid red; margin: 0 0 7px 0;   }
 		}
 
@@ -748,7 +761,7 @@ input.dark, select.dark{background: url(../img/bottom-input.png) !important; col
 
 /*	контент */
 .content1111{ height: 100%;  background: rgba(255, 255, 255, .6); width: 100%; vertical-align: top;  z-index: 1;
-	.limited{width: @widthLimit;   height: 100%;    padding: 0px 30px; margin-top: 0px  ; z-index: 1; border: 0px solid #000; 
+	.limited{width: @widthLimit;   height: 100%;    padding: 0px 30px; margin-top: 0px  ; z-index: 1; border: 0px solid #000;
 		.inner{padding: 1px 30px; text-align: left; height: 100%; box-shadow: 0px 0px 12px rgba(0, 0, 0, .4);  background: #fff;  border-left: 1px solid #bababa; border-right: 1px solid #bababa;  }
 		/*	под верхом  */
 		.subtop{margin: 0 0 10px 0;  background: url(../img/double-dotted-line.png) repeat-x center bottom; padding: 0px 0 10px 0; border: 0px solid red; border: 0px solid red; text-align: right;
@@ -895,7 +908,7 @@ input.dark, select.dark{background: url(../img/bottom-input.png) !important; col
 
 }
 /*страница со списком объявлений */
-.filters11111111{display: table-cell; vertical-align: top; width: 160px;  background: #f6f6f6; border: 1px solid #ededed;  padding: 15px; 
+.filters11111111{display: table-cell; vertical-align: top; width: 160px;  background: #f6f6f6; border: 1px solid #ededed;  padding: 15px;
 	h1{font-size: 1.3rem; margin: 0 0 8px 0; padding: 0; letter-spacing: 0px; }
 	.prop{margin: 0 0 8px 0 ;
 		.label{display: block; font-weight: normal; font-size: .8rem;  }

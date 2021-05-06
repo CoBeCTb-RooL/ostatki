@@ -57,7 +57,9 @@ class AdvController extends MainController{
 		
 		$MODEL['chosenCityId'] = $_REQUEST['cityId'];
 		//vd($_GLOBALS['city']);
-		$MODEL['city'] = isset($_REQUEST['cityId']) ? $_GLOBALS['cities'][$_REQUEST['cityId']] : $_GLOBALS['city'];
+		$MODEL['city'] = isset($_REQUEST['cityId']) ? $_GLOBALS['cities'][$_REQUEST['cityId']] : $_SESSION['city'];
+
+//		vd($MODEL['city']);
 		
 		$MODEL['dealType'] = DealType::code($_REQUEST['type']);
 		$MODEL['cats'] = AdvCat::getFullCatsTree($status=Status::code(Status::ACTIVE));
@@ -173,7 +175,7 @@ class AdvController extends MainController{
 
 
 		$MODEL['cities'] = $_GLOBALS['cities'];
-		$MODEL['city'] = isset($_REQUEST['cityId']) ? $_GLOBALS['cities'][$_REQUEST['cityId']] : $_GLOBALS['city'];
+		$MODEL['city'] = isset($_REQUEST['cityId']) ? $_GLOBALS['cities'][$_REQUEST['cityId']] : $_SESSION['city'];
 		
 		$MODEL['s'] = $_REQUEST['s'];
 			

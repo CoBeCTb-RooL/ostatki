@@ -18,7 +18,19 @@ $chosenCityId = $MODEL['chosenCityId'];
 
 
 <div class="city" style="margin: 0 0 15px 0; ">
-	Город: 
+    <?
+//    vd($_SESSION['cityId']);
+//    vd($_SESSION);
+    ?>
+
+    Город: <a href="#" onclick="
+            $('#city-pick-new').slideToggle('fast');
+            <?if(!$_SESSION['city']):?>
+                GeoPick.Countries.initList();
+            <?endif;?>
+            return false;
+    "><b><?=$_SESSION['city']->name?></b></a>
+	<!--Город:
 	<select name="city" onchange="location.href='?cityId='+$(this).val()+'&type=<?=$type->code?>'">
 		<option value="">-выберите-</option>
 		<?php 
@@ -27,7 +39,7 @@ $chosenCityId = $MODEL['chosenCityId'];
 			<option value="<?=$c->id?>" <?=$c->id==$city->id?' selected="selected" ':''?> style="<?=$c->isLarge ? 'font-size: 17px; font-weight: bold; ' : ' font-size: 15px; '?>"><?=$c->name?></option>
 		<?php 
 		}?>
-	</select>
+	</select>-->
 	
 	
 	<span  class="on-advs-list switch-btns-wrapper" style="padding: 0 0 0 11px; ">
@@ -60,6 +72,7 @@ foreach($cats as $key=>$cat)
 			<?php
 			foreach($cat->subCats as $key=>$subcat)
 			{
+//			    vd($subcat);
 				$url = $subcat->url().'?'.($type->code ? '&type='.$type->code :'').($chosenCityId ? '&cityId='.$chosenCityId:'');
 				?>
 				<div>

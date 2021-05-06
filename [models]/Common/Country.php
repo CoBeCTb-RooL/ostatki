@@ -11,7 +11,16 @@ class Country{
 		, $status
 		;
 		
-	
+
+
+	private static function jsonFields()
+    {
+	    return [
+	        'id',
+            'name',
+        ];
+    }
+
 		
 	function init($arr)
 	{
@@ -33,7 +42,7 @@ class Country{
 		echo mysql_error();
 		while($next = mysql_fetch_array($qr, MYSQL_ASSOC))
         {
-			$res[] = self::init($next);
+			$res[$next['id']] = self::init($next);
         }
 //        vd($res);
 		
@@ -172,7 +181,17 @@ class Country{
 
         return $ret;
     }
-	
+
+
+    public function json()
+    {
+        $ret = [];
+
+        foreach (self::jsonFields() as $field)
+            $ret[$field] = $this->$field;
+
+        return $ret;
+    }
 	
 	
 }

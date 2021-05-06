@@ -213,19 +213,24 @@ class CabinetController extends MainController{
 			
 			$item->initMedia(Status::code(Status::ACTIVE));
 			$item->user = $user;
-			
+
 			$MODEL['chosenCity'] = $MODEL['cities'][$item->cityId];
+
+//			vd($_SESSION);
+//			vd($MODEL['chosenCity']);
 		}
 		else
 		{
 			$chosenCat = AdvCat::get($CORE->specialParams['cat']);
 			
-			$MODEL['chosenCity'] = $_GLOBALS['city'];
+			$MODEL['chosenCity'] = $_SESSION['city'];
 		}
 		//vd($item);
 		
 		$MODEL['item'] = $item;
 		$MODEL['user'] = $user;
+
+//		vd($MODEL['chosenCity']);
 		
 		$MODEL['chosenCat'] = $chosenCat;
 		if($item || (!$item && $chosenCat))
@@ -759,6 +764,8 @@ class CabinetController extends MainController{
 				$m->send();
 				
 			}
+
+            $_SESSION['cityId'] = $user->cityId;
 			
 			echo '
 			<script>
@@ -853,7 +860,10 @@ class CabinetController extends MainController{
 		if(!count($errors))
 		{
 			if($u = User::getByEmailAndPassword($email, User::encryptPassword($pass), Status::code(Status::ACTIVE)))
-				$_SESSION['user']['id'] =  $u->id;
+			{
+                $_SESSION['user']['id'] = $u->id;
+                $_SESSION['cityId'] = $u->cityId;
+            }
 			else
 			{
 				$errors[] = Slonne::setError('email', 'Неверная пара "e-mail и пароль".');

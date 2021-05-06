@@ -8,7 +8,13 @@ class IndexController extends MainController{
 		$action = 'index';
 		if($_SERVER['REQUEST_URI'] == '/' && $_CONFIG['ZAGLUSHKA_INDEX'])
 			$action = 'zaglushka';
-		
+
+        $section = $CORE->params[0];
+//        vd($CORE->params);
+//        vd($section);
+        if($section)
+            $action = $section;
+
 		$CORE->action = $action;
 	}
 	
@@ -65,6 +71,54 @@ class IndexController extends MainController{
 		$CORE->setLayout('zaglushka.php');
 		
 	}
+
+
+
+
+    function geoPick_countriesJson()
+    {
+        require(GLOBAL_VARS_SCRIPT_FILE_PATH);
+        Startup::execute(Startup::FRONTEND);
+        $CORE->setLayout(null);
+
+        $list = Country::getList(['status'=>Status::code(Status::ACTIVE)]);
+        foreach ($list as $item)
+            $arr[] = $item->json();
+
+        echo json_encode($arr);
+    }
+
+
+    function geoPick_regionsJson()
+    {
+        require(GLOBAL_VARS_SCRIPT_FILE_PATH);
+        Startup::execute(Startup::FRONTEND);
+        $CORE->setLayout(null);
+
+        $list = Region::getList(['countryId'=>$_REQUEST['countryId'], 'status'=>Status::code(Status::ACTIVE), 'orderBy'=>'name', ]);
+        foreach ($list as $item)
+            $arr[] = $item->json();
+
+        echo json_encode($arr);
+    }
+
+
+    function geoPick_citiesJson()
+    {
+        require(GLOBAL_VARS_SCRIPT_FILE_PATH);
+        Startup::execute(Startup::FRONTEND);
+        $CORE->setLayout(null);
+
+        $list = City::getList2(['regionId'=>$_REQUEST['regionId'], 'status'=>Status::code(Status::ACTIVE), 'orderBy'=>'name',]);
+        foreach ($list as $item)
+            $arr[] = $item->json();
+
+        echo json_encode($arr);
+    }
+
+
+
+
 	
 }
 

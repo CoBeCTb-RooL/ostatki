@@ -139,15 +139,23 @@ if($cat || 1)
 			<div class=" prop" id="filter-brands" style="position: relative;" >
 				<div class="label">Город:</div>
 				<div class="input cities-wrapper">
-					<select name="cityId" id="cityId">
-						<option value="">-выберите-</option>
-					<?php 
-					foreach($cities as $c)
-					{?>
-						<option value="<?=$c->id?>" <?=$c->id == $city->id ? ' selected="selected" ':''?> style="<?=$c->isLarge ? 'font-size: 17px; font-weight: bold; ' : ' font-size: 15px; '?>"><?=$c->name?></option>
-					<?php 	
-					}?>
-					</select>
+
+                    <a href="#" onclick="
+                        $('#city-pick-new').slideToggle('fast');
+                        <?if(!$_SESSION['city']):?>
+                        GeoPick.Countries.initList();
+                        <?endif;?>
+                        return false;
+                    "><b><?=$_SESSION['city']->name?></b></a>
+<!--					<select name="cityId" id="cityId">-->
+<!--						<option value="">-выберите-</option>-->
+<!--					--><?php //
+//					foreach($cities as $c)
+//					{?>
+<!--						<option value="--><?//=$c->id?><!--" --><?//=$c->id == $city->id ? ' selected="selected" ':''?><!-- style="--><?//=$c->isLarge ? 'font-size: 17px; font-weight: bold; ' : ' font-size: 15px; '?><!--">--><?//=$c->name?><!--</option>-->
+<!--					--><?php //
+//					}?>
+<!--					</select>-->
 				</div>
 			</div>
 			<?php 

@@ -11,6 +11,15 @@ class Region{
     ;
 
 
+    private static function jsonFields()
+    {
+        return [
+            'id',
+            'name',
+        ];
+    }
+
+
 
     function init($arr)
     {
@@ -34,7 +43,7 @@ class Region{
         echo mysql_error();
         while($next = mysql_fetch_array($qr, MYSQL_ASSOC))
         {
-            $res[] = self::init($next);
+            $res[$next['id']] = self::init($next);
         }
 //        vd($res);
 
@@ -190,6 +199,16 @@ class Region{
         return $ret;
     }
 
+
+    public function json()
+    {
+        $ret = [];
+
+        foreach (self::jsonFields() as $field)
+            $ret[$field] = $this->$field;
+
+        return $ret;
+    }
 
 
 }

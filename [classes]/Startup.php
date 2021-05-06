@@ -37,27 +37,27 @@ class Startup{
 		$t = new Timer('Главное меню');
 
 
-        # 	города
-        $t = new Timer('города (запрос)');
-        $cities = City::getList(Country::KAZAKHSTAN_ID, Status::code(Status::ACTIVE), $orderBy='isLarge DESC, name');
-		$specialCities = [];
-		$otherCities = [];
-		foreach ($cities as $key=>$c)
-			if(in_array($c->name, ['Алматы', 'Астана', ]))
-			{
-				$c->isSpecial = true;
-				$specialCities[$key] = $c;
-			}
-			else
-				$otherCities[$key] = $c;
-		$cities = [];
-		foreach ($specialCities as $key=>$c)
-			$cities[$key] = $c;
-		foreach ($otherCities as $key=>$c)
-			$cities[$key] = $c;
-		//vd($cities);
-		$_GLOBALS['cities'] = $cities;
-		$t->stop();
+//        # 	города
+//        $t = new Timer('города (запрос)');
+//        $cities = City::getList(Country::KAZAKHSTAN_ID, Status::code(Status::ACTIVE), $orderBy='isLarge DESC, name');
+//		$specialCities = [];
+//		$otherCities = [];
+//		foreach ($cities as $key=>$c)
+//			if(in_array($c->name, ['Алматы', 'Астана', ]))
+//			{
+//				$c->isSpecial = true;
+//				$specialCities[$key] = $c;
+//			}
+//			else
+//				$otherCities[$key] = $c;
+//		$cities = [];
+//		foreach ($specialCities as $key=>$c)
+//			$cities[$key] = $c;
+//		foreach ($otherCities as $key=>$c)
+//			$cities[$key] = $c;
+//		//vd($cities);
+//		$_GLOBALS['cities'] = $cities;
+//		$t->stop();
 	
 		/*
 		 $t = new Timer('запись городов в кэш');
@@ -72,6 +72,14 @@ class Startup{
 
 
 
+		#   получим все города и регионы
+        $_GLOBALS['cities'] = City::getList2(['status'=>Status::code(Status::ACTIVE)]);
+        $_GLOBALS['regions'] = Region::getList(['status'=>Status::code(Status::ACTIVE)]);
+        $_GLOBALS['countries'] = Country::getList(['status'=>Status::code(Status::ACTIVE)]);
+
+
+
+
 		# 	выбранный город
 		if($_REQUEST['globalCityId'])
 		{
@@ -80,7 +88,13 @@ class Startup{
 		}
 		if(!$_SESSION['cityId'])
 			$_SESSION['cityId'] = City::ALMATY_ID;
-		$_GLOBALS['city'] = $_GLOBALS['cities'][$_SESSION['cityId']];
+
+		$_SESSION['city'] = $_GLOBALS['cities'][$_SESSION['cityId']];
+		$GLOBALS['city'] = $_SESSION['city'];
+        $_SESSION['region'] = $_GLOBALS['regions'][$_SESSION['city']->regionId];
+        $_SESSION['country'] = $_GLOBALS['countries'][$_SESSION['region']->countryId];
+
+
 		//vd($_GLOBALS['city']);
 
 

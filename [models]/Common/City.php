@@ -12,8 +12,16 @@ class City{
 		
 		, $country
 		;
-		
-	
+
+
+    private static function jsonFields()
+    {
+        return [
+            'id',
+            'name',
+        ];
+    }
+
 		
 	function init($arr)
 	{
@@ -36,7 +44,7 @@ class City{
 		$sql = "SELECT * FROM `".self::TBL."` WHERE 1 ".($countryId?" AND countryId='".intval($countryId)."' ":"")." ".($status ? " AND status='".strPrepare($status->num)."'" : "")."";
 		if($orderBy)
 			$sql.=" ORDER BY ".strPrepare($orderBy)." ";
-		//vd($sql);
+		vd($sql);
 		$qr=DB::query($sql);
 		echo mysql_error();
 		while($next = mysql_fetch_array($qr, MYSQL_ASSOC))
@@ -57,7 +65,7 @@ class City{
         echo mysql_error();
         while($next = mysql_fetch_array($qr, MYSQL_ASSOC))
         {
-            $res[] = self::init($next);
+            $res[$next['id']] = self::init($next);
         }
 //        vd($res);
 
@@ -266,7 +274,17 @@ class City{
 		}
 		return $tmp2;
 	}
-	
+
+
+    public function json()
+    {
+        $ret = [];
+
+        foreach (self::jsonFields() as $field)
+            $ret[$field] = $this->$field;
+
+        return $ret;
+    }
 	
 	
 }

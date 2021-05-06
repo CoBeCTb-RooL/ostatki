@@ -144,21 +144,92 @@ if($user)
 					</span>
 				</div>
 				
-				<div class="row">
-					<span class="label">Город<i class="req">*</i>:</span>
-					<span class="input">
-						<select name="city" id="city">
-							<option value="">-выберите-</option>
-						<?php 
-						foreach($_GLOBALS['cities'] as $city)
-						{?>
-							<option value="<?=$city->id?>" <?=$city->id == $user->cityId ? ' selected="selected" ' : '' ?>  style="<?=$city->isLarge ? 'font-size: 17px; font-weight: bold; ' : ' font-size: 15px; '?>"><?=$city->name?></option>
-						<?php 
-						}?>
-						</select>
-					</span>
-				</div>
-				
+<!--				<div class="row">-->
+<!--					<span class="label">Город<i class="req">*</i>:</span>-->
+<!--					<span class="input">-->
+<!--						<select name="city" id="city">-->
+<!--							<option value="">-выберите-</option>-->
+<!--						--><?php //
+//						foreach($_GLOBALS['cities'] as $city)
+//						{?>
+<!--							<option value="--><?//=$city->id?><!--" --><?//=$city->id == $user->cityId ? ' selected="selected" ' : '' ?><!--  style="--><?//=$city->isLarge ? 'font-size: 17px; font-weight: bold; ' : ' font-size: 15px; '?><!--">--><?//=$city->name?><!--</option>-->
+<!--						--><?php //
+//						}?>
+<!--						</select>-->
+<!--					</span>-->
+<!--				</div>-->
+
+<!--                <hr>-->
+<!--                <hr>-->
+<!--                <hr>-->
+
+
+            <?
+            if($user)
+            {
+                $currentCity = $_GLOBALS['cities'][$user ? $user->cityId : $_SESSION['city']->id];
+                $currentRegion = $_GLOBALS['regions'][$currentCity->regionId];
+                $currentCountry = $_GLOBALS['countries'][$currentCity->countryId];
+            }
+            ?>
+
+                <div id="geo-pick-cabinet">
+                    <!--country-->
+                    <div class="row block country">
+                        <div class="">
+                            <span class="label">Страна<i class="req">*</i>:</span>
+                            <span class="input">
+                                <select name="countryId" onchange="GeoPick.Regions.initList($(this).val(), '#geo-pick-cabinet')">
+                                    <?if($_SESSION['city'] || 1):?>
+                                        <?foreach ($_GLOBALS['countries'] as $country):?>
+                                            <option value="<?=$country->id?>" <?=$country->id == $currentCountry->id ? ' selected="selected" ' : ''?>><?=$country->name?></option>
+                                        <?endforeach;?>
+                                    <?endif?>
+                                </select>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--region-->
+                    <div class="row block region">
+                        <div class="" style="<?=!$_SESSION['city'] ? 'display: none;' : ''?>; ">
+                            <span class="label">Регион<i class="req">*</i>:</span>
+                            <span class="input">
+                                <select name="countryId" onchange="GeoPick.Cities.initList($(this).val(), '#geo-pick-cabinet')">
+                                    <?if($_SESSION['city'] || 1):?>
+                                        <?foreach ($_GLOBALS['regions'] as $region):?>
+                                            <?if($region->countryId!=$currentCountry->id){continue; }?>
+                                            <option value="<?=$region->id?>" <?=$region->id == $currentRegion->id ? ' selected="selected" ' : ''?>><?=$region->name?></option>
+                                        <?endforeach;?>
+                                    <?endif?>
+                                </select>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--city-->
+                    <div class="row block city">
+                        <div class="" style="<?=!$_SESSION['city'] ? 'display: none;' : ''?>;  " >
+                            <span class="label">Город<i class="req">*</i>:</span>
+                            <span class="input">
+                                <select name="city"  >
+                                    <?if($_SESSION['city'] || 1):?>
+                                        <?foreach ($_GLOBALS['cities'] as $city):?>
+                                            <?if($city->regionId!=$currentRegion->id){continue; }?>
+                                            <option value="<?=$city->id?>" <?=$city->id == $currentCity->id ? ' selected="selected" ' : ''?>><?=$city->name?></option>
+                                        <?endforeach;?>
+                                    <?endif?>
+                                </select>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+<!--            <hr>-->
+<!--            <hr>-->
+<!--            <hr>-->
+
 		<?php 
 		if(!$user)
 		{?>

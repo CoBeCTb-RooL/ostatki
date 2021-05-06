@@ -33,6 +33,7 @@ $logoBottomPath = '/img/logo-org-bottom2.png';
 	<script type="text/javascript" src="/js/common.js"></script>
 	<!--кабинет-->
 	<script src="/js/slonne.cabinet.js" type="text/javascript"></script>
+	<script src="/js/geoPick.js" type="text/javascript"></script>
 	<!--формы-->
 	<!-- <script src="/js/slonne.forms.js" type="text/javascript"></script> -->
 	
@@ -150,48 +151,101 @@ if(Admin::isAdmin())
 						</ul>
 						
 						<a class="logo"  href="<?=Route::getByName(Route::MAIN)->url()?>" title="<?=DOMAIN_CAPITAL?>"><img src="<?=$logoPath?>" alt="" /></a>
-						<!--города-->
-						<div class="current-city">
-							Город: <a href="#" onclick="$('#city-pick').slideDown(); return false; "><?=$_GLOBALS['city']->name?></a>
-						</div>
-						<!--<select class="current-city-mobile" onchange="location.href='?globalCityId='+$(this).val()">
-						<?
-						foreach($_GLOBALS['cities'] as $city )
-						{?>
-							<option value="<?=$city->id?>" style="<?=$city->isLarge?'font-size: 15px; ':''?> " <?=$city->id==$_GLOBALS['city']->id? ' selected ' : ''?> ><?=$city->name?></option>
-						<?
-						}?>
-						</select>-->
-						<div class="cities" id="city-pick">
-							<a href="#" class="close" onclick="$('#city-pick').slideUp(); return false;" title="закрыть">&times;</a>
-							<h4>Выберите город:</h4>
-							<?php
-							foreach($_GLOBALS['cities'] as $city)
-								if($city->isLarge)
-									$largeCities[] = $city;
-								else
-									$smallCities[] = $city;
-							?>
 
-							<ul class="large">
-								<?php
-								foreach($largeCities as $city)
-								{?>
-									<li><a href="?globalCityId=<?=$city->id?>" class="<?=$city->id==$_GLOBALS['city']->id? 'active' : ''?>" style="<?=$city->isSpecial ? 'font-size: 20px; text-decoration: underline; ' : '' ?>" ><?=$city->name?></a></li>
-									<?php
-								}?>
-							</ul>
 
-							<ul class="small">
-								<?php
-								foreach($smallCities as $city)
-								{?>
-									<li><a href="?globalCityId=<?=$city->id?>" class="<?=$city->id==$_GLOBALS['city']->id? 'active' : ''?>" ><?=$city->name?></a></li>
-									<?php
-								}?>
-							</ul>
-						</div>
-						<!--/города-->
+                        <!--города-->
+<!--						<div class="current-city">-->
+<!--							Город: <a href="#" onclick="$('#city-pick').slideDown(); return false; ">--><?//=$_GLOBALS['city']->name?><!--</a>-->
+<!--						</div>-->
+
+                        <!--всплывашка выбора города DESKTOP-->
+<!--						<div class="cities" id="city-pick">-->
+<!--							<a href="#" class="close" onclick="$('#city-pick').slideUp(); return false;" title="закрыть">&times;</a>-->
+<!--							<h4>Выберите город:</h4>-->
+<!--							--><?php
+//							foreach($_GLOBALS['cities'] as $city)
+//								if($city->isLarge)
+//									$largeCities[] = $city;
+//								else
+//									$smallCities[] = $city;
+//							?>
+<!---->
+<!--							<ul class="large">-->
+<!--								--><?php
+//								foreach($largeCities as $city)
+//								{?>
+<!--									<li><a href="?globalCityId=--><?//=$city->id?><!--" class="--><?//=$city->id==$_GLOBALS['city']->id? 'active' : ''?><!--" style="--><?//=$city->isSpecial ? 'font-size: 20px; text-decoration: underline; ' : '' ?><!--" >--><?//=$city->name?><!--</a></li>-->
+<!--									--><?php
+//								}?>
+<!--							</ul>-->
+<!---->
+<!--							<ul class="small">-->
+<!--								--><?php
+//								foreach($smallCities as $city)
+//								{?>
+<!--									<li><a href="?globalCityId=--><?//=$city->id?><!--" class="--><?//=$city->id==$_GLOBALS['city']->id? 'active' : ''?><!--" >--><?//=$city->name?><!--</a></li>-->
+<!--									--><?php
+//								}?>
+<!--							</ul>-->
+<!--						</div>-->
+                        <!--/всплывашка выбора города DESKTOP-->
+                    <!--/города-->
+
+
+                        <div class="current-city-new">
+                            Город<!--<sup>NEW</sup>-->: <a href="#" onclick="
+                                $('#city-pick-new').slideDown('fast');
+                                <?if(!$_SESSION['city']):?>
+                                GeoPick.Countries.initList();
+                                <?endif;?>
+                                return false;
+                            "><?=$_SESSION['city'] ? $_SESSION['city']->name : 'Выберите город'?></a>
+                        </div>
+                        <div class="cities" id="city-pick-new">
+                            <a href="#" class="close" onclick="$('#city-pick-new').slideUp('fast'); return false;" title="закрыть">&times;</a>
+                            <h4>Регион и город:</h4>
+
+
+                            <!--country-->
+                            <div class="block country">
+                                <span class="lbl">Страна:</span>
+                                <select name="countryId" onchange="GeoPick.Regions.initList($(this).val())">
+                                    <?if($_SESSION['city']):?>
+                                        <?foreach ($_GLOBALS['countries'] as $country):?>
+                                            <option value="<?=$country->id?>" <?=$country->id == $_SESSION['country']->id ? ' selected="selected" ' : ''?>><?=$country->name?></option>
+                                        <?endforeach;?>
+                                    <?endif?>
+                                </select>
+                            </div>
+
+                            <!--region-->
+                            <div class="block region" style="<?=!$_SESSION['city'] ? 'display: none;' : ''?>; ">
+                                <span class="lbl">Регион:</span>
+                                <select name="countryId" onchange="GeoPick.Cities.initList($(this).val())">
+                                    <?if($_SESSION['city']):?>
+                                        <?foreach ($_GLOBALS['regions'] as $region):?>
+                                            <?if($region->countryId!=$_SESSION['country']->id){continue; }?>
+                                            <option value="<?=$region->id?>" <?=$region->id == $_SESSION['region']->id ? ' selected="selected" ' : ''?>><?=$region->name?></option>
+                                        <?endforeach;?>
+                                    <?endif?>
+                                </select>
+                            </div>
+
+                            <!--city-->
+                            <div class="block city" style="<?=!$_SESSION['city'] ? 'display: none;' : ''?>;  " >
+                                <span class="lbl">Город:</span>
+                                <select name="cityId" onchange=" location.href = '?globalCityId='+$(this).find('option:selected').val()" >
+                                    <?if($_SESSION['city']):?>
+                                        <?foreach ($_GLOBALS['cities'] as $city):?>
+                                            <?if($city->regionId!=$_SESSION['region']->id){continue; }?>
+                                            <option value="<?=$city->id?>" <?=$city->id == $_SESSION['city']->id ? ' selected="selected" ' : ''?>><?=$city->name?></option>
+                                        <?endforeach;?>
+                                    <?endif?>
+                                </select>
+                            </div>
+
+                        </div>
+
 
 
 						<!-- поиск вверху -->
@@ -266,7 +320,11 @@ if(Admin::isAdmin())
 							</div>
 
 							<div class="column center">
-                                &nbsp;
+                                <div id="banner-wrapper" style="">
+                                    <img id="banner" src="/img/banners/appolonius.jpg" alt=""  />
+                                    <br>
+                                    <img id="banner" src="/img/banners/proteus.jpg" alt="" style=" " />
+                                </div>
 <!--								<div class="phone">8 (727) 995-65-54</div>-->
 <!--								<a href="/--><?//=LANG?><!--/forms/feedback" class="request-call">заказать звонок</a>-->
 <!--								<h4>Наш офис:</h4>-->
@@ -274,7 +332,7 @@ if(Admin::isAdmin())
 <!--								<a href="/--><?//=LANG?><!--/forms/feedback" class="send-msg">отправить сообщение</a>-->
 							</div>
 
-							<div class="column right">
+							<div class="column right" style="z-index: 1000000; ">
                                 <h4>Экономьте вместе с <?=DOMAIN_CAPITAL?>! </h4>
 <!--								<h4>МЫ В СОЦИАЛЬНЫХ СЕТЯХ</h4>-->
 <!--								<div class="socials">-->
@@ -298,11 +356,11 @@ if(Admin::isAdmin())
 						<img id="cement" src="/img/cement-bottom.png" alt=""  />
 						<img id="plitka" src="/img/plitka-bottom.png" alt=""  />
 
-                        <div id="banner-wrapper">
-                            <img id="banner" src="/img/banners/appolonius.jpg" alt=""  />
-                            <br>
-                            <img id="banner" src="/img/banners/proteus.jpg" alt="" style=" " />
-                        </div>
+<!--                        <div id="banner-wrapper" style="">-->
+<!--                            <img id="banner" src="/img/banners/appolonius.jpg" alt=""  />-->
+<!--                            <br>-->
+<!--                            <img id="banner" src="/img/banners/proteus.jpg" alt="" style=" " />-->
+<!--                        </div>-->
 						<img class="screw screw-1" src="/img/screw.png" alt=""  />
 						<img class="screw screw-2" src="/img/screw.png" alt=""  />
 						<img class="screw screw-3" src="/img/screw.png" alt=""  />
