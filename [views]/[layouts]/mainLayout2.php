@@ -244,6 +244,14 @@ if(Admin::isAdmin())
                                 </select>
                             </div>
 
+
+                            <?if($USER):?>
+                                <div style="margin: 15px 0 0 0 ; "><a href="?globalCityId=<?=$USER->cityId?>" style="color: #d03c2d;  font-size: .8em; ">мой город (<?=$USER->city->name?>)</a></div>
+                            <?endif?>
+                            <?
+//                            vd($USER->city);
+                            ?>
+
                         </div>
 
 

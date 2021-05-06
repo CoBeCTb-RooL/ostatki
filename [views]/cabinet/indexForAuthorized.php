@@ -38,8 +38,14 @@ if($user)
 					<td class="text"><span class="label">На сайте</span> с <?=mb_strtolower(Funx::mkDate($user->registrationDate), 'utf-8')?></td>
 				</tr>
 				<tr>
-					<td class="icon"><i class="fa fa-map-marker"></i></td>
-					<td class="text"><span class="label">Город:</span> <?=$user->city->name?></td>
+					<td class="icon" style="vertical-align: top;"><i class="fa fa-map-marker"></i></td>
+					<td class="text">
+                        <?
+                        $region = $_GLOBALS['regions'][$user->city->regionId];
+                        $country = $_GLOBALS['countries'][$region->countryId];
+                        ?>
+                        <span class="label">Город:</span> <?=$user->city->name?> <span style="font-weight: normal; font-size: .8em; "><br>(<?=$region->name?>, <?=$country->name?>)</span>
+                    </td>
 				</tr>
 			</table>
 			

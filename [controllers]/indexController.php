@@ -34,7 +34,7 @@ class IndexController extends MainController{
 		
 		$MODEL['dealTypes'] = DealType::$items;
 		
-		$advsQuanList = AdvQuan::getListByCity($_GLOBALS['city']->id);
+		$advsQuanList = AdvQuan::getListByCity($_SESSION['city']->id);
 		//vd($advsQuanList);
 		
 		foreach($MODEL['cats'] as $cat)
@@ -45,9 +45,9 @@ class IndexController extends MainController{
 		}
 		
 		$MODEL['totalCount'] = AdvItem::getCount($params=array('statuses' => array(Status::code(Status::ACTIVE))));
-		$MODEL['totalCountCurrentCity'] = AdvItem::getCount($params=array('statuses' => array(Status::code(Status::ACTIVE)), 'cityId'=>$_GLOBALS['city']->id, ));
+		$MODEL['totalCountCurrentCity'] = AdvItem::getCount($params=array('statuses' => array(Status::code(Status::ACTIVE)), 'cityId'=>$_SESSION['city']->id, ));
 		
-		$MODEL['lastAdvs'] = AdvItem::getList($params=array('cityId'=>$_GLOBALS['city']->id, 'statuses'=>array(Status::code(Status::ACTIVE)), 'orderBy'=>'id DESC', 'limit'=>' LIMIT 0, 4 '));
+		$MODEL['lastAdvs'] = AdvItem::getList($params=array('cityId'=>$_SESSION['city']->id, 'statuses'=>array(Status::code(Status::ACTIVE)), 'orderBy'=>'id DESC', 'limit'=>' LIMIT 0, 4 '));
 		//vd($MODEL['lastAdvs']);
 		
 		# 	инициализируем медиа

@@ -155,7 +155,12 @@ function switchStatus(id)
 								<?php 
 								}?>
 								<!-- <div><span class="label">Цена: </span> 3 000 тг.</div> -->
-								<div><span class="label"></span><b>г. <?=$item->city->name?></b></div>
+
+                                <?
+                                $region = $_GLOBALS['regions'][$item->city->regionId];
+                                $country = $_GLOBALS['countries'][$region->countryId];
+                                ?>
+								<div><span class="label"></span><b>г. <?=$item->city->name?> </b> (<?=$region->name?>, <?=$country->name?>)</div>
 							</div>
 						</div>
 						

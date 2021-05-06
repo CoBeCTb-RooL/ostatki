@@ -84,15 +84,15 @@ $lastAdvs = $MODEL['lastAdvs'];
 						 <?
 						 if($totalCountCurrentCity)
 						 {?>
-						 Из них - <a  href="<?=Route::getByName(Route::SPISOK_KATEGORIY)->url('?cityId='.$_GLOBALS['city']->id)?>"><b><?=Funx::numberFormat($totalCountCurrentCity)?> <?=Funx::okon($totalCountCurrentCity, array('объявлений', 'объявление', 'объявленя'))?></b> по <b >г. <?=$_GLOBALS['city']->name?></b></a>
+						 Из них - <a  href="<?=Route::getByName(Route::SPISOK_KATEGORIY)->url('?cityId='.$_SESSION['city']->id)?>"><b><?=Funx::numberFormat($totalCountCurrentCity)?> <?=Funx::okon($totalCountCurrentCity, array('объявлений', 'объявление', 'объявленя'))?></b> по <b >г. <?=$_SESSION['city']->name?></b></a>
 						 <?
 						 }
 						 else
 						 {?>
-						 	К сожалению, для города <b ><?=$_GLOBALS['city']->name?></b> пока ничего нет.
+						 	К сожалению, для города <b ><?=$_SESSION['city']->name?></b> пока ничего нет.
 						 <?php
 						 }?>
-						 <span class="change-city-btn" style="font-size: .7em; ">[<a href="#" onclick="$('#city-pick').slideDown();  "class="blue">сменить город</a>]</span>
+						 <span class="change-city-btn" style="font-size: .7em; ">[<a href="#" onclick="$('#city-pick-new').slideToggle();  "class="blue">сменить город</a>]</span>
 					</div>
 					<hr />
 

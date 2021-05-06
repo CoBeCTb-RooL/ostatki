@@ -312,7 +312,11 @@ if($isOwner)
 		
 			<div class="top-info">
 				<span class="date" ><?=mb_strtolower(Funx::mkDate($item->dateCreated), 'utf-8')?>,</span>
-				<span class="city"><?=$item->city->name?></span>
+                <?
+                $region = $_GLOBALS['regions'][$item->city->regionId];
+                $country = $_GLOBALS['countries'][$region->countryId];
+                ?>
+				<span class="city"><?=$item->city->name?> <span style="font-size: .8em; font-weight: normal;">(<?=$region->name?>, <?=$country->name?>)</span></span>
 				<span> | <a href="<?=Route::getByName(Route::SPISOK_OBYAVLENIY_KATEGORII)->url($item->cat->urlPiece())?>" class="blue cat-name" ><?=$item->cat->name?></a></span>
 			</div>
 			
@@ -426,7 +430,7 @@ if($isOwner)
 				
 				<div class="city1">
 					<i class="fa fa-globe" 	></i>
-					г. <?=$item->city->name?> 
+					г. <?=$item->city->name?> <span style="font-size: .9em; font-weight: normal;">(<?=$region->name?>, <?=$country->name?>)</span>
 				</div>
 				
 				

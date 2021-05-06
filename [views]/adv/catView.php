@@ -147,6 +147,11 @@ if($cat || 1)
                         <?endif;?>
                         return false;
                     "><b><?=$_SESSION['city']->name?></b></a>
+                    <?
+                    $region = $_GLOBALS['regions'][$_SESSION['city']->regionId];
+                    $country = $_GLOBALS['countries'][$region->countryId];
+                    ?>
+                    <div style="font-size: .7em; ">(<?=$region->name?>, <?=$country->name?>)</div>
 <!--					<select name="cityId" id="cityId">-->
 <!--						<option value="">-выберите-</option>-->
 <!--					--><?php //
