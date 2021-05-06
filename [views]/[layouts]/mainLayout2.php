@@ -110,16 +110,16 @@ if(Admin::isAdmin())
 
 						<a href="#" class="mobile-menu-btn" onclick="$('.mobile-menu').slideToggle('fast'); "><i class="fa fa-bars" aria-hidden="true"></i></a>
 						<ul class="mobile-menu">
-							<li>
-								Город: <select class="current-city-mobile2 dark" onchange="location.href='?globalCityId='+$(this).val()">
-									<?
-									foreach($_GLOBALS['cities'] as $city )
-									{?>
-										<option value="<?=$city->id?>" style="<?=$city->isLarge?'font-size: 15px; ':''?>" <?=$city->id==$_GLOBALS['city']->id? ' selected ' : ''?> ><?=$city->name?></option>
-										<?
-									}?>
-								</select>
-							</li>
+<!--							<li>-->
+<!--								Город: <select class="current-city-mobile2 dark" onchange="location.href='?globalCityId='+$(this).val()">-->
+<!--									--><?//
+//									foreach($_GLOBALS['cities'] as $city )
+//									{?>
+<!--										<option value="--><?//=$city->id?><!--" style="--><?//=$city->isLarge?'font-size: 15px; ':''?><!--" --><?//=$city->id==$_GLOBALS['city']->id? ' selected ' : ''?><!-- >--><?//=$city->name?><!--</option>-->
+<!--										--><?//
+//									}?>
+<!--								</select>-->
+<!--							</li>-->
 							<li>
 								<a class="<?=$section == 'cats' ? 'active' : ''?>" href="<?=Route::getByName(Route::SPISOK_KATEGORIY)->url()?>">Объявления</a>
 							</li>
